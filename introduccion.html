@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MODELADO UML</title>
+	<link rel="stylesheet" href="estilos/estilo.css">
+</head>
+
+<body>
+
+	<!-- Definimos el encabezado de la pagina web para mostrar al usuario de que va a tratar la web -->
+	<header>
+		<h2 class="autor">RODRIGO CANTOR VASQUEZ</h2>
+		<h2 class="tema">MODELADO DE BASES DE DATOS <img src="Iconos/icono_titulo_3.png" width="40px" alt=""></h2>
+		<h2></h2>
+	</header>
+
+	<!-- Definimos un menu de navegacion para que el usuario vea los diferentes temas que se van a tratar en la pagina  -->
+	<nav>
+		<input type="checkbox" id="boton-menu">
+		<label id="label-menu" for="boton-menu"><img src="imagenes/menu.png"></label>
+		<a href="index.html">INICIO</a>
+		<a href="introduccion.html">INTRODUCCIÓN</a>
+		<a href="semantica.html">SEMÁNTICA</a>
+		<a href="ejemplos.html">EJEMPLOS</a>
+		<a href="ejercicios.html">EJERCICIOS</a>
+		<a href="bibliografia.html">BIBLIOGRAFÍA</a>
+	</nav>
+
+	<!-- Menu lateral izquierdo -->
+	<aside id="contenido-temario">
+		<ol>
+			<li><a href="#titulo-1" class="sub-contenido">Términos</a></li>
+			<li><a href="#titulo-2" class="sub-contenido">Bases de datos</a></li>
+			<li><a href="#titulo-3" class="sub-contenido">Bases de datos integrada</a></li>
+			<li><a href="#titulo-4" class="sub-contenido">Roles</a></li>
+			<li><a href="#titulo-5" class="sub-contenido">Modelo de datos</a></li>
+			<li><a href="#sub-titulo-5.0" class="sub-contenido">Modelo entidad relación</a></li>
+			<li><a href="#sub-titulo-5.1" class="sub-contenido">Importancia del modelado</a></li>
+			<li><a href="#titulo-6" class="sub-contenido">Análisis del sistema</a></li>
+			<li><a href="#sub-titulo-6.1" class="sub-contenido">Análisis tradicional</a></li>
+			<li><a href="#sub-titulo-6.2" class="sub-contenido">Análisis escalonado</a></li>
+			<li><a href="#titulo-7" class="sub-contenido">Herramientas de diseño</a></li>
+			<li><a href="#sub-titulo-7.1" class="sub-contenido">Herramientas upper-CASE</a></li>
+			<li><a href="#sub-titulo-7.2" class="sub-contenido">Herramientas lower-CASE</a></li>
+			<li><a href="#titulo-8" class="sub-contenido">Diccionario de datos</a></li>
+			<li><a href="#titulo-9" class="sub-contenido">Arquitectura en tres niveles</a></li>
+			<li><a href="#titulo-10" class="sub-contenido">Técnicas de modelado</a></li>
+			<li><a href="#" class="sub-contenido">_____</a></li>
+		</ol>
+	</aside>
+
+	<!-- Contenido de la web -->
+	<div id="exposicion-contenido">
+
+		<div id="contenedor-contenido">
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-1">Términos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>Notación: Sistema de signos convencionales que se adopta para expresar conceptos matemáticos,
+						físicos,
+						químicos,
+						de ingeniería, etc.
+					</li>
+					<li>
+						Diagrama: Representación gráfica, generalmente esquemática, para describir o comunicar algo.
+					</li>
+					<li>
+						Base de datos: Información en movimiento, desde la fuente en donde se genera el dato o la
+						información, se
+						transforma
+						a través de procesos y llega al usuario o dependencia para apoyar la gestión.
+					</li>
+					<li>
+						Instancia: Caso o ejemplar particular y diferenciado de los elementos de un conjunto o de los
+						individuos de
+						una clase
+						o especie.
+					</li>
+					<li>
+						Modelo: Esquema teórico y formal de un sistema o de una realidad compleja que se elabora para
+						facilitar su
+						comprensión y el estudio de su comportamiento.
+					</li>
+					<li>
+						Modelo Relacional: organización y gestión de bases de datos consistente en el almacenamiento de
+						datos en
+						tablas
+						compuestas por filas, o tuplas, y columnas o campos.
+					</li>
+					<li>
+						Relación: Es el elemento central del modelo relacional. Son los objetos principales sobre los
+						que debe
+						recogerse
+						información y generalmente denotan personas, lugares, cosas o eventos de interés. Una relación
+						tiene un
+						nombre, un
+						conjunto de atributos que representan sus propiedades.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h1 id="titulo-2">Bases de datos</h1>
+			</section>
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En la actualidad, las bases de datos se usan tan ampliamente que se pueden encontrar en
+					organizaciones de todos los tamaños, desde grandes corporaciones y agencias gubernamentales, hasta
+					pequeños
+					negocios e incluso en hogares. Las actividades diarias con frecuencia
+					lo ponen en contacto con las bases de datos, ya sea directa o indirectamente.
+				</p>
+				<br>
+				<ul>
+					<li>Cuando visita un portal de Internet del consumidor que permite navegar y ordenar
+						en línea bienes como libros o ropa, accede a una base de datos.</li>
+					<li>uando visita un sitio Web interactivo de servicio al cliente, como la página de inicio de una
+						compañía
+						de servicios o una aseguradora de salud, es capaz de acceder a
+						información acerca de sus propios registros de servicios o productos proporcionados.</li>
+					<li>a banca electrónica, puede recuperar registros de base de datos acerca de depósitos, retiros,
+						pago de
+						facturas y otras transacciones para sus cuentas.</li>
+					<li>Cuando usa una tarjeta de crédito, el vendedor por lo general espera la aprobación
+						por computadora de su compra antes de presentarle un recibo para que lo firme.</li>
+					<li>Cuando compra bienes en un supermercado o tienda al menudeo, se usan escáneres para leer códigos
+						universales de producto u otros identificadores de mercancía.
+						Al usar el código escaneado, el sistema de base de datos puede identificar el artículo
+						exacto y producir un recibo con el nombre del artículo y su precio, y toma en consideración
+						cualquier precio
+						de venta especial.
+					</li>
+					<li>
+						Cuando hace planes para viajar, puede ingresar al sistema de reservaciones de una
+						aerolínea en la que se usa una base de datos para rastrear los vuelos programados y
+						las reservaciones de pasajeros.
+					</li>
+					<li>
+						Si visita al médico, es posible que sus registros médicos y datos de facturación se
+						conserven en una base de datos. Cuando le extienden una receta, probablemente el
+						farmacéutico usará una base de datos para registrar información acerca de la prescripción,
+						comprobar las
+						interacciones con los medicamentos que use en la actualidad
+						e imprimir la etiqueta y la receta.
+					</li>
+					<li>
+						Sus registros laborales se pueden mantener en una base de datos que almacena
+						información básica como nombre, dirección, identificación de empleado, labores a
+						desarrollar y evaluaciones de desempeño.
+					</li>
+					<li>
+						Sus registros escolares tal vez se conservan en una base de datos que se actualiza
+						cada periodo al registrar su inscripción, conclusión y calificación para cada clase.
+					</li>
+					<li>
+						Para hacer investigación, puede usar una base de datos bibliográfica en la que
+						ingrese palabras clave que describan el tema de interés. Puede obtener resultados que
+						contengan hipertexto, lo que le permite recuperar resúmenes o artículos de interés
+						completos en su área de interés.
+					</li>
+				</ul>
+				<br>
+				<p>
+					En una organización grande, la base de datos la gestiona
+					un administrador de base de datos (ABD), quien es el responsable de crear y mantener la
+					base de datos para satisfacer las necesidades de los usuarios. Todos los accesos a la base de
+					datos están controlados mediante un sofisticado paquete de software llamado sistema de
+					gestión de base de datos (DBMS, por sus siglas en inglés). Este paquete tiene programas
+					que establecen las estructuras de almacenamiento originales, cargan los datos, aceptan peticiones de
+					datos de
+					programas y usuarios, dan formato a los datos recuperados de modo que
+					aparezcan en la forma que el programa o el usuario esperan, ocultan datos a los que un
+					usuario particular no debe tener acceso, aceptan y realizan actualizaciones, permiten el uso
+					concurrente de los datos sin hacer que los usuarios interfieran unos con otros, y realizan
+					respaldos y procedimientos de recuperación automáticamente. É
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-3">Entorno de bases de datos integrada</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Un entorno de base de datos integrada tiene un único gran repositorio de datos, llamado
+					base de datos, que usan de manera simultánea muchos departamentos y usuarios en una organización.
+					Todos los
+					datos que la organización necesita para un grupo específico de aplicaciones, o incluso para todas
+					sus
+					aplicaciones, se almacenan juntos, con tan poca repetición como sea posible.
+				</p>
+				<br>
+				<p>
+					La siguiente <a href="#imagen-1">imagen 1</a> ilustra un entorno de base de datos integrada. Aquí,
+					todos los
+					datos acerca
+					de estudiantes, clases, personal docente e inscripciones se almacenan en una sola base de
+					datos. Los datos están integrados, de modo que los ítems de datos se almacenan en formatos
+					compatibles y las
+					conexiones lógicas entre ellos también se almacenan. La base de datos
+					contiene una descripción de su propia estructura, de modo que el DBMS “sabe” cuáles
+					ítems de datos existen y cómo están estructurados o agrupados. La comparten muchos
+					usuarios, por lo general de manera concurrente. Todo acceso a los datos es a través del
+					DBMS. Los programas de aplicaciones, que se pueden escribir en diferentes lenguajes de
+					programación, pasan por el DBMS, que puede presentar los datos en la forma que cada programa espera.
+					Sólo el
+					DBMS está al tanto de las estructuras de almacenamiento utilizadas
+					en la base de datos. Además de proporcionar apoyo para las aplicaciones, el DBMS proporciona una
+					interfaz de
+					usuario para consultas interactivas. Los usuarios autorizados pueden
+					preguntar a la base de datos directamente, con el lenguaje de consulta del DBMS particular.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Entorno de bases de datos integrada</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/entorno-de-BD-integrada.png" alt="" width="50%"
+						id="imagen-1">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-4">Roles en el entorno de bases de datos integrada</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Usuarios finales:
+						La base de datos se diseña, crea y mantiene para satisfacer las necesidades de información de
+						los usuarios
+						finales, las personas que usan los datos para realizar sus labores. Sin importar la elegancia
+						del diseño de
+						la base de datos, o la sofisticación del
+						hardware y el software utilizados, si la base de datos no proporciona información
+						adecuada a los usuarios, es un fracaso. A final de cuentas, son los usuarios quienes
+						juzgan el éxito del sistema.
+					</li>
+					<li>
+						Programadores de aplicaciones:
+						Este grupo incluye a los programadores que escriben aplicaciones batch, o interactivas, para
+						otros usuarios.
+						Sus programas de aplicación se pueden escribir en una
+						variedad de lenguajes de programación huéspedes como Java, C, C++, C#, Visual
+						BASIC, RPG o COBOL. Cada programa que accede a la base de datos contiene enunciados que
+						solicitan al sistema
+						de gestión de la base de datos realizar actualizaciones
+						o recuperaciones en la base de datos.
+					</li>
+					<li>
+						Administrador de la base de datos
+						El administrador de la base de datos es el individuo o grupo responsable del diseño,
+						creación de la estructura y mantenimiento de la base de datos. En muchos casos, la
+						base de datos la diseña un especialista, y el ABD toma la responsabilidad una vez que
+						el diseño está completo. El diseñador de la base de datos comienza el proceso de
+						diseño al entrevistar a los usuarios para determinar sus necesidades de datos.
+						Examina el sistema actual, analiza la organización y sus necesidades de información,
+						y desarrolla un modelo tentativo para la base de datos. El modelo se refina y mejora
+						conforme el diseñador, al consultar a los usuarios, está más al tanto de sus necesidades de
+						datos y aprende
+						más acerca del funcionamiento de la organización. Cuando se
+						desarrolla un diseño satisfactorio, el ABD lo implementa.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Roles en el entorno de bases de datos integrada</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/Roles-en-el-entorno-BD.png" alt="" width="50%"
+						id="imagen-1">
+					<p id="cita-imagen"><q>Imagen 2. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-5">Modelo de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p> Un modelo de datos proporciona una colección integrada de
+					conceptos para describir los datos, las relaciones existentes entre
+					los mismos y las restricciones aplicables a los datos, dentro de una
+					organización.</p>
+				<br>
+				<p>El modelo de entidades y relaciones (introducido por Chen en
+					1976) se ha consolidado como una de las principales técnicas para
+					el diseño de bases de datos.</p>
+				<br>
+				<p>Existen variaciones y extensiones (M.E.R.E.). No hay un enfoque
+					de diagramación estándar, pero sí un conjunto de construcciones
+					comunes.</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.0">Modelo entidad relación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Un Modelo Entidad Relación (MER) es una herramienta de la ingeniería de software con dos propósitos:
+					uno
+					que
+					podemos llamar secundario que nos facilita definir la organización estructural de los datos de un
+					Sistema de
+					Información y otro que podemos llamar principal que nos permite elaborar, compartir y comunicar con
+					usuarios no
+					técnicos un entendimiento consensuado de los conceptos, sus características y sus relaciones
+					asociados a la
+					realidad
+					que debe representar el Sistema de Información.</p>
+				<br>
+				<p>
+					Existe una sobrevaloración subjetiva del propósito secundario de un MER desde los ingenieros de
+					software,
+					principalmente los programadores, para estos, lo preponderante es la estructura final de los datos
+					que van a
+					ser
+					persistidos y manejados en un sistema específico de gestión de bases de datos. Dado que es posible
+					determinar
+					de
+					cualquier manera una organización de datos para un Sistema de Información, se suele obviar o
+					desestimar la
+					elaboración de un modelo entidad relación o, peor aún, se suele confundir con un diagrama que
+					representa el
+					diseño
+					físico de una base de datos.
+				</p>
+				<br>
+				<p>
+					Para la OTSI y el DNP el valor fundamental del MER es el de transferencia de conocimiento
+					institucional
+					derivada de
+					su propósito principal, este enfoque guarda conformidad con los expresado por Peter Chen, el autor
+					original
+					del modelo,
+					quien dejaba claro la importancia de incorporar información semántica importante sobre el mundo real
+					y con el
+					autor
+					Richard Barker, quien extendió el modelo y aportó una nueva notación, Barker también reiteraba el
+					valor del
+					modelo
+					en la comunicación con otros interesados e involucrados en el desarrollo y uso del Sistema,
+					interesados que
+					son
+					diferentes a los ingenieros de software.
+				</p>
+				<br>
+				<p>
+					Un tercer autor, John Cartmell, ha continuado la evolución del modelo y aunque ha eliminado la
+					palabra
+					relación
+					dejando solo modelado de entidades (Entity Modelling) mantiene su propósito usual de servir como
+					estructuración de
+					los datos de un sistema de información hace especial relevancia en el propósito del modelo en
+					ofrecer un marco
+					de
+					trabajo para desarrollar y representar conceptos que se usan en dominios de conocimiento con los
+					cuales no se
+					está
+					familiarizado.
+				</p>
+				<br>
+				<p>
+					Por otra parte, elaborar un MER considerando su propósito principal, redunda en la calidad final del
+					diseño
+					físico de la
+					base de datos, pues casi que garantiza que el diseño resultante estará en tercera forma normal y
+					libre de
+					anomalías
+					como redundancia o falta de integridad referencial.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo Modelo Entidad Relación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/MERyMR.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 3. Imagen tomada de: [GUIA MODELOS ENTIDAD RELACIÓN].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>En esencia, un MER establece o propone un dominio (o universo) del discurso en forma de narración o
+					descripción de
+					un contexto particular de la realidad a través de un conjunto no vacío de cosas acerca de las cuales
+					se habla
+					en ese
+					determinado contexto.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.1">Importancia del modelado a la hora de crear una base de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Para la ingeniería y la ciencia práctica, modelar o hacer modelos es una tarea de conceptualización y
+					comunicación;
+					los modelos constituyen un primer lenguaje de discusión y entendimiento, modelar es recorrer el
+					camino entre
+					comprender y hacer. La utilización sistemática de modelos en actividades de ingeniería no es
+					concepto moderno,
+					es
+					difícil imaginar, por ejemplo, la construcción de grandes obras de ingeniería civil sin apelar a su
+					uso. La
+					ingeniería de
+					software también da tal preponderancia a los modelos que se convierte en utilidad efectiva para la
+					resolución
+					de
+					problemas y están siempre presentes en todo el ciclo de vida del software
+					.</p>
+				<br>
+				<p>
+					Un modelo entidad-relación (ER) es fundamental en el diseño de bases de datos, ya que proporciona
+					una
+					representación visual de las entidades que existen en un sistema y las relaciones entre esas
+					entidades. Aquí
+					hay algunas razones clave por las que es importante hacer un modelo entidad-relación:
+				</p>
+				<ul>
+					<li>
+						Claridad en el diseño: El modelo ER ayuda a los diseñadores de bases de datos a comprender los
+						requisitos
+						del sistema y a representarlos de manera clara y precisa. Esto facilita la comunicación entre
+						los miembros
+						del equipo y los interesados en el proyecto.
+					</li>
+					<li>
+						Identificación de entidades y relaciones: Al crear un modelo ER, es necesario identificar todas
+						las
+						entidades relevantes en el sistema y definir cómo están relacionadas entre sí. Esto ayuda a los
+						diseñadores
+						a comprender la estructura de los datos y a definir los tipos de relaciones que existen entre
+						las entidades.
+					</li>
+					<li>
+						Detección de errores y redundancias: Al visualizar las entidades y sus relaciones, es más fácil
+						identificar
+						posibles errores de diseño, como relaciones redundantes o mal definidas. Esto permite corregir
+						estos
+						problemas antes de implementar la base de datos, lo que ahorra tiempo y recursos en el futuro.
+					</li>
+					<li>
+						Base para el diseño físico de la base de datos: El modelo entidad-relación sirve como base para
+						el diseño
+						físico de la base de datos, incluyendo la definición de tablas, atributos y restricciones.
+						Proporciona una
+						guía clara para la implementación de la base de datos en un sistema de gestión de bases de datos
+						específico.
+					</li>
+					<li>
+						Documentación del sistema: El modelo ER actúa como una forma de documentación del sistema, que
+						puede ser
+						utilizada por desarrolladores, administradores de bases de datos y otros miembros del equipo
+						para comprender
+						la estructura de la base de datos y realizar cambios o mejoras en el sistema de manera
+						eficiente.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-6">Etapas en el diseño de bases de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>El proceso de analizar la organización y su entorno, desarrollar un modelo de base de datos
+					que refleje con precisión el funcionamiento de la organización en el mundo real y la implementación
+					de dicho
+					modelo mediante la creación de una base de datos requieren una metodología adecuada. Los análisis de
+					sistemas
+					tradicionales proporcionan un posible abordaje,
+					pero un abordaje de diseño escalonado de base de datos ofrece una mejor solución.</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.1">Análisis de sistema tradicional</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Etapas del ciclo de vida de un análisis tradicional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/Etapas-del-ciclo-tradicional.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 4. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.2">Análisis de sistema escalonado</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					El abordaje del diseño escalonado de base de datos es un método de arriba abajo que comienza con
+					enunciados generales de las necesidades y avanza a la consideración de problemas cada vez
+					más detallados. En diferentes fases del proyecto se consideran distintos problemas. Cada
+					etapa usa herramientas de diseño que son adecuadas al problema en dicho nivel.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Etapas del ciclo de vida de un análisis escalonado</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/Etapas-del-ciclo-escalonado.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 5. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Análisis del entorno del usuario.
+						El primer paso en el diseño de una base de datos es determinar el entorno de usuario
+						actual. El diseñador estudia todas las aplicaciones actuales, determina sus entradas y
+						salidas, examina todos los reportes generados por el sistema actual y entrevista a los
+						usuarios para determinar cómo usan el sistema. Después de que el sistema actual se
+						entiende a profundidad, el diseñador trabaja de cerca con los usuarios actuales y con
+						los potenciales usuarios del nuevo sistema para identificar sus necesidades. El diseñador
+						considera no sólo
+						las necesidades actuales sino las posibles nuevas aplicaciones o usos futuros de la base de
+						datos. El
+						resultado de este análisis es un modelo del
+						entorno y las necesidades del usuario.
+					</li>
+					<li>
+						Desarrollo de un modelo de datos conceptual.
+						Al usar el modelo del entorno del usuario el diseñador desarrolla un modelo conceptual detallado
+						de la base
+						de datos: identifica las entidades, atributos y relaciones que
+						se representarán. Además del modelo conceptual, el diseñador tiene que considerar
+						cómo se usará la base de datos. Se deben especificar los tipos de aplicaciones y transacciones,
+						los tipos
+						de acceso, el volumen de transacciones, el volumen de datos, la
+						frecuencia de acceso y otros datos cuantitativos. También se deben identificar otras
+						restricciones como restricciones presupuestarias y necesidades de desempeño. El
+						resultado de esta fase es un conjunto de especificaciones de base de datos.
+					</li>
+					<li>
+						Elección de un DBMS.
+						El diseñador usa las especificaciones y su conocimiento de los recursos de hardware
+						y software disponibles para evaluar sistemas de gestión de bases de datos alternativos. Cada
+						sistema de
+						gestión de base de datos impone sus propias restricciones. El
+						diseñador intenta elegir el sistema que satisface mejor las especificaciones para el
+						entorno.
+					</li>
+					<li>
+						Desarrollo del modelo lógico.
+						El diseñador mapea el modelo conceptual al modelo de datos utilizado por el DBMS
+						elegido, lo que crea el modelo lógico.
+					</li>
+					<li>
+						Desarrollo del modelo físico.
+						El diseñador planifica las plantillas de datos al considerar las estructuras soportadas
+						por el DBMS elegido, y los recursos de hardware y software disponibles.
+					</li>
+					<li>
+						Evaluación del modelo físico.
+						Luego el diseñador estima el rendimiento de todas las aplicaciones y transacciones, y
+						considera los datos cuantitativos anteriormente identificados y las prioridades dadas
+						a las aplicaciones y transacciones. Puede ser útil desarrollar un prototipo, que implemente una
+						porción
+						seleccionada de la base de datos de modo que las visiones de
+						usuario se puedan validar y el desempeño se pueda medir con más precisión.
+					</li>
+					<li>
+						Realización de una afinación si lo indica la evaluación.
+						Para mejorar el rendimiento se pueden realizar ajustes como modificación de estructuras físicas
+						u
+						optimización del software.
+					</li>
+					<li>
+						Implementación del modelo físico.
+						Si la evaluación es positiva, entonces el diseñador implementa el diseño físico y la
+						base de datos se vuelve operativa.
+					</li>
+				</ul>
+
+				<p>
+					Las iteraciones en la <a href="#sub-titulo-6.2">imagen</a> proporcionan oportunidades para
+					retroalimentación y
+					cambios en varias etapas
+					en el proceso de diseño. Por ejemplo, después de desarrollar el modelo
+					conceptual, el diseñador se comunica con los grupos de usuarios para asegurarse de que sus
+					requisitos de datos están representados de manera adecuada. Si no es así, debe ajustar el
+					modelo conceptual. Si el modelo conceptual no mapea bien un modelo de datos particular,
+					se debe considerar otro. Para un DBMS particular, puede haber varios mapeos lógicos posibles que se
+					puedan
+					evaluar. Si el modelo físico no es aceptable, se puede considerar un
+					mapeo diferente o un DBMS distinto. Si los resultados de la evaluación de desempeño no
+					son satisfactorios, se pueden realizar afinación y evaluación adicionales. El modelo físico se
+					puede cambiar si la afinación no produce el desempeño requerido. Si la afinación y la optimización
+					repetida
+					no son suficientes, puede ser necesario cambiar la forma en que se mapea
+					el modelo lógico al DBMS o considerar un sistema de gestión de base de datos diferente.
+					Incluso después de implementar el sistema, pueden ser necesarios cambios para responder
+					a las cambiantes necesidades del usuario o a un entorno cambiante.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-7">Herramientas de diseño</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Existen muchas metodologías que pueden facilitar el proceso de diseño de la base de datos
+					tanto para diseñadores como para usuarios. Las metodologías varían desde las técnicas
+					generales descritas en la literatura, hasta productos comerciales cuya meta es automatizar el
+					proceso de diseño. Por ejemplo, los paquetes CASE (Computer-Aided Software Engineering: software de
+					ingeniería asistido por computadora), que incluyen varias herramientas
+					para análisis de sistemas, gestión de proyectos, diseño y programación, están disponibles
+					con muchos proveedores.
+				</p>
+				<ul>
+					<li>
+						Las herramientas upper-CASE se usan
+						en la planificación de bases de datos para recolección y análisis de datos, diseño de modelos
+						de datos y diseño de aplicaciones.
+					</li>
+					<li>
+						La herramientas lower-CASE se usan para implementar
+						la base de datos, incluidos la elaboración de prototipos, conversión de datos, generación de
+						código de aplicación, generación de reportes y pruebas.
+					</li>
+					<li>
+						Las herramientas CASE integradas
+						cubren ambos niveles.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-7.1">Herramientas upper-CASE</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Las herramientas Upper-CASE (Computer-Aided Software Engineering) son herramientas de ingeniería de
+					software
+					que se utilizan en el proceso de desarrollo de software para ayudar en la creación y el diseño de
+					sistemas de
+					software. Estas herramientas proporcionan funcionalidades para ayudar a los desarrolladores a
+					visualizar,
+					modelar, diseñar y documentar diferentes aspectos del software, incluyendo bases de datos, diagramas
+					de flujo,
+					diagramas entidad-relación, entre otros.
+				</p>
+				<br>
+				<p>
+					Las herramientas Upper-CASE suelen ofrecer una interfaz gráfica de usuario que permite a los
+					desarrolladores
+					crear modelos visuales de los sistemas de software, en lugar de trabajar exclusivamente con código
+					fuente.
+					Algunas de las características comunes que ofrecen estas herramientas incluyen:
+				</p>
+				<ul>
+					<li>
+						Modelado visual: Permiten crear diagramas y modelos visuales que representan diferentes aspectos
+						del sistema
+						de software, como diagramas de clases, diagramas entidad-relación, diagramas de flujo de datos,
+						entre otros.
+					</li>
+					<li>
+						Generación de código: Algunas herramientas Upper-CASE pueden generar automáticamente código
+						fuente a partir
+						de los modelos creados por los desarrolladores, lo que acelera el proceso de desarrollo y reduce
+						la
+						posibilidad de errores humanos.
+					</li>
+					<li>
+						Ingeniería inversa: Permiten importar código existente y generar modelos visuales a partir de
+						ese código, lo
+						que facilita la comprensión y la documentación de sistemas heredados o sistemas desarrollados
+						por otros
+						equipos.
+					</li>
+					<li>
+						Gestión de requisitos: Algunas herramientas Upper-CASE ofrecen funcionalidades para gestionar y
+						rastrear los
+						requisitos del sistema, lo que ayuda a garantizar que el software desarrollado cumpla con los
+						objetivos y
+						las necesidades del cliente.
+					</li>
+					<li>
+						Colaboración: Facilitan la colaboración entre miembros del equipo al permitir la division y
+						revisión de
+						modelos, así como la gestión de cambios y versiones.
+					</li>
+				</ul>
+				<br>
+				<p>Algunas herramientas Upper-CASE populares:</p>
+				<br>
+				<ul>
+					<li>
+						Microsoft Visio
+					</li>
+					<li>
+						Microsoft Visio
+					</li>
+					<li>
+						IBM Rational Rose
+					</li>
+					<li>
+						Enterprise Architect
+					</li>
+					<li>
+						Lucidchart
+					</li>
+					<li>
+						Visual Paradigm
+					</li>
+					<li>
+						Dia
+					</li>
+					<li>
+						Umlet
+					</li>
+					<li>
+						yEd Graph Editor
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-7.2">Herramientas lowe-CASE</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					El término "lower-case" en el contexto de la ingeniería de software no se utiliza comúnmente como se
+					emplea
+					"upper-case" para describir herramientas específicas. Sin embargo, si estamos buscando herramientas
+					que se
+					centren en aspectos específicos o de un nivel más detallado del desarrollo de software, podríamos
+					considerar
+					herramientas que trabajen a un nivel más bajo o detallado del proceso de desarrollo de software.
+				</p>
+				<p>
+					Aquí hay algunas categorías de herramientas y ejemplos que podrían considerarse "lower-case" en
+					comparación
+					con las herramientas "upper-case" de ingeniería de software:
+				</p>
+				<ul>
+					<li>
+						Herramientas de codificación y desarrollo: Estas herramientas se utilizan para escribir y
+						depurar código.
+						Ejemplos incluyen:
+						<ul>
+							<li>
+								Entornos de Desarrollo Integrado (IDE): Visual Studio, IntelliJ IDEA, Eclipse.
+							</li>
+							<li> Editores de texto avanzados: Sublime Text, Visual Studio Code, Atom.</li>
+						</ul>
+					</li>
+					<li>
+						Herramientas de control de versiones: Estas herramientas permiten a los desarrolladores
+						gestionar y
+						colaborar en el código fuente de un proyecto.
+						<ul>
+							<li>
+								Git: GitLab, GitHub, Bitbucket.
+							</li>
+							<li>
+								Sistemas de control de versiones centralizados: Subversion (SVN), CVS.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Herramientas de construcción y automatización: Estas herramientas ayudan a automatizar tareas de
+						construcción, pruebas y despliegue.
+						<ul>
+							<li>
+								Herramientas de construcción: Apache Maven, Gradle, Ant.
+							</li>
+							<li>
+								Sistemas de Integración Continua (CI): Jenkins, Travis CI, CircleCI.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Herramientas de pruebas: Estas herramientas se utilizan para probar y asegurar la calidad del
+						software.
+						<ul>
+							<li>
+								Frameworks de pruebas: JUnit (para pruebas unitarias en Java), NUnit (para pruebas
+								unitarias en .NET).
+							</li>
+							<li>
+								Herramientas de pruebas de integración: Selenium, Appium.
+							</li>
+						</ul>
+					</li>
+					<li>
+						Herramientas de gestión de dependencias: Estas herramientas ayudan a administrar las
+						dependencias de un
+						proyecto y a gestionar las bibliotecas utilizadas.
+						<ul>
+							<li>
+								Gestores de paquetes: npm (para Node.js), pip (para Python), Maven (para Java).
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-8">Diccionario de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Un diccionario de datos, es un depósito de información
+					que describe la estructura lógica de la base de datos. Tiene entradas para tipos de registro,
+					tipos de ítem de datos y agregados de datos, junto con otra información. La cantidad de
+					información y la forma en que se usa la información varían con el sistema. La mayoría de
+					los proveedores de DBMS ofrece diccionarios o directorios de datos que almacenan la descripción de
+					la base de
+					datos y se usan en la creación y procesamiento de la base de datos. El
+					diccionario de datos contiene metadatos, o datos acerca de los datos en la base de datos. Si
+					el diccionario de datos es parte del DBMS, se le conoce como diccionario de datos integrado o
+					catálogo del
+					sistema. Un diccionario de datos integrado siempre es consistente con la
+					estructura de la base de datos real, porque el sistema la mantiene automáticamente. Los diccionarios
+					de datos
+					integrados realizan muchas funciones a lo largo de la vida de la base de
+					datos, no sólo en la fase de diseño. Si el diccionario de datos está disponible sin un DBMS
+					particular, se le conoce como diccionario de datos independiente (freestanding). Un diccionario de
+					datos
+					independiente puede ser un producto comercial o un simple archivo
+					desarrollado y mantenido por el diseñador.</p>
+				<br>
+				<p>
+					Un diccionario de datos independiente es útil en las primeras etapas de diseño para recopilar y
+					organizar
+					información acerca de los datos. Se deben determinar cada ítem de datos, su
+					fuente, su nombre, sus usos, sus significados, sus relaciones con otros ítems, su formato y la
+					identidad de la persona o grupo responsable de ingresarlo, actualizarlo y mantenerlo
+					correcto. El diccionario de datos proporciona una efectiva herramienta para lograr estas
+					tareas. El administrador de base de datos (ABD) puede comenzar a desarrollar el diccionario de datos
+					al
+					identificar ítems de datos, asegurar concordancia de usuarios acerca de una
+					definición de cada ítem e ingresar el ítem en el diccionario.
+				</p>
+				<br>
+				<p>
+					Un diccionario de datos es útil para lo siguiente:
+				</p>
+				<ul>
+					<li>
+						Recopilar y almacenar información acerca de datos en una ubicación central. Esto
+						ayuda al administrador a ganar control sobre los datos como un recurso.
+					</li>
+					<li>
+						Asegurar la concordancia de los usuarios y diseñadores acerca de los significados de
+						los ítems de datos. Se debe desarrollar una definición exacta y acordada de cada ítem
+						para almacenar en el diccionario de datos.
+					</li>
+					<li>
+						Comunicación con usuarios. El diccionario de datos facilita enormemente la comunicación, pues se
+						almacenan
+						significados exactos. El diccionario también identifica
+						personas, departamentos o grupos que tienen acceso a o interés en cada ítem.
+					</li>
+					<li>
+						Identificación de redundancia e inconsistencia en los nombres de ítem de datos. En
+						el proceso de identificar y definir ítems de datos, el ABD puede descubrir sinónimos,
+						que son diferentes nombres para el mismo ítem. La base de datos puede aceptar sinónimos, pero el
+						sistema
+						debe estar al tanto de ellos. El ABD también puede descubrir
+						homónimos, que son nombres idénticos para diferentes ítems de datos. Éstos nunca
+						se permiten en una base de datos.
+					</li>
+					<li>
+						Seguir la huella de cambios a la estructura de la base de datos. Los cambios como
+						creación de nuevos ítems de datos y tipos de registro o la alteración a descripciones
+						de ítem de datos se deben registrar en el diccionario de datos.
+					</li>
+					<li>
+						Determinación del impacto de los cambios a la estructura de la base de datos. Dado
+						que el diccionario de datos registra cada ítem, todas sus relaciones y todos sus usuarios, el
+						ABD puede ver
+						qué efectos tendría un cambio.
+					</li>
+					<li>
+						Identificación de las fuentes de y responsabilidad por la exactitud de cada ítem. Una
+						regla general para entrada de datos es que los datos se deben capturar tan cerca de su
+						fuente como sea posible. Las personas o departamentos que generen o capturen valores para cada
+						ítem de
+						datos y quienes son responsables de actualizar cada ítem se
+						deben mencionar en el diccionario de datos.
+					</li>
+					<li>
+						Registro de los esquemas externo, lógico e interno y los mapeos entre ellos.
+					</li>
+					<li>
+						Registro de acceso de información de control. Un diccionario de datos puede registrar las
+						identidades de
+						todos aquellos que tienen permiso para ingresar cada ítem,
+						junto con el tipo de recuperación de acceso, inserción, actualización o borrado.
+					</li>
+					<li>
+						Proporcionar información de auditoría. El diccionario de datos del sistema (es decir,
+						el directorio de datos o catálogo del sistema) se puede usar para registrar cada acceso,
+						lo que permite el uso de estadísticas a recopilar para auditar al sistema y marcar los
+						intentos de violación de seguridad.
+					</li>
+				</ul>
+				<br>
+				<p>
+					Note que no todos los diccionarios de datos proporcionan soporte para todas estas funciones, y
+					algunos
+					proporcionan funciones adicionales. Algunos sólo almacenan el esquema,
+					algunos, documentación de control y algunos directorios de datos del sistema son “metasistemas” que
+					controlan
+					el acceso a la base de datos, generan código de sistema y también
+					mantienen estadísticas acerca del uso de la base de datos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo diccionario de datos</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/Diccionario-de-datos.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_introduccion/crear-tabla-mysql-workbench.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 7. [Elaboracion propia]</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-9">Arquitectura en tres niveles de las bases de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Las bases de datos se pueden ver en tres niveles de abstracción.
+					Los niveles forman una arquitectura de tres niveles en capas y se describen mediante tres
+					esquemas, que son descripciones escritas de sus estructuras. El propósito de la arquitectura
+					de tres niveles es separar el modelo del usuario de la estructura física de la base de datos.
+					Existen muchas razones por las que es deseable esta separación
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Arquitectura en tres niveles</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/arquitectura-tres-niveles.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 8. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Diferentes usuarios necesitan distintas vistas de los mismos datos
+					</li>
+					<li>
+						La forma en que un usuario particular necesita ver los datos puede cambiar con el
+						tiempo.
+					</li>
+					<li>
+						Los usuarios no deben tener que lidiar con las complejidades de las estructuras de
+						almacenamiento de la base de datos.
+					</li>
+					<li>
+						El ABD debe ser capaz de efectuar cambios al modelo conceptual de la base de datos
+						sin afectar a todos los usuarios.
+					</li>
+					<li>
+						El ABD debe ser capaz de cambiar el modelo lógico, y las estructuras de datos y
+						archivos, sin afectar el modelo conceptual o las vistas de los usuarios.
+					</li>
+					<li>
+						los aspectos físicos del almacenamiento, como los cambios a los dispositivos de almacenamiento,
+						no deben
+						afectar a la estructura de la base de datos.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Arquitectura en tres niveles</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/arquitectura-tres-niveles-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 9. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para entender las distinciones entre los tres niveles, se examinará qué recibe y pasa cada
+					nivel cuando un usuario hace una solicitud a un registro en particular. Cuando el usuario A solicita
+					un
+					registro
+					como el registro (externo) del Empleado 101, el DBMS intercepta la solicitud. Si la solicitud se
+					ingresa en
+					línea o en una
+					estación de trabajo usando el lenguaje de manipulación de datos interactivo (DML)
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Arquitectura en tres niveles</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/arquitectura-tres-niveles-3.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_introduccion/arquitectura-tres-niveles-resultado.png" alt=""
+						width="50%">
+					<p id="cita-imagen"><q>Imagen 10. Imagen tomada de: [BASES DE Datos].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-10">Tecnicas para el modelado de datos utilizando el MER</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					No es la única técnica pero sí la más utilizada. Brevemente consiste en
+					los siguientes pasos:
+				</p>
+				<ul>
+					<li>
+						Se parte de una descripción textual del problema o sistema de
+						información a automatizar (los requisitos).
+					</li>
+					<li>
+						Se hace una lista de los sustantivos y verbos que aparecen.
+					</li>
+					<li>
+						Los sustantivos son posibles entidades o atributos.
+					</li>
+					<li>
+						Los verbos son posibles relaciones.
+					</li>
+					<li>
+						Analizando las frases se determina la cardinalidad de las
+						relaciones y otros detalles.
+					</li>
+					<li>
+						Se elabora el diagrama (o diagramas) entidad-relación.
+					</li>
+					<li>
+						Se completa el modelo con listas de atributos y una descripción de
+						otras restricciones que no se pueden reflejar en el diagrama.
+					</li>
+				</ul>
+				<p>
+					Dado lo rudimentario de esta técnica se necesita cierto entrenamiento y
+					experiencia para lograr buenos modelos de datos.
+					El modelado de datos no acaba con el uso de esta técnica. Son
+					necesarias otras técnicas para lograr un modelo directamente
+					implementable en una base de datos. Brevemente:
+				</p>
+				<ul>
+					<li>
+						Transformación de relaciones múltiples en binarias.
+					</li>
+					<li>
+						Normalización de una base de datos de relaciones (algunas
+						relaciones pueden transformarse en atributos y viceversa).
+					</li>
+					<li>
+						Conversión en tablas (en caso de utilizar una base de datos
+						relacional).
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.1">Representaciones gráficas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					El primer paso en el diseño de una base de datos es la producción del
+					esquema conceptual. Normalmente, se construyen varios esquemas
+					conceptuales, cada uno para representar las distintas visiones que los
+					usuarios tienen de la información. Cada una de estas visiones suelen
+					corresponder a las diferentes áreas funcionales de la empresa como, por
+					ejemplo, producción, ventas, recursos humanos, etc.
+				</p>
+				<br>
+				<p>
+					Estas visiones de la información, denominadas vistas, se pueden
+					identificar de varias formas. Una opción consiste en examinar los
+					diagramas de flujo de datos, que se pueden haber producido
+					previamente, para identificar cada una de las áreas funcionales. La otra
+					opción consiste en entrevistar a los usuarios, examinar los
+					procedimientos, los informes y los formularios, y también observar el
+					funcionamiento de la empresa.
+				</p>
+				<br>
+				<p>
+					A los esquemas conceptuales correspondientes a cada vista de usuario
+					se les denomina esquemas conceptuales locales. Cada uno de estos
+					esquemas se compone de entidades, relaciones, atributos, dominios de
+					atributos e identificadores. El esquema conceptual también tendrá una
+					documentación, que se irá produciendo durante su desarrollo. Las tareas
+					a realizar en el diseño conceptual son las siguientes:
+				</p>
+				<ul>
+					<li>
+						Identificar las entidades.
+					</li>
+					<li>
+						Identificar las relaciones.
+					</li>
+					<li>
+						Identificar los atributos y asociarlos a entidades y relaciones.
+					</li>
+					<li>
+						Determinar los dominios de los atributos.
+					</li>
+					<li>
+						Determinar los identificadores.
+					</li>
+					<li>
+						Determinar las jerarquías de generalización (si las hay).
+					</li>
+					<li>
+						Dibujar el diagrama entidad-relación.
+					</li>
+					<li>
+						Revisar el esquema conceptual local con el usuario.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.2">Identificar las entidades</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>En primer lugar hay que definir los principales objetos que interesan al
+					usuario. Estos objetos serán las entidades. Una forma de identificar las
+					entidades es examinar las especificaciones de requisitos de usuario. En
+					estas especificaciones se buscan los nombres o los sintagmas nominales
+					que se mencionan (por ejemplo: número de empleado, nombre de
+					empleado, número de inmueble, dirección del inmueble, alquiler, número
+					de habitaciones). También se buscan objetos importantes como
+					personas, lugares o conceptos de interés, excluyendo aquellos nombres
+					que sólo son propiedades de otros objetos. Por ejemplo, se pueden
+					agrupar el número de empleado y el nombre de empleado en una entidad
+					denominada empleado, y agrupar número de inmueble, dirección del
+					inmueble, alquiler y número de habitaciones en otra entidad denominada
+					inmueble.
+					<br><br>
+					Otra forma de identificar las entidades es buscar aquellos objetos que
+					existen por sí mismos. Por ejemplo, empleado es una entidad porque los
+					empleados existen, sepamos o no sus nombres, direcciones y teléfonos.
+					Siempre que sea posible, el usuario debe colaborar en la identificación
+					de las entidades.
+					<br><br>
+					A veces, es difícil identificar las entidades por la forma en que aparecen
+					en las especificaciones de requisitos. Los usuarios, a veces, hablan
+					utilizando ejemplos o analogías. En lugar de hablar de empleados en
+					general, hablan de personas concretas, o bien, hablan de los puestos
+					que ocupan esas personas.
+					<br><br>
+					Para liarlo aún más, los usuarios usan, muchas veces, sinónimos y
+					homónimos. Dos palabras son sinónimos cuando tienen el mismo
+					significado. Los homónimos ocurren cuando la misma palabra puede
+					tener distintos significados dependiendo del contexto.
+					No siempre es obvio saber si un objeto es una entidad, una relación o un
+					atributo. Por ejemplo ¿cómo se podría clasificar matrimonio? Pues de
+					cualquiera de las tres formas. El análisis es subjetivo, por lo que distintos
+					diseñadores pueden hacer distintas interpretaciones, aunque todas
+					igualmente válidas. Todo depende de la opinión y la experiencia de cada
+					uno. Los diseñadores de bases de datos deben tener una visión selectiva
+					y clasificar las cosas que observan dentro del contexto de la empresa u
+					organización. A partir de unas especificaciones de usuario es posible que
+					no se pueda deducir un conjunto único de entidades, pero después de
+					varias iteraciones del proceso de análisis, se llegará a obtener un
+					conjunto de entidades que sean adecuadas para el sistema que se ha de
+					construir.
+					<br><br>
+					Conforme se van identificando las entidades, se les dan nombres que
+					tengan un significado y que sean obvias para el usuario. Los nombres de
+					las entidades y sus descripciones se anotan en el diccionario de datos.
+					Cuando sea posible, se debe anotar también el número aproximado de
+					ocurrencias de cada entidad. Si una entidad se conoce por varios
+					nombres, éstos se deben anotar en el diccionario de datos como alias o
+					sinónimos.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.3">Identificar las relaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una vez definidas las entidades, se deben definir las relaciones
+					existentes entre ellas. Del mismo modo que para identificar las entidades
+					se buscaban nombres en las especificaciones de requisitos, para
+					identificar las relaciones se suelen buscar las expresiones verbales (por
+					ejemplo: oficina tiene empleados, empleado gestiona inmueble, cliente
+					visita inmueble). Si las especificaciones de requisitos reflejan estas
+					relaciones es porque son importantes para la empresa y, por lo tanto, se
+					deben reflejar en el esquema conceptual.
+					<br><br>
+					Pero sólo interesan las relaciones que son necesarias. En el ejemplo
+					anterior, se han identificado las relaciones empleado gestiona inmueble y
+					cliente visita inmueble. Se podría pensar en incluir una relación entre
+					empleado y cliente: empleado atiende a cliente, pero observando las
+					especificaciones de requisitos no parece que haya interés en modelar tal
+					relación.
+					<br><br>
+					La mayoría de las relaciones son binarias (entre dos entidades), pero no
+					hay que olvidar que también puede haber relaciones en las que
+					participen más de dos entidades, así como relaciones recursivas.
+					Es muy importante repasar las especificaciones para comprobar que
+					todas las relaciones, explícitas o implícitas, se han encontrado. Si se
+					tienen pocas entidades, se puede comprobar por parejas si hay alguna
+					relación entre ellas. De todos modos, las relaciones que no se identifican
+					ahora se suelen encontrar cuando se valida el esquema con las
+					transacciones que debe soportar.
+					<br><br>
+					Una vez identificadas todas las relaciones, hay que determinar la
+					cardinalidad mínima y máxima con la que participa cada entidad en cada
+					una de ellas. De este modo, el esquema representa de un modo más
+					explícito la semántica de las relaciones. La cardinalidad es un tipo de
+					restricción que se utiliza para comprobar y mantener la calidad de los
+					datos. Estas restricciones son aserciones sobre las entidades que se
+					pueden aplicar cuando se actualiza la base de datos para determinar si
+					las actualizaciones violan o no las reglas establecidas sobre la semántica
+					de los datos.
+					<br><br>
+					Conforme se van identificando las relaciones, se les van asignando
+					nombres que tengan significado para el usuario. En el diccionario de
+					datos se anotan los nombres de las relaciones, su descripción y las
+					cardinalidades con las que participan las entidades en ellas.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.4">Identificar los atributos y asociarlos a entidades y relaciones.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Al igual que con las entidades, se buscan nombres en las
+					especificaciones de requisitos. Son atributos los nombres que identifican
+					propiedades, cualidades, identificadores o características de entidades o
+					relaciones.
+					<br><br>
+					Lo más sencillo es preguntarse, para cada entidad y cada relación, ¿qué
+					información se quiere saber de ...? La respuesta a esta pregunta se debe
+					encontrar en las especificaciones de requisitos. Pero, en ocasiones, será
+					necesario preguntar a los usuarios para que aclaren los requisitos.
+					Desgraciadamente, los usuarios pueden dar respuestas a esta pregunta
+					que también contengan otros conceptos, por lo que hay que considerar
+					sus respuestas con mucho cuidado.
+					<br><br>
+					Al identificar los atributos, hay que tener en cuenta si son simples o
+					compuestos. Por ejemplo, el atributo dirección puede ser simple,
+					teniendo la dirección completa como un solo valor: `San Rafael 45,
+					Almazora'; o puede ser un atributo compuesto, formado por la calle (`San
+					Rafael'), el número (`45') y la población (`Almazora'). El escoger entre
+					atributo simple o compuesto depende de los requisitos del usuario. Si el
+					usuario no necesita acceder a cada uno de los componentes de la
+					dirección por separado, se puede representar como un atributo simple.
+					Pero si el usuario quiere acceder a los componentes de forma individual,
+					entonces se debe representar como un atributo compuesto.
+					También se deben identificar los atributos derivados o calculados, que
+					son aquellos cuyo valor se puede calcular a partir de los valores de otros
+					atributos. Por ejemplo, el número de empleados de cada oficina, la edad
+					de los empleados o el número de inmuebles que gestiona cada
+					empleado. Algunos diseñadores no representan los atributos derivados
+					en los esquemas conceptuales. Si se hace, se debe indicar claramente
+					que el atributo es derivado y a partir de qué atributos se obtiene su valor.
+					Donde hay que considerar los atributos derivados es en el diseño físico.
+					Cuando se están identificando los atributos, se puede descubrir alguna
+					entidad que no se ha identificado previamente, por lo que hay que volver
+					al principio introduciendo esta entidad y viendo si se relaciona con otras
+					entidades.
+					<br><br>
+					Es muy útil elaborar una lista de atributos e ir eliminándolos de la lista
+					conforme se vayan asociando a una entidad o relación. De este modo,
+					uno se puede asegurar de que cada atributo se asocia a una sola entidad
+					o relación, y que cuando la lista se ha acabado, se han asociado todos
+					los atributos.
+					<br><br>
+					Hay que tener mucho cuidado cuando parece que un mismo atributo se
+					debe asociar a varias entidades. Esto puede ser por una de las
+					siguientes causas:
+				</p>
+				<ul>
+					<li>
+						Se han identificado varias entidades, como director, supervisor y
+						administrativo, cuando, de hecho, pueden representarse como una sola
+						entidad denominada empleado. En este caso, se puede escoger entre
+						introducir una jerarquía de generalización, o dejar las entidades que
+						representan cada uno de los puestos de empleado.
+					</li>
+					<li>
+						Se ha identificado una relación entre entidades. En este caso, se
+						debe asociar el atributo a una sola de las entidades y hay que
+						asegurarse de que la relación ya se había identificado previamente. Si no
+						es así, se debe actualizar la documentación para recoger la nueva
+						relación.
+					</li>
+					<li>
+						Conforme se van identificando los atributos, se les asignan nombres que
+						tengan significado para el usuario. De cada atributo se debe anotar la
+						siguiente información:
+						<ul>
+							<li>
+								Nombre y descripción del atributo.
+							</li>
+							<li>
+								Alias o sinónimos por los que se conoce al atributo.
+							</li>
+							<li>
+								Tipo de dato y longitud.
+							</li>
+							<li>
+								Valores por defecto del atributo (si se especifican).
+							</li>
+							<li>
+								Si el atributo siempre va a tener un valor (si admite o no nulos).
+							</li>
+							<li>
+								Si el atributo es compuesto y, en su caso, qué atributos simples lo forman.
+							</li>
+							<li>
+								Si el atributo es derivado y, en su caso, cómo se calcula su valor.
+							</li>
+							<li>
+								Si el atributo es multivaluado.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.5">Determinar los dominios de los atributos.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					El dominio de un atributo es el conjunto de valores que puede tomar el
+					atributo. Por ejemplo el dominio de los números de oficina son las tiras
+					de hasta tres caracteres en donde el primero es una letra y el siguiente o
+					los dos siguientes son dígitos en el rango de 1 a 99; el dominio de los
+					números de teléfono y los números de fax son las tiras de 9 dígitos.
+					<br><br>
+					Un esquema conceptual está completo si incluye los dominios de cada
+					atributo: los valores permitidos para cada atributo, su tamaño y su
+					formato. También se puede incluir información adicional sobre los
+					dominios como, por ejemplo, las operaciones que se pueden realizar
+					sobre cada atributo, qué atributos pueden compararse entre sí o qué
+					atributos pueden combinarse con otros. Aunque sería muy interesante
+					que el sistema final respetara todas estas indicaciones sobre los
+					dominios, esto es todavía una línea abierta de investigación.
+					<br><br>
+					Toda la información sobre los dominios se debe anotar también en el
+					diccionario de datos.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.6">Determinar los identificadores.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cada entidad tiene al menos un identificador. En este paso, se trata de
+					encontrar todos los identificadores de cada una de las entidades. Los
+					identificadores pueden ser simples o compuestos. De cada entidad se
+					escogerá uno de los identificadores como clave primaria en la fase del
+					diseño lógico.
+					<br><br>
+					Cuando se determinan los identificadores es fácil darse cuenta de si una
+					entidad es fuerte o débil. Si una entidad tiene al menos un identificador, es fuerte (otras
+					denominaciones son
+					padre, propietaria o dominante). Si
+					una entidad no tiene atributos que le sirvan de identificador, es débil
+					(otras denominaciones son hijo, dependiente o subordinada).
+					<br><br>
+					Todos los identificadores de las entidades se deben anotar en el
+					diccionario de datos.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.7">Determinar las jerarquías de generalización (si las hay).</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En este paso hay que observar las entidades que se han identificado
+					hasta el momento. Hay que ver si es necesario reflejar las diferencias
+					entre distintas ocurrencias de una entidad, con lo que surgirán nuevas
+					subentidades de esta entidad genérica; o bien, si hay entidades que
+					tienen características en común y que realmente son subentidades de
+					una nueva entidad genérica.
+					<br><br>
+					En cada jerarquía hay que determinar si es total o parcial y exclusiva o
+					superpuesta.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.8">Dibujar el diagrama entidad-relación.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una vez identificados todos los conceptos, se puede dibujar el diagrama
+					entidad-relación correspondiente a una de las vistas de los usuarios. Se
+					obtiene así un esquema conceptual local.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.9">Revisar el esquema conceptual local con el usuario.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Antes de dar por finalizada la fase del diseño conceptual, se debe revisar
+					el esquema conceptual local con el usuario. Este esquema está formado
+					por el diagrama entidad-relación y toda la documentación que describe el
+					esquema. Si se encuentra alguna anomalía, hay que corregirla haciendo
+					los cambios oportunos, por lo que posiblemente haya que repetir alguno
+					de los pasos anteriores.
+					<br><br>
+					Este proceso debe repetirse hasta que se esté
+					seguro de que el esquema conceptual es una fiel representación de la
+					parte de la empresa que se está tratando de modelar.
+					<br><br>
+					Originalmente, el modelo entidad-relación sólo incluía los conceptos de
+					entidad, relación y atributo. Más tarde, se añadieron otros conceptos,
+					como los atributos compuestos y las jerarquías de generalización, en lo
+					que se ha denominado modelo entidad-relación extendido.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.10">Ejemplo Representación gráfica de: Artículos y Pedidos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una base de datos para una pequeña empresa debe contener
+					información acerca de clientes, artículos y pedidos.
+					Hasta el momento se registran los siguientes datos en documentos
+					varios:
+					<br><br>
+					• Para cada cliente: Número de cliente (único), Direcciones de envío
+					(varias por cliente), Saldo, Límite de crédito (depende del cliente, pero
+					en ningún caso debe superar los 3.000.000 pts), Descuento.
+					<br><br>
+					• Para cada artículo: Número de artículo (único), Fábricas que lo
+					distribuyen, Existencias de ese artículo en cada fábrica,
+					Descripción del artículo.
+					<br><br>
+					• Para cada pedido: Cada pedido tiene una cabecera y el cuerpo del
+					pedido.
+					<br><br>
+					La cabecera está formada por el número de cliente, dirección de envío y
+					fecha del pedido. El cuerpo del pedido son varias líneas, en cada línea se
+					especifican el número del artículo pedido y la cantidad.
+					Además, se ha determinado que se debe almacenar la información de las
+					fábricas.
+					<br><br>
+					Sin embargo, dado el uso de distribuidores, se usará: Número de la
+					fábrica (único) y Teléfono de contacto.
+					Y se desean ver cuántos artículos (en total) provee la fábrica.
+					<br><br>
+					También, por información estratégica, se podría incluir información de
+					fábricas alternativas respecto de las que ya fabrican artículos para esta
+					empresa.
+					<br><br>
+					Nota: Una dirección se entenderá como Nº, Calle, Comuna y Ciudad.
+					Una fecha incluye hora.
+					<br><br>
+					Se pide hacer el diagrama ER para la base de datos que represente esta
+					información.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen modelo de bases de datos. </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/MER-ejemplo-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 11. Imagen tomada de: [DOC MODELADO DE BASES DE DATOS].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Principios del modelo relacional</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					• Todos los datos se representan en tablas. <br><br>
+					• Incluso los resultados de cualquier consulta son otra tabla.<br><br>
+					• Las tablas están compuestas por filas y columnas.<br><br>
+					• Las filas y las columnas, en principio, carecen de orden (p.ej., el
+					orden en el que se muestren las filas y las columnas no importa).<br><br>
+					• Las filas sólo se ordenan si se le indica a la base de datos que lo
+					haga, mediante el correspondiente comando.<br><br>
+					• De no ser así, el orden será arbitrario, y puede cambiar en caso de
+					tratarse de una base datos dinámica.<br><br>
+					• El orden de las columnas lo determina cada consulta.<br><br>
+					• Cada tabla tiene una clave primaria, un identificador único,
+					compuesto por una o más columnas.<br><br>
+					• La mayoría de las claves primarias están formadas por una única
+					columna (p.ej., CIUDAD_ID).<br><br>
+					• Para establecer una relación entre dos tablas es necesario incluir,
+					en forma de columna, en una de ellas la clave primaria de la otra. A esta
+					columna se le llama clave secundaria.<br><br>
+					• Estos dos conceptos --clave primaria y secundaria-- son los
+					más importantes en el diseño de bases de datos. Es importante
+					dedicarles tiempo, para entender bien en qué consisten y cómo
+					funcionan.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_introduccion/modelo-relacional.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 12. Imagen tomada de: [DOC MODELADO DE BASES DE DATOS].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Principios del modelo entidad relación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					• El modelo Entidad/Interrelación (E/R): un método de diseño de
+					bases de datos. <br><br>
+					• Muestra de una versión simplificada de los datos que participan en un sistema y la interaccion
+					entre esos.<br><br>
+					• Representa los datos mediante una serie de entidades que
+					disponen de atributos.<br><br>
+					• Una entidad es una clase de objetos o conceptos claramente
+					identificable.<br><br>
+					• Las entidades establecen interrelaciones con otras entidades.<br><br>
+					• El resultado de este proceso es una base de datos normalizada
+					que facilita el acceso a los datos y evita su duplicado.
+					Nota: en su mayor parte, el diseño formal de una base de datos se centra
+					en la normalización de la base y en asegurar que el diseño se ajuste a
+					un nivel de normalización (p.ej., first normal form, second normal form,
+					etc.). Este nivel de formalidad va mucho más allá, pero es importante
+					saber que existen tales formalidades.<br><br>
+					•Identificar las entidades que debe presentar la base de datos.<br><br>
+					• Determinar las cardinalidades de las interrelaciones establecidas
+					entre las distintas entidades y clasificar estas interrelaciones entre los
+					siguientes tipos:
+					<br><br>
+					º Uno a uno (p.ej., una parcela sólo tiene una
+					dirección).<br><br>
+					º Uno a muchos (p.ej., en una parcela pueden ocurrir
+					varios incendios).<br><br>
+					º Muchos a muchos (p.ej., la venta de parcelas: una
+					misma parcela la pueden vender varios propietarios y
+					cada propietario puede vender varias parcelas).<br><br>
+					• Dibujar el diagrama Entidad/Interrelación.<br><br>
+					• Determinar los atributos de cada entidad.<br><br>
+					• Definir la clave primaria (única) de cada entidad<br><br>
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Cualidades de un buen diseño de bases de datos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+				<ul>
+					<li> Reflejar la estructura del problema en el mundo real.</li>
+					<li> Ser capaz de representar todos los datos esperados, incluso con el paso del tiempo.</li>
+					<li> Evitar el almacenamiento de información redundante.</li>
+					<li> Proporcionar un acceso eficaz a los datos.</li>
+					<li> Mantener la integridad de los datos a lo largo del tiempo.</li>
+					<li> Ser claro, coherente y de fácil comprensión.</li>
+					<li> Nota: A veces, estos objetivos pueden ser contradictorios.</li>
+				</ul>
+				</p>
+			</section>
+
+			<!-- //////////////////////////////////////////////////// -->
+
+			<!-- 
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p></p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/imagen_fondo_1.png" alt="" width="50%">
+				</div>
+			</section>
+		 -->
+		</div>
+	</div>
+	
+	<section>
+		<!-- Pie de pagina -->
+		<footer id="pie-pagina">
+			<p>&copy; 2024 Rodrigo Cantor Vasquez. Todos los derechos reservados.</p>
+		</footer>
+	</section>
+</body>
+<script src="javascript/index.js"></script>
+
+</html>

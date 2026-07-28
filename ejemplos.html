@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="estilos/estilo.css">
+	<title>Document</title>
+</head>
+
+<body>
+	<!-- Definimos el encabezado de la pagina web para mostrar al usuario de que va a tratar la web -->
+	<header>
+		<h2 class="autor">RODRIGO CANTOR VASQUEZ</h2>
+		<h2 class="tema">MODELADO DE BASES DE DATOS <img src="Iconos/icono_titulo_3.png" width="40px" alt=""></h2>
+		<h2></h2>
+	</header>
+
+	<!-- Definimos un menu de navegacion para que el usuario vea los diferentes temas que se van a tratar en la pagina  -->
+	<nav>
+		<input type="checkbox" id="boton-menu">
+		<label id="label-menu" for="boton-menu"><img src="imagenes/menu.png"></label>
+		<a href="index.html">INICIO</a>
+		<a href="introduccion.html">INTRODUCCIÓN</a>
+		<a href="semantica.html">SEMÁNTICA</a>
+		<a href="ejemplos.html">EJEMPLOS</a>
+		<a href="ejercicios.html">EJERCICIOS</a>
+		<a href="bibliografia.html">BIBLIOGRAFÍA</a>
+	</nav>
+
+	<!-- Menu lateral izquierdo -->
+	<aside id="contenido-temario">
+		<ol>
+			<li><a href="#titulo-1" class="sub-contenido">introducción</a></li>
+			<li><a href="#titulo-2" class="sub-contenido">Modelo Relacional</a></li>
+			<li><a href="#titulo-3" class="sub-contenido">Relacion (1:1)</a></li>
+			<li><a href="#titulo-4" class="sub-contenido">Relacion (N:1)</a></li>
+			<li><a href="#titulo-5" class="sub-contenido">Relacion (N:M)</a></li>
+			<li><a href="#titulo-6" class="sub-contenido">Relaciones reflexivas</a></li>
+			<li><a href="#titulo-7" class="sub-contenido">Reflexivas (1:1) 🔒</a></li>
+			<li><a href="#titulo-8" class="sub-contenido">Reflexivas (1:N) 🔒</a></li>
+			<li><a href="#titulo-9" class="sub-contenido">Reflexivas (N:N) 🔒</a></li>
+			<li><a href="#titulo-10" class="sub-contenido">!Reflexivas Cuidado!</a></li>
+			<li><a href="#titulo-11" class="sub-contenido">Entidades débiles</a></li>
+			<li><a href="#titulo-12" class="sub-contenido">Relación con débiles</a></li>
+			<li><a href="#titulo-13" class="sub-contenido">Jerarquías</a></li>
+			<li><a href="#titulo-14" class="sub-contenido">!Cuidado con las Jerarquías!</a></li>
+			<li><a href="#titulo-15" class="sub-contenido">Exclusividad</a></li>
+			<li><a href="#titulo-16" class="sub-contenido">Relaciones Ternarias</a></li>
+			<li><a href="#titulo-17" class="sub-contenido">Ternarias (1:1:1) 🔒</a></li>
+			<li><a href="#titulo-18" class="sub-contenido">Ternarias (1:1:N) 🔒</a></li>
+			<li><a href="#titulo-19" class="sub-contenido">Ternarias (1:M:N) 🔒</a></li>
+			<li><a href="#titulo-20" class="sub-contenido">Ternarias (P:M:N) 🔒</a></li>
+			<li><a href="#titulo-21" class="sub-contenido">Agregación</a></li>
+			<li><a href="#titulo-22" class="sub-contenido">Asociación</a></li>
+			<li><a href="#" class="sub-contenido">_____</a></li>
+		</ol>
+	</aside>
+
+	<div id="exposicion-contenido">
+		<div id="contenedor-contenido">
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-1">Transformación de diagramas E/R al modelo relacional</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					La fase de diseño conceptual desarrollada, y que se materializa en el diagrama E/R, permite una gran
+					independencia respecto al diseño físico, es decir de las cuestiones relativas a la implementación
+					física de la base de datos.
+					<br><br>
+					Pero entre el diseño conceptual y físico se interpone el diseño lógico. Una vez comprobado que
+					nuestro esquema E/R cumple todos y cada uno de los requerimientos del problema a modelar, es hora de
+					transformarlo al esquema lógico basado en un modelo de base de datos concreto, en nuestro caso al
+					modelo de datos relacional, que es en el que se basa nuestro SGDB con el que implementaremos
+					finalmente las tablas.
+					<br><br>
+					La transformación del diagrama E/R al modelo de datos Relacional debe abordarse en tres fases:
+					<br><br>
+					1.- Transformación de las entidades. Con carácter general cada entidad se transforma en una tabla,
+					pero deberemos prestar especial atención a los casos de dependencias y jerarquías entre entidades.
+					<br><br>
+					2.-Transformación de las relaciones. Básicamente hay dos posibilidades: crear una nueva tabla con la
+					relación, o exportar la clave primaria de una tabla a la otra tabla donde será clave ajena, lo
+					permitirá relacionar ambas tablas.
+					<br><br>
+					3.-Transformación de los atributos. Generalmente los atributos de una entidad se convierten en
+					columnas de la tabla resultante, y los atributos de las relaciones o formarán parte de la nueva
+					tabla, o bien se exportarán junto a la clave, según se haya transformado su relación.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ciclo para diseñar una BD</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/transformacion-1.png" alt="Cilclo para crear una BD." width="80%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [DOC].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Es de resaltar que el diseño conceptual es relativamente subjetivo, y una vez transformado al diseño
+					lógico según el modelo relacional, se hace necesario llevar a cabo un proceso que permitirá testar,
+					y modificar en su caso, el esquema lógico obtenido de la transformación. Este proceso recibe el
+					nombre de normalización, que consiste en un conjunto de técnicas que permiten validar esquemas
+					lógicos basados en el modelo relacional. Una vez normalizado, el esquema lógico relacional podrá ser
+					implementado en cualquier SGBD relacional.</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-2">Modelo Relacional</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Antes de acometer la transformación del esquema conceptual (diagrama E/R) al esquema lógico, es
+					necesario conocer mínimamente el modelo de datos en que se basará este último: el relacional.
+					<br><br>
+					El modelo de datos relacional.
+					<br><br>
+					En este modelo los datos se estructuran lógicamente en forma de relaciones o tablas compuestas de
+					atributos (columnas) y tuplas (filas). En las tablas no puede haber filas idénticas y el orden de
+					sus filas y de sus columnas es irrelevante.
+					<br><br>
+					Aunque en la próxima unidad lo estudiaremos con detalle, hay que aclarar algunos conceptos
+					necesarios para realizar la transformación del diagrama E/R a este modelo de datos.
+					<br><br>
+					Claves.
+					Clave candidata: atributo o conjunto de atributos que identifican unívoca y mínimamente a cada una
+					de las tuplas de la relación. Por la propia naturaleza de la tabla, siempre hay al menos una clave
+					candidata formada por el conjunto de todos los atributos, que será la Superclave. Una tabla puede
+					tener más de una clave candidata.
+					Clave principal: clave candidata elegida para identificar cada una de las tuplas. Una tabla solo
+					puede tener una clave principal.
+					Clave alternativa: clave candidata no elegida como principal.
+					Clave ajena: clave candidata exportada a otra tabla, lo que permite relacionar una o varias tuplas
+					de la tabla receptora con una tupla de la tabla exportadora.
+					Representación.
+					En el esquema lógico del modelo Relacional, cada tabla se representa con su nombre y a continuación,
+					y entre paréntesis, la lista de sus atributos. La clave principal de cada tabla se representa con
+					subrayado continuo, la clave o claves ajenas con subrayado discontinuo y las claves alternativas no
+					se representan.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de modelo relacional (MR) o Modelo de datos relacional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/transformacion-2.png" alt="Modelo entidad relaciòn" width="80%">
+					<p id="cita-imagen"><q>Imagen 2. Imagen tomada de: [DOC].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-3">Cardinalidad uno a uno (1:1)</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciones (1:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Entidad binaria con relacion uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-1.png" alt="MER relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 3. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si ambas interrelaciones de mis cardinalidades son de (1:1) significa que la cardinalidad de mi
+					relaciòn va a ser (1:1).
+					para pasar esto al modelo relacional podemos escoger UNA de las siguientes dos opciones.
+				</p>
+				<ul>
+					<li>Pasar la clave de la entidad 1 como clave foranea a la entidad 2</li>
+					<li>Pasar la clave de la entidad 2 como clave foranea a la entidad 1</li>
+				</ul>
+				<br>
+				<h3>
+					NOTA SUPER IMPORTANTE
+				</h3>
+				<br>
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-2.png" alt="MR relacion (1:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-11-3.png" alt="MR relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 4. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciónes de (0:1) y (1:1) o viceversa</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-4.png" alt="MR relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 5. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si una de las interrelaciones de nuestras cardinalidades es de (0:1) eso significa que un registro
+					de esa entidad no necesariamente
+					necesita estar relacionado con un registro de la entidad contraria.
+					<br><br>
+					Para este caso tendriamos dos opciones igualmente sin embargo algunos autores no utilizan una de
+					ellas porque el campo foráneo
+					puede ser nulo y no recomiendan que los campos foráneos admitan nulos.
+				</p>
+
+				<ul>
+					<li>
+						(RECOMENDADA)<br>
+						Pasar la clave de la entidad con cardinalidad mínima uno como clave ajena o foranea a la entidad
+						contraria. Esto porque estamos forzando a que obligatoriamente todo registro de la entidad con
+						cardinalidad
+						mìnima de cero
+						(0) tenga si o si una relación con la entidad contraria.
+					</li>
+					<li>
+						(NO RECOMENDADA)<br>
+						Pasar la clave de la entidad con cardinalidad mínima cero como clave ajena o foranea a la
+						entidad contraria.
+						Si un registro de la entidad con cardinalidad mínima uno no tiene relación con un registro de la
+						otra entidad significa que tenemos que
+						poner un valor nulo en ese campo.
+					</li>
+				</ul>
+				<p>
+					Al final la solución dependera de la elección del AMBD ya que algunos no les importa si la BD puede
+					admitir valores nulos
+					en campos foráneos, ya que si la BD es pequeña esto no tendra gran impacto en su rendimiento.
+				</p>
+				<p>
+					Otros autores si les da importancia a la solución ya que si no admite nulos se puede tener un mínimo
+					de mejora de rendimiento, ademas que la
+					escalabilidad y manejo de la BD tambien puede mejorar significativamente.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-5.png" alt="MR relacion (1:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-11-6.png" alt="MR relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 4. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>
+					NOTA SUPER IMPORTANTE
+				</h3>
+				<br>
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con ambas interrelaciónes de (0:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-7.png" alt="MR relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 5. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si ambas interrelaciones de nuestras cardinalidades son de (0:1) eso significa que un registro
+					de la entidad A puede tener o no asociado un registro de la entidad B, del mismo modo un registro de
+					la
+					entidad B puede o no estar asociado a un registro de la entidad A.
+					<br><br>
+					Para este caso tendriamos CUATRO opciones sin embargo algunos autores no utilizan dos de
+					ellas porque el campo foráneo
+					puede ser nulo y no recomiendan que los campos foráneos admitan nulos.
+				</p>
+
+				<ul>
+					<li>
+						(RECOMENDADA) <br>
+						Crear una tercera tabla intermedia o pivote la cual va a contener como llave
+						primaria y foránea al mismo tiempo la clave de la entidad A y va a contener solo como llave
+						ajena o foránea la clave
+						de la entidad B, además vamos a agregar los atributos que estén en la relación.
+					</li>
+					<li>
+						(RECOMENDADA) <br>
+						Crear una tercera tabla intermedia o pivote la cual va a contener como llave
+						primaria y foránea al mismo tiempo la clave de la entidad B y va a contener solo como llave
+						ajena o foránea la clave
+						de la entidad A, además vamos a agregar los atributos que estén en la relación.
+					</li>
+					<li>
+						(NO RECOMENDADA)<br>
+						Pasar la clave de la entidad A como clave ajena o foranea a la
+						entidad contraria. No es recomendada por la misma justificación anterior que pueden haber campos
+						nulos para el campo foráneo y
+						algunos autores no recomiendan esta practica.
+					</li>
+					<li>
+						(NO RECOMENDADA)<br>
+						Pasar la clave de la entidad B como clave ajena o foranea a la
+						entidad contraria. No es recomendada por la misma justificación anterior que pueden haber campos
+						nulos para el campo foráneo y
+						algunos autores no recomiendan esta practica.
+					</li>
+				</ul>
+				<p>
+					Al final la solución dependera de la elección del AMBD ya que algunos no les importa si la BD puede
+					admitir valores nulos
+					en campos foráneos, ya que si la BD es pequeña esto no tendra gran impacto en su rendimiento.
+				</p>
+				<p>
+					Otros autores si les da importancia a la solución ya que si no admite nulos se puede tener un mínimo
+					de mejora de rendimiento, ademas que la
+					escalabilidad y manejo de la BD tambien puede mejorar significativamente.
+				</p>
+				<br>
+				<h3>
+					NOTA SUPER IMPORTANTE
+				</h3>
+				<br>
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-11-8.png" alt="MR relacion (1:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-11-9.png" alt="MR relacion (1:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-11-10.png" alt="MR relacion (1:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-11-11.png" alt="MR relacion (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 6. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-4">Cardinalidad MUCHOS a UNO (N:1) o viceversa (1:N)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En una base de datos, una relación de "muchos a uno" (o "n a 1") se refiere a una situación en la
+					que
+					múltiples registros de una tabla están relacionados con un solo registro en otra tabla.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciónes de (0:M) o (1:M) Y (1:1)</h2>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a uno (M:1) o viceversa (1:M)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-n1-1.png" alt="MR relacion (N:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-n1-2.png" alt="MR relacion (N:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 7. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Debemos fijarnos en la entidad contraria de la entidad con relacion maxima de muchos (N) para este
+					caso (ENTIDAD 2).
+					Si su relación maxima y minima son unos (1:1), entonces la entidad con cardinalidad máxima muchos
+					(N) va a tener como clave
+					ajena o foránea la llave primaria de la entidad con cardinalidad maxima (1).
+					Ademas de los atributos que existan en la relación.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a uno (M:1) o viceversa (1:M)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-n1-3.png" alt="MR relacion (N:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 8. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciónes de (0:M) o (1:M) Y (0:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a uno (M:1) o viceversa (1:M)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-n1-4.png" alt="MR relacion (N:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-n1-5.png" alt="MR relacion (N:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 9. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Debemos fijarnos en la entidad contraria de la entidad con relacion maxima de muchos (N) para este
+					caso (ENTIDAD 2).
+					Si su relación mínima es cero y máxima uno (0:1) tenemos dos posibles soluciones.
+					una de ellas no es recomendada por algunos autores debido a que puden existir valores nulos en el
+					campo foráneo.
+				</p>
+				<ul>
+					<li>
+						(RECOMENDADA) <br>
+						Crear una tercera tabla intermedia o pivote la cual va a contener como llave
+						primaria y foránea al mismo tiempo la clave de la entidad con cardinalidad maxíma muchos (N) y
+						va a contener solo como llave
+						ajena o foránea la clave de la entidad con cardinalidad (0:1), además vamos a agregar los
+						atributos que estén en la relación.
+					</li>
+
+					<li>
+						(NO RECOMENDADA)<br>
+						Pasar la clave de la entidad con cardinalidad mínima cero como clave ajena o foranea a la
+						entidad con la cardinalidad máxima de muchos (N). Si un registro de la entidad con cardinalidad
+						máxima
+						muchos
+						(N) no tiene relación con un registro de la otra entidad significa que tenemos que poner un
+						valor nulo en
+						ese campo.
+					</li>
+
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a uno (M:1) o viceversa (1:M)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-n1-6.png" alt="MR relacion (N:1)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-n1-7.png" alt="MR relacion (N:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 10. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-5">Relacion de muchos a muchos (N:M)</h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciónes de (0:M) o (1:M) Y (0:N) o (1:N)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En una base de datos, una relación de "muchos a muchos" (o "n a n") se refiere a una situación en la
+					que múltiples registros de una tabla pueden estar relacionados con múltiples registros de otra
+					tabla. Esto se representa mediante el uso de una tabla intermedia (también conocida como tabla de
+					unión o tabla puente) que conecta las dos tablas originales.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a muchos (M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-nm-1.png" alt="MR relacion (N:M)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-nm-2.png" alt="MR relacion (N:M)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-nm-3.png" alt="MR relacion (N:M)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-nm-4.png" alt="MR relacion (N:N)" width="80%">
+					<p id="cita-imagen"><q>Imagen 11. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para este tipo de relaciones nosotros podemos identificar que en ambas interrelaciones vemos una
+					cardinalidad máxima de muchos (N).
+					Para estos casos no es necesario fijarnos en las cardinalidades mínimas de cada entidad, sino que
+					siempre vamos a crear una tercera tabla
+					o tabla pivote que va a contener como llaves primarias y foraneas al mismo tiempo las claves
+					primarias de ambas entidades, ademas que vamos a
+					anexar los atributos que esten en la relación.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a muchos (M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-nm-5.png" alt="MR relacion (N:M)" width="80%">
+					<p id="cita-imagen"><q>Imagen 11. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En algunos casos específicos vamos a necesitar una clave primaria discriminadora en esa entidad
+					intermedia, para eso podemos agregar una clave
+					primaria artificial o escoger un atributo de la relación que nos sirva como clave primaria.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad binaria con relación muchos a muchos (M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-nm-6.png" alt="MR relacion (N:M)" width="80%">
+					<img src="Imagenes/Transformacion/relacion-nm-7.png" alt="MR relacion (N:M)" width="80%">
+					<p id="cita-imagen"><q>Imagen 12. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Es muy común ver que la clave primaria discriminatoria para relaciones de muchos a muchos (N:M) sea
+					un
+					atributo de tipo fecha que hace parte como atributo de la relación, pero no siempre tiene porque ser
+					asi.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-6">Relaciones de grado uno o Reflexivas o Recursivas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+
+					Una relación recursiva en bases de datos es aquella en la que una tabla está relacionada consigo
+					misma a
+					través de una clave externa que hace referencia a la misma tabla. Esto significa que los registros
+					de la tabla
+					se relacionan entre sí de alguna manera.
+					<br><br>
+					Las relaciones reflexivas vamos a tratarlas igual que una relacion binaria de (1:1) (1:N) (M:N)
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-7">Relaciones Reflexivas (1:1)</h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con ambas interrelaciones de (1:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-1.png" alt="MR relacion reflexiva (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 13. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si ambas interrelaciones de las entidades son de (1:1) significa que la cardinalidad de mi relaciòn
+					va a
+					ser (1:1). Para pasar esto al modelo relacional debemos hacer:
+				</p>
+				<ul>
+					<li>
+						Crear un nuevo campo como clave forànea que haga referencia a la misma llave primaria de esa
+						entidad.
+					</li>
+				</ul>
+				<br>
+				<h3>
+					NOTA SUPER IMPORTANTE
+				</h3>
+				<br>
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-2.png" alt="MR relacion reflexiva (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 13. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelacion de (1:1) y (0:1) 🔐</h2>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-3.png" alt="MR relacion reflexiva (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 14. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si una de las interrelaciones de nuestras cardinalidades es de (0:1) eso significa que un registro
+					de esa
+					entidad no necesariamente necesita estar relacionado con un registro de la entidad contraria.
+				</p>
+				<br>
+				<p>
+					Asi que este es un modelo entidad relación algo especial.
+					<br><br>
+					Vemos que en este tipo de relación reflexiva encontramos que una de sus interrelaciones es de cero a
+					uno (0:1)
+					y la otra es de uno a uno (1:1).
+					<br><br>
+					¿Entonces que podemos hcer en este caso?, si es la misma entidad y algunos autores mencionan que no
+					debe
+					haber campos foráneos con valores nulos.
+				</p>
+
+				<ul>
+					<li>
+						Hacer una excepción y permitir que se admintan campos nulos en la clave foránea y de ese modo si
+						podemos
+						crear un nuevo campo como clave forànea que haga referencia a la misma llave primaria de esa
+						entidad.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-4.png" alt="MR relacion reflexiva (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 15. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Podemos ir a un tema un poco mas avanzado y convertir esta relación reflexiva a una jerarquía
+						(GENERALIZACIÓN / ESPECIALIZACIÓN).
+						Luego hacer una relacion (1:1) con las interralaciones binarias HIJAS de (0:1) y (1:1).
+						<br><br>
+						De esta manera si podemos controlar esta relación como una relacion binaria (1:1) con
+						interralaciones (0:1)
+						y (1:1) donde la entidad con cardinalidad mínima cero (0) va a tomar como clave ajena o foranea
+						la llave de
+						la entidad con cardinalidad mínima de uno (1), asi como se vio en los temas pasados.
+					</li>
+				</ul>
+				<br>
+				<p>
+					Las relaciones reflexivas en bases de datos pueden representarse como jerarquías. Una relación
+					reflexiva es
+					aquella en la que una entidad de una tabla se relaciona consigo misma. Estas relaciones pueden
+					representar
+					estructuras jerárquicas, como árboles genealógicos, organizacionales o de categorización.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1) transformándola a jerarquia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-5.png" alt="MR relacion reflexiva (1:1)" width="50%">
+					<p id="cita-imagen"><q>Imagen 16. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1) transformándola a jerarquia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-6.png" alt="MR relacion reflexiva (1:1)" width="50%">
+					<p id="cita-imagen"><q>Imagen 17. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cómo podemos ver en la imagen del modelo relacional anterior la entidad (ENTIDAD HIJO 1) tiene como
+					llave
+					foránea
+					la clave primaria de la entidad (ENTIDAD HIJO 2) pero esta a su vez hace referencia a la misma tabla
+					padre de
+					la
+					entidad (ENTIDAD HIJO 1) asi que esto nos daria un indicio que para no hacer todo este paso de la
+					jerarquia,
+					podriamos crear directamente una entidad pivote o intermedia donde la clave primaria apuntaria a la
+					entidad
+					reflexiva y ademas debemos añadir nuevamente la clave de la entidad relfexiva pero solo como clave
+					ajena o
+					foránea.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Justificación de la solución:</p><br>
+				<p><b>https://www.youtube.com/watch?v=JCqxbfohcFs&list=PLM8XywipQpGCyWl1UlQ1y4igA07VNqdLa&index=8</b></p>
+				<p>a partir del minuto 11:50</p>
+				<br>
+				<br>
+				<h3>
+					NOTA SUPER IMPORTANTE
+				</h3>
+				<br>
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con ambas interrelaciones de (0:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-7.png" alt="MR relacion reflexiva (1:1)" width="60%">
+					<p id="cita-imagen"><q>Imagen 18. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si ambas interrelaciones de nuestras cardinalidades son de (0:1) eso significa que un registro de la
+					entidad A
+					puede tener o no asociado un registro de la entidad B, del mismo modo un registro de la entidad B
+					puede o no
+					estar asociado a un registro de la entidad A.
+				</p>
+				<br>
+				<p>
+					Para este caso tendriamos TRES opciones PRINCIPALES
+					<br>
+					<br>
+					(NO RECOMENDADO) 1. Crear un campo foraneo que apunte a la misma clave de esa entidad, sin embargo
+					algunos
+					autores no utilizan
+					esta porque el campo foráneo puede ser nulo y no recomiendan que los campos foráneos admitan nulos..
+					<br><br>
+					(RECOMENDADO) 2. Crear una tercera tabla pivote donde habra una clave tanto primaria como foránea
+					que apunta a
+					la misma
+					entidad,y añadiendo nuevamente una clave foránea que apunte a esa misma entidad. <br><br>
+					(RECOMENDADO) 3. Usar el método de la jerarquia.
+				</p>
+				<br>
+				<p>
+					Si utilizamos la opcion de la jerarquia de ahi se despliegan cuatro posibles soluciones más pero no
+					es
+					necesario llegar hasta allí.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a uno (1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-8.png" alt="MR relacion reflexiva (1:1)" width="60%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-9.png" alt="MR relacion reflexiva (1:1)" width="60%">
+					<h4 style="color: white; font-size:25px;">No es necesario llegar hasta este punto</h4>
+					<img src="Imagenes/Transformacion/relacion-reflexiva-10.png" alt="MR relacion reflexiva (1:1)" width="80%">
+					<p id="cita-imagen"><q>Imagen 19. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Debemos controlar con triggers (disparadores) que un solo registro de la entidad A solo se pueda
+					relacionar con un solo registro de la entidad B o viceversa ya que si no estaríamos haciendo una
+					relación de uno a muchos (1:N), también lo podemos controlar estableciendo la clave foránea como un
+					campo UNIQUE (único) esto significa que ese campo no se puede repetir.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-8">Relaciones reflexivas uno a muchos (1:N)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En el contexto de bases de datos, cuando se dice que una relación es reflexiva de (1:N), significa
+					que existe
+					una relación entre una entidad y sí misma, y esta relación es de uno a muchos (1:N). Esto significa
+					que un
+					registro en una tabla está relacionado con varios registros en la misma tabla.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciones de (1:N) o (0:N) y (1:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-11.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-12.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 20. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En este ejemplo vemos que un registro de la entidad A puede estar relacionado con varios registros
+					de la misma
+					entidad y que un registro de esa entidad debe estar relacionado si o si con otro registro de la
+					misma entidad.
+					<br><br>
+					Para este tipo de diagramas tenemos dos tipos de soluciones muy comunes.
+				</p>
+				<ul>
+					<li>
+						Agregar un nuevo campo ajeno o foràneo a la entidad que haga refernencia a la misma tabla.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-13.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 21. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					A nivel conceptual y semántico no habria nada malo en este MR ya que estamos siguiendo al pie de la
+					letra las
+					reglas de
+					propagación.
+					Pero si nos fijamos a nivel logico esto seria falso, ya que podemos hacer una suposición y es que si
+					vamos a
+					almacenar el
+					primer registro en la base de datos seria obligatorio que el valor en el campo foráneo sea nulo.
+					Algunos
+					autores consideran que no deben haber campos NULOS en la BD.
+					Aunque esto seria momentaneo ya que podriamos actualizar el registro en un futuro modificando el
+					campo con
+					valor nulo agregando un valor que sea "permitido".
+					<br><br>
+					Pero si queremos ser un poco mas estrictos con este tema podemos realizar la siguiente solución.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Realizar una generalizaciòn
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-14.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-15.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 22. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					De esta forma primero deberíamos agregar los datos en la entidad (ENTIDAD HIJO 2) y luego si agregar
+					los
+					registros en la entidad (ENTIDAD HIJO 1).
+				</p>
+				<br>
+				<p>
+					Cómo podemos ver en la imagen del modelo relacional anterior la entidad (ENTIDAD HIJO 1) tiene como
+					llave
+					foránea la clave primaria de la entidad (ENTIDAD HIJO 2) pero esta a su vez hace referencia a la
+					misma tabla
+					padre de la entidad (ENTIDAD HIJO 1) asi que esto nos daria un indicio que para no hacer todo este
+					paso de la
+					jerarquia, podriamos crear directamente una entidad pivote o intermedia donde la clave primaria
+					apuntaria a la
+					entidad reflexiva y ademas debemos añadir nuevamente la clave de la entidad relfexiva pero solo como
+					clave
+					ajena o foránea.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-16.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 23. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciones de (1:N) o (0:N) y (0:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-17.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-18.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 24. Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para este tipo de entidades debemos crear una nueva tabla o pivote que va a contener como llave
+					primaria y
+					foranea la clave de la entidad reflexiva con cardinalidad máxima de muchos (N), ademas vamos a
+					agregar
+					nuevamente pero solo como llave foránea la clave de la
+					entidad reflexiva con mardinalidad maxima uno (1).
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-19.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 25 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Tambien podemos transformar esta reflexión en una jerarquia (GENERALIZACIÓN) y llegariamos al mismo
+					resultado.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación uno a muchos (1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-20.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-21.png" alt="MR relacion reflexiva (1:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 26 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cómo podemos ver en la imagen del modelo relacional anterior la entidad (ENTIDAD HIJO 1) tiene como
+					llave
+					foránea
+					la clave primaria de la entidad (ENTIDAD HIJO 2) pero esta a su vez hace referencia a la misma tabla
+					padre de
+					la
+					entidad (ENTIDAD HIJO 1) asi que esto nos daria un indicio que para no hacer todo este paso de la
+					jerarquia,
+					podriamos crear directamente una entidad pivote o intermedia donde la clave primaria apuntaria a la
+					entidad
+					reflexiva y ademas debemos añadir nuevamente la clave de la entidad relfexiva pero solo como clave
+					ajena o
+					foránea.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-9">Relaciones reflexivas de muchos a muchos (M:N)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>En bases de datos, una relación reflexiva de (M:N) significa que una entidad está relacionada consigo
+					misma
+					de manera muchos a muchos (M:N). Esto significa que un registro en una tabla puede estar relacionado
+					con
+					varios registros en la misma tabla, y viceversa.</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Con interrelaciones de (1:N) o (0:N) y (0:N) o (1:N)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para este tipo de relaciones nosotros podemos identificar que en ambas interrelaciones vemos una
+					cardinalidad
+					máxima de muchos (N). Para estos casos no es necesario fijarnos en las cardinalidades mínimas de
+					cada entidad,
+					sino que siempre vamos a crear una tercera tabla o tabla pivote que va a contener como llaves
+					primarias y
+					foraneas al mismo tiempo las claves primarias de ambas entidades, ademas que vamos a anexar los
+					atributos que
+					esten en la relación.
+				</p>
+				<br>
+				<p>
+					Tambien podemos hacer uso de la jerarquia (GENERALIZACIÓN) pero no va ser necesario.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación muchos a muchos (N:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-22.png" alt="MR relacion reflexiva (N:N)" width="45%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-23.png" alt="MR relacion reflexiva (N:N)" width="46.5%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-24.png" alt="MR relacion reflexiva (N:N)" width="45%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-25.png" alt="MR relacion reflexiva (N:N)" width="42%">
+					<p id="cita-imagen"><q>Imagen 27 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad reflexiva con relación muchos a muchos (N:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-26.png" alt="MR relacion reflexiva (N:N)" width="60%">
+					<p id="cita-imagen"><q>Imagen 28 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-10">CUIDADO A LA HORA DE IDENTIFICAR MAL LAS PARTICIPACIONES DE UNA RELACIÓN REFLEXIVA
+				</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>
+					Es muy importante identificar muy bien como se van a llamar ambas entidades reflexivas aunque en
+					realidad es
+					solo una entidad estas se comportan como dos entidades y aunque si conocemos muy bien las reglas de
+					propagación pero no identificamos bien los nombres nosotros mismo podemos enredarnos y hasta crear
+					de forma
+					errónea el modelo entidad relación.
+				</h3>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo Entidad reflexiva</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-27.png" alt="MR relacion reflexiva" width="50%">
+					<p id="cita-imagen"><q>Imagen 28 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>No es lo mismo que</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo Entidad reflexiva</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-28.png" alt="MR relacion reflexiva" width="50%">
+					<p id="cita-imagen"><q>Imagen 29 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo Entidad reflexiva</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-29.png" alt="MR relacion reflexiva" width="50%">
+					<img src="Imagenes/Transformacion/relacion-reflexiva-30.png" alt="MR relacion reflexiva" width="50%">
+					<p id="cita-imagen"><q>Imagen 30 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-11">Entidades débiles</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cuando hay una entidad débil junto a una entidad fuerte puede haber dos casos. Que la entidad débil
+					sea de
+					existencia o sea de identificación.
+					<br><br>
+					Las entidades débiles, en el contexto de las bases de datos, son aquellas entidades que no tienen
+					una clave
+					primaria propia, es decir, no pueden ser identificadas de forma única solo por sus atributos. Estas
+					entidades
+					dependen de una relación con otra entidad para poder ser identificadas.
+					<br><br>
+					Hay dos tipos principales de entidades débiles:
+					<br><br>
+					Entidades Débiles Dependientes (Existencia): Son aquellas que están vinculadas a otra entidad
+					llamada entidad
+					propietaria
+					mediante una relación de dependencia. La entidad débil no tiene una clave primaria propia, pero
+					tiene una
+					clave parcial que la identifica junto con la clave primaria de la entidad propietaria.
+					<br><br>
+					Entidades Débiles Independientes (IDENTIFICACIÓN): Aunque menos comunes, estas entidades no tienen
+					una clave
+					primaria propia y
+					no están directamente vinculadas a otra entidad. En su lugar, se suelen asociar a un conjunto de
+					entidades a
+					través de una relación que las vincula a una entidad maestra.
+					<br><br>
+					Algunos autores para representar si una relación entre una entidad débil y fuerte es de tipo
+					existencia o de
+					tipo identificación agregan una línea horizontal dentro de la relación y se va a escribir las sigas
+					de “E” en
+					caso de que la relación sea de tipo existencia o “id” en caso de que la relación sea de tipo de
+					identificación.
+					<br><br>
+					Algunos autores para identificar las cardinalidades finales entre este tipo de relaciones mencionan
+					que solo
+					se
+					admite la relación entre 1:1 o 1:N nunca se va a admitir una relación M:N.
+					<br><br>
+					También mencionan que en la entidad fuerte solamente se va a permitir la cardinalidad (1:1) y en la
+					débil
+					podría ser (1:N), (0:N), (0:1) o (1:1).
+					<br><br>
+					Otros autores simplifican este tipo de relaciones como una relación muchos a uno, donde la
+					cardinalidad de
+					muchos va en la entidad débil y la cardinalidad unitaria en la fuerte.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Entidades débiles por existencia</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Es una de las más comunes significa que esa entidad existe porque la entidad fuerte existe si no, no
+					tiene
+					sentido que exista la entidad débil. Además, la entidad débil tiene su propia clave primaria y ella
+					misma se
+					puede auto identificar independiente mente de la clave principal de la entidad fuerte.
+					<br><br>
+					Para este caso donde la relación es de tipo de existencia la entidad débil tiene su propia llave,
+					así que la
+					llave primaria de la entidad fuerte pasa a ser la llave foránea de la entidad debil.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad debil por existencia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-1.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 31 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">MR Entidad debil por existencia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-2.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 32 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil existencia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-3.png" alt="MR relacion débil" width="80%">
+					<img src="Imagenes/Transformacion/relacion-debil-4.png" alt="MR relacion débil" width="80%">
+					<img src="Imagenes/Transformacion/relacion-debil-5.png" alt="MR relacion débil" width="80%">
+					<img src="Imagenes/Transformacion/relacion-debil-6.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 33 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Otros autores mencionan que para este tipo de relaciones la llave primaria de la entidad fuerte pasa
+					a ser
+					llave ajena o foranea y a su vez llave primaria a la entidad débil dando como resultado una llave
+					primaria
+					compuesta entre las llaves de ambas entidades.Esto como resultado nos puede dar un mejor control
+					sobre los
+					registros en ciertas situaciones específicas.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo 2 MER Y MR entidad débil existencia</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-7.png" alt="MR relacion débil" width="80%">
+					<img src="Imagenes/Transformacion/relacion-debil-8.png" alt="MR relacion débil" width="80%">
+					<img src="Imagenes/Transformacion/relacion-debil-9.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 34 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Entidades débiles por identificación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para el caso donde la relación es de tipo de identificación la entidad débil no tiene su propia
+					llave
+					primaria.
+				</p>
+				<br>
+				<p>
+					Para este tipo de relaciones podemos hacer tres cosas
+				</p>
+				<ul>
+
+					<li>
+						1. (POSIBLE SOLUCIÓN) Buscar una llave candidata en la entidad débil y la llave primaria de la
+						entidad
+						fuerte
+						pasaría ser solo
+						llave foránea de la entidad débil. Debemos tener en cuenta que ese campo que se convierte en
+						clave candidata
+						no podra repetirse
+						y esto puede que afecte la escalabilidad de nuestra base de datos. ASI QUE DEBEMOS TENER ESTO
+						MUY ENCUENTA.
+					</li>
+
+					<li>
+						2. (RECOMENDADA) Generar una llave primaria compuesta entre la llave candidata y la llave
+						primaria de
+						la entidad fuerte.
+						Esto resolveria el problema de escalabilidad que tiene la opcion 1.
+					</li>
+
+					<li>
+						3. (POSIBLE SOLUCIÓN) Si no llega a existir una llave posible llave candidata debemos agregar
+						una llave
+						primaria artificial a la entidad débil. luego la clave de la entidad fuerte pasaría como clave
+						primaria y
+						ajena o foránea
+						a la entidad débil, generando al final una clave primaria compuesta.
+
+						<ul>
+							<li>
+								Nota <br>
+								Pude haber la posibilidad de que si llegáramos a registrar una llave primaria artificial
+								entonces puede
+								que algunos valores de otros campos se dupliquen, podríamos solucionar este problema con
+								una tabla de
+								tipo catálogo para
+								almacenar esos valores que se repiten. Y luego hacer referencia a esa llave como foránea
+								en la tabla
+								débil.
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo 2 MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-10.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 35 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Modelo Relacional opcion 1.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo 2 MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-11.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 36 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Modelo Relacional opcion 2.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-12.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 37 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Modelo Relacional opcion 3.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-13.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 38 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>Veamos el siguiente ejemplo pasando por cada una de las 3 opciones.</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-14.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 39 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-15.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 40 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-16.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 40 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Para el caso anterior este tipo de relación no me permite que dos revistas tengán la misma sección,
+					puede que
+					para un caso muy específico esta solución sea viable a corto plazo, pero no es escalable, y si nos
+					ponemos el
+					caso hipotético de que en un futuro esta misma BD, dos revistas pueden tener la misma sección ya eso
+					seria un
+					problema porque nuestra BD no lo permitiría ademas de que tendriamos practicamente crear de nuevo la
+					BD.</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-17.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 42 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-18.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 43 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para el caso anterior ahora nuestra base de datos es mucho más escalable ya que podemos repetir el
+					titulo de
+					las secciones
+					en las revistas.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-19.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 44 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-20.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 45 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Aunque esta solución no es del todo factible. ya que si no tenemos un control completamente
+					restringido de la
+					clave primaria de la tabla SECCIÓN
+					si podria repetir la clave primaria de la entidad REVISTA junto con una nueva sección, entonces una
+					revista
+					puede tener mas
+					de una vez la misma sección ya que la clave primária SECCIONES no se repetiria.
+					<br><br>
+					7 - Revista 2 - Sección 5
+					<br><br>
+
+					"SE PORIA TRATAR DE CONTROLAR CON UN CAMPO UNIQUE (UNICO) COMPUESTO ENTRE LA CLAVE DE REVISTA Y LA
+					FORÁNEA DE
+					SECCIÓN PARA QUE ESE PAR DE CAMPOS ACTUE COMO UNO SOLO Y NO SE REPITA, PERO PARA ESO ES MEJOR USAR
+					LA SOLUCIÓN
+					NUMERO DOS."
+
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-12">¿Qué hacer cuando una entidad debe llevarse la clave de una entidad débil y esta es
+					de
+					identificación?</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Veamos el siguiente ejemplo donde la entidad débil UNIDAD se lleva la llave primaria de CURSO y esta
+					entidad
+					al ser débil su llave primaria va ser una clave compuesta entre la llave primaria de curso y su
+					propia llave
+					candidata, además la llave de CURSO va a ser foránea.
+					Luego la entidad VIDEOCONFERENCIA se va a llevar la llave de la entidad UNIDAD que es débil. Como la
+					entidad
+					UNIDAD tiene una llave primaria compuesta entonces ambas llaves deben de ser pasadas a la entidad
+					VIDEO
+					CONFERENCIA únicamente como claves foráneas.
+
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Caso especial Ejemplo 2 MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-21.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 45 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Caso especial Ejemplo 2 MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-22.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 46 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En el caso anterior los campos CÓDIGO_CURSO Y NUMERO de la entidad VIDEO_CONFERENCIA hacen una clave
+					foránea
+					compuesta que apunta a la entidad UNIDAD.
+				</p>
+				<br>
+				<p>
+					Algunas personas se confunden y no apuntan a la entidad correcta.
+					la clave COD_CURSO que está en la entidad VIDEO_CONFERENCIA debe apuntar a la llave primaria de
+					UNIDAD y no a
+					la
+					de la entidad CURSO ya que esto traería muchos problemas de integridad de datos porque por error
+					podemos
+					colocar un identificador de un curso que no este en la entidad UNIDAD.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Caso especial Ejemplo 2 MER Y MR entidad débil por Identificación.</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-debil-23.png" alt="MR relacion débil" width="80%">
+					<p id="cita-imagen"><q>Imagen 46 Imagen tomada de: [Elaboracion propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-13">Jerarquías (GENERALIZACIÓN Y ESPECIALIZACIÓN)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Recordemos que una jerarquía de generalización y especialización es un diseño de
+					modelo de datos que permite organizar y representar la información de manera estructurada y
+					jerárquica. Esta técnica se utiliza principalmente en el diseño de bases de datos relacionales para
+					representar relaciones entre entidades de manera más clara y efectiva.
+					<br><br>
+					En una jerarquía de generalización y especialización, se define una entidad base o principal
+					(generalización) que contiene atributos comunes a un conjunto de entidades relacionadas más
+					específicas (especialización). Estas entidades más específicas comparten características comunes,
+					pero también tienen atributos únicos que las distinguen.
+					<br><br>
+					En el contexto de bases de datos, una jerarquía de generalización y especialización es un diseño de
+					modelo de datos que permite organizar y representar la información de manera estructurada y
+					jerárquica. Esta técnica se utiliza principalmente en el diseño de bases de datos relacionales para
+					representar relaciones entre entidades de manera más clara y efectiva.
+					<br><br>
+					En una jerarquía de generalización y especialización, se define una entidad base o principal
+					(generalización) que contiene atributos comunes a un conjunto de entidades relacionadas más
+					específicas (especialización). Estas entidades más específicas comparten características comunes,
+					pero también tienen atributos únicos que las distinguen.
+					<br><br>
+					Por ejemplo, considera una base de datos para una empresa que vende productos electrónicos. Podría
+					haber una entidad base llamada "Producto" que contiene atributos generales como "Nombre",
+					"Descripción", y "Precio". Luego, se pueden definir entidades especializadas como "Teléfono móvil",
+					"Computadora portátil" y "Televisor", cada una con atributos específicos adicionales como "Modelo de
+					cámara" para teléfonos móviles, "Tamaño de pantalla" para computadoras portátiles, y "Resolución"
+					para televisores.
+					<br><br>
+					Esta jerarquía permite una mejor organización de la información y facilita consultas y análisis
+					específicos para cada tipo de producto, al tiempo que aprovecha la relación común entre ellos para
+					compartir atributos generales. Además, en términos de diseño de base de datos, esta estructura
+					también facilita la implementación de restricciones de integridad y mantenimiento de la consistencia
+					de datos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Tipos de jerarquias</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-1.png" alt="Jerarquia parcial solapada" width="40%">
+					<img src="Imagenes/Transformacion/jerarquia-2.png" alt="Jerarquia total solapada" width="40%">
+					<img src="Imagenes/Transformacion/jerarquia-3.png" alt="Jerarquia parcial exclusiva" width="40%">
+					<img src="Imagenes/Transformacion/jerarquia-4.png" alt="Jerarquia parcial exclusiva" width="40%">
+					<p id="cita-imagen"><q>Imagen 47. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para crear el modelo relacional para este tipo de diagramas tenemos 3 opciones.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Opción 1</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Opcion 1: Creamos una sola tabla y en esa juntamos todos los atributos tanto de la tabla súper tipo
+					como de las tablas subtipo.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional para una jerarquia (Forma 1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-5.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 48. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Esto podría traer consigo algunos inconvenientes:
+				</p>
+				<ul>
+					<li>
+						Si yo quisiera guardar un elemento que solo tenga los atributos del subtipo B entonces tendría
+						que
+						llenar los datos del súper tipo y el subtipo B pero los campos del subtipo C tendría que
+						colocarlos
+						nulos.
+					</li>
+					<li>
+						Del mismo modo si quiero almacenar un elemento que tenga solo los atributos del subtipo C, pero
+						no
+						los del B, tendría que llenar todos los campos tanto del súper tipo como del subtipo C, pero los
+						campos del subtipo B quedarían nulos.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional para una jerarquia (Forma 1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-6.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 49. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Como vemos en la tabla anterior esto puede causar que almacenemos muchos registros con valores nulos
+					y para este tipo de diagramas esto no sería lo más adecuado.
+				</p>
+			</section>
+
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Opción 2</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Opción 2: Creamos dos tablas una por cada entidad de SUBTIPO cada una con su propia llave principal
+					y sus atributos y les vamos a añadir a ambas los campos que estén en la entidad supertipo como
+					atributos
+					propios atributos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional para una jerarquia (Forma 1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-7.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 50. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					NOTA SUPER IMPORTANTE
+					Esta es una forma usualmente usada cuando la jerarquia va a ser:
+					<br><br>
+					o Total, exclusiva
+				</p>
+				<br>
+				<p>
+					También debemos tener en cuenta que los atributos de la entidad padre se repiten en ambas entidades
+					hijo.
+					y en algunos casos no queremos que se repitan los mismos campos en tablas que son similares.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Opción 3</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Opción 3: Creamos tres tablas una por cada entidad con sus propios atributos, y las entidades
+					subtipo van a tener como clave primaria y foránea la clave primaria del súper tipo.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional para una jerarquia (Forma 1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-8.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 51. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					NOTA SUPER IMPORTANTE
+					Esta forma se puede usar en cualquier tipo de jerarquías:
+				</p>
+				<ul>
+					<li>
+						Parcial, solapada
+					</li>
+					<li>
+						Total, solapada
+					</li>
+					<li>
+						Parcial, exclusiva
+					</li>
+					<li>
+						Total, exclusiva
+					</li>
+				</ul>
+				<p>
+					Si no queremos enrollarnos mucho buscando que forma debe tener nuestro modelo entidad relación
+					algunos autores utilizan la Opción número 3 para hacer cualquier tipo de jerarquía. Además de que
+					este tipo de modelado es muchísimo más escalable a fututo en dado caso que se requiera, ya que los
+					otros modelos podrían causar problemas de escalabilidad.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-14">CARACTERISTICA A TENER EN CUENTA A LA HORA DE REALIZAR UNA JERARQUIA</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Supongamos que tenemos el siguiente modelo:
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de jerarquía</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-9.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 52. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Y nosotros decidimos utilizar la opción uno para crear el modelo relacional.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de jerarquía</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-5.png" alt="MR Jerarquiea" width="90%">
+					<p id="cita-imagen"><q>Imagen 53. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Tendríamos dos problemas:
+				</p>
+				<ul>
+					<li>
+						1. Habría muchos campos con valores nulos
+					</li>
+					<li>
+						2. Pero si llegáramos a tener una relación con uno de los subtipos la única tabla que creáramos
+						con todos los campos seria quien va a tener la relación con la otra entidad, pero sería muy
+						difícil controlar que datos específicos son los que van a tener esa relación.
+					</li>
+				</ul>
+
+				<p>
+					Por esa razón es mejor utilizar la tercera opción para crear nuestro modelo relacional.
+				</p>
+			</section>
+
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Ahora supongamos que tenemos este otro caso.</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Donde encontramos estas caracteristicas en la jerarquia: </p>
+				<ul>
+					<li>
+						Parcial
+					</li>
+					<li>
+						Solapada
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de jerarquía</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-10.png" alt="MR Jerarquiea" width="60%">
+					<p id="cita-imagen"><q>Imagen 54. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Recordemos que una entidad parcial significa que un dato del supertipo no tiene por qué estar en un
+					subtipo.
+				</p>
+				<p>Pero nosotros utilizamos la opción dos para hacer el modelo relacional.</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-11.png" alt="MR Jerarquiea" width="80%">
+					<p id="cita-imagen"><q>Imagen 55. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Pero si llegáramos a utilizar este tipo de modelo relacional recordemos que es parcial…
+					¿Dónde colocamos los datos que sean de tipo supertipo pero que no sean de ningún subtipo?
+					Esto podría generar algunos problemas.
+				</p>
+				<br>
+				<p>
+					Por otra parte, si utilizamos la tercera opción del modelo relacional este va a resolver los dos
+					problemas mencionados anteriormente. Además, que es la opción por “Excelencia” que utilizan la
+					mayoría de autores.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/jerarquia-8.png" alt="MR Jerarquiea" width="70%">
+					<p id="cita-imagen"><q>Imagen 56. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-15">Exclusividad en relaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					La exclusividad se representa con una línea descontinua entre dos relaciones.
+					<br><br>
+					Esto significa que si hay dos entidades que se deben relacionar dos veces entonces los registros no
+					se pueden repetir en ambas relaciones
+					<br><br>
+					Veamos el siguiente ejemplo:
+					<br><br>
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/exclusividad-1.png" alt="MR Exclusividad" width="70%">
+					<p id="cita-imagen"><q>Imagen 57. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Un artista puede estar nominado en ninguna o en varias categorías y en cada categoría va a estar
+						nominado como mínimo un y como máximo 5 artistas.
+					</li>
+					<li>
+						Un artista puede presentar ninguna o una sola categoría y cada categoría va a estar presentada
+						por
+						1 o dos artistas.
+					</li>
+					<li>
+						Todo artista que este nominado a una categoría no va a poder presentar ninguna categoría y
+						viceversa, un artista que este presentando una categoría no va a poder estar nominado a alguna
+						categoría. (ESTO SIGNIFICA EXCLUSIVIDAD).
+					</li>
+				</ul>
+				<p>
+					Para controlar estas situaciones podemos usar los triggers en los BD relacionales en caso de que
+					esta los admita o podemos buscar una solución desde el lenguaje de programación (BACK END) o del
+					lado del servidor.
+				</p>
+				<br>
+				<p>
+					NOTA SIPER IMPORTANTE <br><br>
+					En los modelos relacionales no existe una forma “Al menos por convención” de representar este tipo
+					de exclusividades solo podemos hacerlo en el MER con la línea descontinua.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-16">Relaciones ternarias</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo Entidad relacón de relación ternaria</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-1.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 58. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Las relaciones ternarias comúnmente se dan cuando en las inter relaciones binarias se da una
+					cardinalidad de muchos a muchos (N:M). <br><br>
+					Para generar las relaciones entre las cardinalidades ternarias debemos posicionarnos sobre una
+					entidad y ver según un registro de la entidad de la ENTIDAD A junto con la ENTIDAD C a cuantos
+					registros como mínimo y como máximo puede pertenecer a una ENTIDAD B. Existen 4 posibles soluciones
+					(0:1), (0:N), (1:N), (1:1).<br><br>
+					Para este caso de forma práctica se ha escogido (0:N).
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo Entidad relacón de relación ternaria</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-2.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 59. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Entonces diríamos: Según un registro de la entidad A junto con un registro de la entidad C puede
+					estar asociado como mínimo a ningún y como máximo a varios registros de la entidad B.
+				</p>
+				<br>
+				<p>
+					Hacemos el mismo análisis sobre la entidad C y para esto vamos a tener que usar las entidades A y B.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo Entidad relacón de relación ternaria</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-3.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 60. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Entonces diríamos: Según un registro de la entidad A junto con un registro de la entidad B puede
+					estar asociado como mínimo a uno y como máximo a varios registros de la entidad C.
+				</p>
+				<br>
+				<p>
+					Y finalizamos con la ENTIDAD A para hallar sus cardinalidades vamos a usar las entidades B y C.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo Entidad relacón de relación ternaria</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-4.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 61. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Entonces diríamos: Según un registro de la entidad B junto con un registro de la entidad C puede
+					estar asociado como mínimo Y máximo a solo un registro de la entidad C.
+				</p>
+				<br>
+				<p>
+					Finalmente, la relación ternaria tendrá las cardinalidades máximas de cada interrelación encontrada.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo Entidad relacón de relación ternaria</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-5.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 62. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">¿Cómo hacer el modelo relacional para relaciones ternarias?</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Existe una serie de normas generales que se utilizan en los modelos relacionales para representar
+					estas relaciones.</p>
+				<br>
+				<ul>
+					<li>
+						Las ternarias siempre dan lugar a una nueva tabla.
+					</li>
+					<li>
+						Hereda las 3 claves primarias como claves foráneas (Cada una a su correspondiente tabla).
+					</li>
+					<li>Si la relación final está compuesta por 3 valores maximos de uno (1:1:1) la clave primaria va a
+						estar compuesta de dos de esas claves foraneas y la tercera tendra una restricción de UNIQUE
+						(UNICO)
+					</li>
+					<li>
+						Si la relación final está compuesta por dos valores maximos de uno y un valor de muchos (1:1:M)
+						la clave primaria va a estar compuesta de dos de esas claves foraneas, una tiene que ser si o si
+						el campo maximo de muchos (M) y la segunda primaria sera cualquiera de los otros campos maximos
+						de uno (1).
+					</li>
+					Si la relación final está compuesta por dos valores maximos de muchos (N) y un valor maximo de uno
+					(1),
+					(1:N:M) la clave primaria va a estar compuesta de los dos campos que tienen el valor maximo de mucho
+					(N)
+					<li>
+						Por último si la relación final está compuesta por 3 valores maximos de muchos (M:N:P) la clave
+						primaria va a estar compueta de las tres claves foraneas.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Reglas a tener en cuenta</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-6.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 63. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>Nota importante</h3>
+				<p>
+					Debemos tener muy en cuenta que toda relación ternaria o superior se puede destruir y descomponer en
+					un conjunto de relaciones binarias.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-17">Relaciones ternarias (1:1:1)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo entidad relación Relación ternaria (1:1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-7.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 64. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional ternaria (1:1:1)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-10.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 65. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Recordemos que tenemos otros dos tipos de combinaciones para realizar el MR, utilizar las claves primarias
+					cómo
+					(ENTIDAD 1 Y ENTIDAD 3) o (ENTIDAD 2 Y ENTIDAD 3).
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-18">Relaciones ternarias (1:1:N)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo entidad relación Relación ternaria (1:1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-9.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 65. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional ternaria (1:1:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-10.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 66. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Recordemos que tenemos otro tipo de combinación para realizar el MR, utilizar las claves primarias cómo
+					(ENTIDAD 1 Y ENTIDAD 3).
+				</p>
+			</section>
+
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-19">Relaciones ternarias (1:M:N)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo entidad relación Relación ternaria (1:M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-11.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 67. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional ternaria (1:M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-12.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 68. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para este caso, no tenemos mas combinaciones posibles.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-20">Relaciones ternarias (P:M:N)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo entidad relación Relación ternaria (P:M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-13.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 68. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional ternaria (P:M:N)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-ternaria-14.png" alt="MR Relacion ternaria" width="70%">
+					<p id="cita-imagen"><q>Imagen 69. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para este caso, no tenemos mas combinaciones posibles.
+				</p>
+				<br><br>
+				<p>Justificación de lo mencionado anteriormente: </p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=eBfKilVl_w0&t=1s
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=ZGuvCtXkw_c
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=HNQU1MjcFAA
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=HNQU1MjcFAA
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=UD4B8VvuMaI
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=mvmCL9bl8mE&t=1s
+				</p>
+				<br>
+				<p>
+					https://www.youtube.com/watch?v=_9C43lCYQBE
+				</p>
+			</section>
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-21">Agregación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Recordemos que, la "agregación" se refiere a una relación entre entidades
+					donde una entidad puede estar compuesta por otras entidades como parte de su estructura. Esta relación se
+					representa mediante un diamante con un rombo en la parte superior en el diagrama ER.
+					<br><br>
+					La agregación se utiliza cuando una entidad está formada por un conjunto de otras entidades que tienen su
+					propio ciclo de vida independiente y pueden existir por sí mismas. La entidad agregada (o "todo") es
+					responsable de la creación o eliminación de las entidades que la componen (o "partes"), pero las partes pueden
+					existir sin la entidad agregada.
+					<br><br>
+					Cuando consideramos una relación entre entidades como una entidad más compleja… y la relacionamos con otras
+					entidades.
+					Tienen este tipo de vista dentro del MER
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-1.png" alt="MR Relacion agregacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 70. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					1. Un posible planteamiento es que encontremos cardinalidades de muchos a muchos (M:N) en las dos relaciones.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo entidad relación agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-2.png" alt="MR Relacion agregacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 71. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Primero vamos a desarrollar las dos relaciones que están dentro del rectángulo “agregación” y luego eso lo
+					vamos a asociar con la entidad que esta fuera del rectángulo grande.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Modelo relacional agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-3.png" alt="MR Relacion agregacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 72. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Nota súper importante <br><br>
+					Fijémonos en la entidad llamada (ENTIDAD_AyB_C) donde las claves (ID_ENTIDAD_B) Y (ID_ENTIDAD_A) son claves
+					primaras compuestas y foranes que deben apuntar a la entidad pivote (ENTIDAD_AyB) y no a sus entidades
+					individuales.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Ejemplo agregación</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-4.png" alt="MR Relacion agregacion" width="70%">
+					<img src="Imagenes/Transformacion/relacion-agregacion-5.png" alt="MR Relacion agregacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 72. Imagen tomada de: [Tomada de DOC].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Ejemplo 2 agregación</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-6.png" alt="MR Relacion agregacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 73. Imagen tomada de: [Tomada de DOC].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Veamos que en la entidad REALIZAN el campo clave nombreSala y cedula van a generar una clave primara compuesta
+					que deben de apuntar a la relación pivote TRABAJAN y no a sus entidades individuales. Y la clave nombre tarea
+					si va a apuntar a su propia entidad.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Otros ejemplos de agregación</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de agregación</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-agregacion-7.png" alt="MR Relacion agregacion" width="56%">
+					<img src="Imagenes/Transformacion/relacion-agregacion-8.png" alt="MR Relacion agregacion" width="40%">
+					<p id="cita-imagen"><q>Imagen 74. Imagen tomada de: [Tomada de DOC].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Justificación de lo visto anteriormente.</p>
+				<br>
+				<p>
+					Web: https://es.slideshare.net/nayis2010/modelo-entidad-relacin-extendido-18067292
+					<br>
+					Pag 36 a 43
+				</p>
+				<br>
+				<p>
+					Video: https://www.youtube.com/watch?v=dXJ9wslMGZM&list=PL0bfr51v6JJE0UEM_NnAJPhsMRY-WQzG9&index=21
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-22">Entidades Asociativas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Consiste en “convertir” una interrelación (“rombo”) en una entidad esa nueva entidad se llama asociativa.
+					Por lo general esas relaciones asociativas vienen dadas cuando hay una relación de dos entidades con
+					cardinalidades máximas de muchos (N:M).
+					<br><br>
+					No se deben poner porque si (Entonces cualquier rombo seria potencialmente una entidad asociativa).
+					<br><br>
+					Pero cualquier tipo de relación que genere una tabla pivote o intermedia puede convertirse en un entidad
+					asocativa.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de entidad asociativa</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-asociativa-1.png" alt="MR Relacion asociacion" width="70%">
+					<img src="Imagenes/Transformacion/relacion-asociativa-2.png" alt="MR Relacion asociacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 75. Imagen tomada de: [Tomada de DOC].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Su aparición está motivada por los siguientes objetivos.
+				</p>
+				<ul>
+					<li>
+						1. Las interrelaciones n-arias (sobre todo las n >=4) son difíciles de manejar, se puede bajar el grado de
+						todas nuestras relaciones n-arias (n>=3) y dejarlas todas como binarias.
+						Las relaciones de grado tres son algo comunes ya que algunos autores consideran que este tipo de relaciones
+						aún son fáciles de manejar.
+					</li>
+					<li>
+						2. Impedir que el grado de una interrelación aumente. A medida que realizamos un modelo entidad relación
+						pueden aparecer nuevas “entidades” que se relacionan con las existentes y podrían aumentar el grado de
+						interrelación, haciéndola incomprensible. Mediante el uso de entidades asociativas, manejamos el grado a
+						“raya”.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de entidad asociativa</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-asociativa-3.png" alt="MR Relacion asociacion" width="70%">
+					<img src="Imagenes/Transformacion/relacion-asociativa-4.png" alt="MR Relacion asociacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 76. Imagen tomada de: [Tomada de Nettorius].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo modelo relacional de entidad asociativa</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-asociativa-5.png" alt="MR Relacion asociacion" width="70%">
+					<p id="cita-imagen"><q>Imagen 77. Imagen tomada de: [Elaboración propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Tengamos en cuenta que en el anterior modelo relacional en la entidad SON_SUMINISTRADOS los campos
+					(SUMINISTRADOR_ID y PRODUCTO_ID) son una clave primaria compuesta y ambas son foráneas.
+					Además, veamos la entidad SE_SUMINISTRAN_A los campos (CLIENTE_ID, SUMINISTRADOR_ID y PRODUCTO_ID) estos tres
+					campos juntos generan una clave primaria compuesta, pero el campo CLIENTE_ID va a ser un campo foráneo de la
+					entidad CLIENTES y (SUMINISTRADOR_ID y PRODUCTO_ID) van a ser campos foráneos compuestos que van a apuntar a
+					la entidad SON_SUMINISTRADOS y no a sus entidades individuales.
+				</p>
+				<br>
+				Nota súper importante. <br><br>
+				Este tipo de relaciones asociativas pueden convertirse en una relación ternaria. Así como una relación ternaria
+				de grado (N:M:P) se le puede bajar el grado a una a entidad asociativa.
+
+			</section>
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo modelo relacional de entidad asociativa</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/relacion-asociativa-6.png" alt="MR Relacion asociacion" width="50%">
+					<p id="cita-imagen"><q>Imagen 78. Imagen tomada de: [Elaboración propia].</q></p>
+				</div>
+			</section>
+
+			<!-- 
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n"></h2>	
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<p></p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/transformacion-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [DOC].</q></p>
+				</div>
+			</section>
+		 -->
+
+		</div>
+	</div>
+	<section>
+		<!-- Pie de pagina -->
+		<footer id="pie-pagina">
+			<p>&copy; 2024 Rodrigo Cantor Vasquez. Todos los derechos reservados.</p>
+		</footer>
+	</section>
+</body>
+<script src="javascript/index.js"></script>
+</html>

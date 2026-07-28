@@ -1,0 +1,2204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MODELADO UML</title>
+	<link rel="stylesheet" href="estilos/estilo.css">
+</head>
+
+<body>
+	<!-- Definimos el encabezado de la pagina web para mostrar al usuario de que va a tratar la web -->
+	<header>
+		<h2 class="autor">RODRIGO CANTOR VASQUEZ</h2>
+		<h2 class="tema">MODELADO DE BASES DE DATOS <img src="Iconos/icono_titulo_3.png" width="40px" alt=""></h2>
+		<h2></h2>
+	</header>
+
+	<!-- Definimos un menu de navegacion para que el usuario vea los diferentes temas que se van a tratar en la pagina  -->
+	<nav>
+		<input type="checkbox" id="boton-menu">
+		<label id="label-menu" for="boton-menu"><img src="imagenes/menu.png"></label>
+		<a href="index.html">INICIO</a>
+		<a href="introduccion.html">INTRODUCCIÓN</a>
+		<a href="semantica.html">SEMÁNTICA</a>
+		<a href="ejemplos.html">EJEMPLOS</a>
+		<a href="ejercicios.html">EJERCICIOS</a>
+		<a href="bibliografia.html">BIBLIOGRAFÍA</a>
+	</nav>
+
+	<!-- Menu lateral izquierdo -->
+	<aside id="contenido-temario">
+		<ol>
+			<li><a href="#titulo-1" class="sub-contenido">Proposito del MER</a></li>
+			<li><a href="#titulo-2" class="sub-contenido">Proposito del MR</a></li>
+			<li><a href="#titulo-3" class="sub-contenido">Entidades</a></li>
+			<li><a href="#titulo-4" class="sub-contenido">Entidades débliles</a></li>
+			<li><a href="#titulo-5" class="sub-contenido">Atributos</a></li>
+			<li><a href="#sub-titulo-5.1" class="sub-contenido">Tipos de atributos</a></li>
+			<li><a href="#sub-titulo-5.3" class="sub-contenido">Atributos multivaluados</a></li>
+			<li><a href="#sub-titulo-5.5" class="sub-contenido">Atributos compuestos</a></li>
+			<li><a href="#sub-titulo-5.6" class="sub-contenido">Atributos derivados</a></li>
+			<li><a href="#titulo-6" class="sub-contenido">Claves</a></li>
+			<li><a href="#sub-titulo-6.1" class="sub-contenido">Super clave</a></li>
+			<li><a href="#sub-titulo-6.2" class="sub-contenido">Clave candidata</a></li>
+			<li><a href="#sub-titulo-6.3" class="sub-contenido">Claves alternativas</a></li>
+			<li><a href="#sub-titulo-6.4" class="sub-contenido">Clave primaria</a></li>
+			<li><a href="#titulo-7" class="sub-contenido">Clave foránea</a></li>
+			<li><a href="#titulo-8" class="sub-contenido">Claves compuestas</a></li>
+			<li><a href="#titulo-9" class="sub-contenido">Relaciones</a></li>
+			<li><a href="#sub-titulo-9.1" class="sub-contenido">Relación débil</a></li>
+			<li><a href="#titulo-10" class="sub-contenido">Grados de ralación</a></li>
+			<li><a href="#sub-titulo-10.1" class="sub-contenido">Relación grado 1</a></li>
+			<li><a href="#sub-titulo-10.2" class="sub-contenido">Relación grado 2</a></li>
+			<li><a href="#sub-titulo-10.3" class="sub-contenido">Relación grado 3</a></li>
+			<li><a href="#sub-titulo-10.4" class="sub-contenido">Relación grado n</a></li>
+			<li><a href="#sub-titulo-10.5" class="sub-contenido">Relación doble</a></li>
+			<li><a href="#titulo-11" class="sub-contenido">Cardinalidades</a></li>
+			<li><a href="#sub-titulo-11.1" class="sub-contenido">Cardinalidad en entidades</a></li>
+			<li><a href="#sub-titulo-11.2" class="sub-contenido">Cardinalidad en relaciones</a></li>
+			<li><a href="#titulo-12" class="sub-contenido">MER</a></li>
+			<li><a href="#titulo-13" class="sub-contenido">Restricciones</a></li>
+			<li><a href="#sub-titulo-13.1" class="sub-contenido">R-Exclusividad</a></li>
+			<li><a href="#sub-titulo-13.2" class="sub-contenido">R-Exclusión</a></li>
+			<li><a href="#sub-titulo-13.3" class="sub-contenido">R-Inclusividad</a></li>
+			<li><a href="#sub-titulo-13.4" class="sub-contenido">R-Inclusión</a></li>
+			<li><a href="#titulo-14" class="sub-contenido">Jerarquías</a></li>
+			<li><a href="#titulo-15" class="sub-contenido">Agregación</a></li>
+			<li><a href="#titulo-16" class="sub-contenido">Asociación</a></li>
+			<li><a href="#titulo-17" class="sub-contenido">Otras semánticas</a></li>
+			<li><a href="#titulo-18" class="sub-contenido">Redundancia</a></li>
+			<li><a href="#titulo-n" class="sub-contenido">__</a></li>
+
+
+		</ol>
+	</aside>
+
+	<!-- Contenido de la web -->
+	<div id="exposicion-contenido">
+
+		<div id="contenedor-contenido">
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-1">Propósito del modelo entidad relación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>El modelo entidad-relación lo desarrolló P. P. Chen en 1976 para facilitar el diseño de bases
+					de datos al permitir al diseñador expresar las propiedades conceptuales de la base de datos
+					en un esquema de empresa. La palabra empresa se usa ampliamente en las discusiones de
+					bases de datos para significar la organización para la cual se conserva la base de datos. La
+					empresa podría ser un pequeño negocio, una corporación, una universidad, una agencia
+					gubernamental, un hospital o alguna otra organización. El esquema de empresa es una descripción que
+					corresponde al modelo conceptual. Es independiente de cualquier DBMS particular. Por tanto, no está
+					limitado al lenguaje de definición de datos de algún DBMS
+					particular. Usa sus propios diagramas E-R para expresar la estructura del modelo.
+				</p>
+				<br>
+				<p>
+					Se clsifica el modelo E-R como un modelo semántico, uno que intenta
+					capturar significados así como estructura. Existe un esfuerzo real por hacer que los ítems en
+					el modelo representen “cosas” en el minimundo, la parte del mundo real que modelará la
+					base de datos, y por expresar las relaciones entre “cosas” del mundo real mediante relaciones en el
+					modelo
+				</p>
+				<br>
+				<p>
+					El modelo entidad-relación está formado por un conjunto de
+					conceptos que permiten describir la realidad mediante un conjunto de
+					representaciones gráficas y lingüísticas.
+					<br><br>
+					Originalmente, el modelo entidad-relación sólo incluía los conceptos de
+					entidad, relación y atributo. Más tarde, se añadieron otros conceptos,
+					como los atributos compuestos y las jerarquías de generalización, en lo
+					que se ha denominado modelo entidad-relación extendido.
+				</p>
+				<br>
+				<p>
+					Es una herramienta de referencia para la representación conceptual de problemas del mundo real. Su
+					objetivo principal, facilitar el diseño de bases de datos permitiendo la especificación de un
+					esquema que representa la estructura lógica completa de una base de datos. Este esquema partirá de
+					las descripciones textuales de la realidad, que establecen los requerimientos del sistema, buscando
+					ser lo más fiel posible al comportamiento del mundo real para modelarlo.
+				</p>
+				<br>
+				<p>
+					El modelo de datos E-R representa el significado de los datos, es un modelo semántico. De ahí que no
+					esté orientado a ningún sistema físico concreto y tampoco tiene un ámbito informático puro de
+					aplicación, ya que podría utilizarse para describir procesos de producción, estructuras de empresa,
+					etc. Además, las características actuales de este modelo favorecen la representación de cualquier
+					tipo de sistema y a cualquier nivel de abstracción o refinamiento, lo cual da lugar a que se aplique
+					tanto a la representación de problemas que vayan a ser tratados mediante un sistema informatizado,
+					como manual.
+				</p>
+				<br>
+				<p>
+					No existe un único Modelo E/R, sino una FAMILIA DE MODELOS.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-2">Propósito del modelo relacional</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+
+					El propósito del modelo relacional de una base de datos es proporcionar una estructura lógica para
+					organizar y manipular datos de manera eficiente y coherente. Este modelo se basa en el principio de
+					que los datos se organizan en tablas (también conocidas como relaciones) que tienen filas y
+					columnas. Las filas representan registros individuales y las columnas representan atributos o
+					características de esos registros.
+					<br><br>
+					El modelo relacional establece relaciones entre las diferentes tablas a través de claves primarias y
+					claves foráneas, lo que permite la vinculación y la recuperación de datos relacionados de manera
+					eficiente. Esto proporciona una forma flexible y escalable de almacenar y gestionar datos, lo que
+					facilita la manipulación y el análisis de la información en aplicaciones y sistemas de bases de
+					datos.
+					<br><br>
+					En resumen, el propósito del modelo relacional es proporcionar una estructura organizada y coherente
+					para almacenar, manipular y recuperar datos de manera eficiente, lo que facilita la gestión de la
+					información en entornos informáticos
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-3">Entidades</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Conceptos de interés. Objetos, reales o
+					abstractos, distinguibles de otros objetos sobre los
+					que queremos guardar información.
+				</p>
+				<br>
+				<p>
+					informalmente, se describirá como algún objeto que existe y se puede distinguir de otros objetos.
+					Puede representar
+					una persona, lugar, evento, objeto o concepto en el mundo real que se planea modelar en la
+					base de datos. Puede ser un objeto físico o una abstracción. Diferentes diseñadores pueden
+					no estar de acuerdo acerca de qué entidades existen en el minimundo. Las instancias de
+					entidad representan a un estudiante particular, una clase específica, un cliente individual,
+					un empleado particular, una cuenta, un paciente, una conferencia, un invento o un club
+				</p>
+				<br>
+				<P>
+					dependiendo de cuál sea la empresa y qué partes de ella se desee representar. Al aplicar
+					abstracción es posible identificar las propiedades comunes de las instancias de entidades que
+					son de interés en la base de datos y definir un tipo de entidad, que es una representación en
+					el modelo de datos de una categoría de entidades. Por ejemplo, si la empresa es una universidad, se
+					puede considerar a todos los estudiantes en la universidad e identificar las propiedades comunes de
+					interés para el tipo de entidad STUDIANTE. El tipo de entidad forma la
+					intensión de la entidad, la parte de definición permanente. Una colección de entidades del
+					mismo tipo se llama conjunto de entidades. El conjunto debe estar bien definido, lo que
+					significa que debe ser posible determinar si una instancia de entidad particular pertenece a
+					ella o no. Todas las instancias de entidad que satisfacen la definición en el momento forman
+					la extensión de la entidad. Los miembros del conjunto de entidades STUDIANTE cambian conforme los
+					estudiantes entran y salen, pero el tipo de entidad Student permanece constante.
+				</P>
+				<br>
+				<p>
+					Hay dos tipos de entidades: fuertes y débiles. Una entidad débil es una
+					entidad cuya existencia depende de la existencia de otra entidad. Una
+					entidad fuerte es una entidad que no es débil.
+				</p>
+				<br>
+				<p>
+					Si establecemos un símil con la Programación Orientada a Objetos, podemos decir que el concepto de
+					entidad es análogo al de instancia de objeto y que el concepto de conjunto de entidades lo es al de
+					clase.
+				</p>
+				<br>
+				<p>
+					En el modelo Entidad/Relación, la representación gráfica de las entidades se realiza mediante el
+					nombre de la entidad encerrado dentro de un rectángulo.
+				</p>
+				<br>
+				<P>
+					Al representar las entidades en un MER algunos autores consideran que estas se deben de escribir en
+					singular ya
+					que esto significa que cada registro que ingresemos en la BD es un elemento ùnico. Por otra parte
+					otros autores
+					representan las entidades en plural por que para ellos va a representar la coleccion de registros
+					que se van a ingresar
+					a la BD.
+					Ambas formas son correctas, pero debemos elegir solo una forma a la hora de representarlos en el
+					MER, esto no causa
+					ningun problema a la hora de crear la BD pero si afectara su diseño, legibilidad y estetica en estos
+					casos.
+				</P>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplos de entidades para un Modelo Entidad Relacion (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/entidad-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/entidad-2.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/entidad-3.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplos de entidades para un Modelo Relacional (MR) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/mr-2.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 2. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-2.1">Conjunto de entidades</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Es una colección de entidades que comparten los mismos atributos o
+					características.
+					Ejemplos:
+				</p>
+				<ul>
+					<li>
+						Todos los atletas que participan en los Juegos Olímpicos,
+						comparten sus atributos: nombre, número de identificación, edad,
+						peso, categoría...
+					</li>
+					<li>
+						Todos los países del mundo, comparten las características:
+						nombre, continente, área, lengua principal, lengua secundaria,
+						moneda, etc.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-4">Entidades débiles</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Las que su existencia depende de la existencia de un tipo de
+					entidad fuerte, es decir, si se elimina la ocurrencia de la entidad
+					regular, se eliminan todas aquellas ocurrencias de la entidad
+					débil.
+				</p>
+				<br>
+				<p>
+					En ocasiones es necesario almacenar datos de una entidad en la que no estaría interesado a
+					menos que ya tuviese una entidad relacionada en la base de datos. Por ejemplo, no necesitaría
+					almacenar datos acerca de órdenes de ventas a menos que tuviese clientes. Entre dos
+					entidades puede ocurrir una restricción de existencia, o dependencia de existencia. Si X y
+					Y son entidades y cada instancia de Y debe tener una instancia correspondiente de X entonces
+					se dice que Y es dependiente de la existencia de X. Esto significa que una entidad
+					Y no puede existir sin alguna entidad X. Si Y depende de la existencia de X, entonces Y
+					debe tener participación total en su conjunto de relaciones con X. Un tipo especial de
+					dependencia de existencia ocurre cuando el conjunto de entidades dependientes no tiene
+					una clave candidata y sus instancias son indistinguibles sin una relación con otra entidad.
+				</p>
+				<br>
+				<P>
+					Una entidad débil se muestra en el diagrama E-R
+					al dibujar un rectángulo doble alrededor de la entidad, y el diamante de relación se convierte en
+					diamante doble. Cuando una entidad es débil, no tiene clave primaria propia,
+					sino que es única sólo en referencia a su relación con su propietaria. Sin embargo, con
+					frecuencia tiene una clave parcial, también llamada discriminador, que permite identificar
+					de manera única las entidades débiles que pertenecen al mismo propietario. La clave parcial
+					puede ser un atributo solo o uno compuesto.
+				</P>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplos de entidad débil para un Modelo Entidad Relacion (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/entidad-debil-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 3. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplos de entidad débil para un Modelo Relacional (MR) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 4. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						Por cada entidad débil se crea una tabla.
+					</li>
+					<li>
+						Se procede con los atributos igual que para las entidades fuertes o regulares.
+					</li>
+					<li>
+						Las claves conforman La clave primaria de la tabla que representa a la entidad fuerte +
+						atributo/s que representa al identificador parcial de la entidad debil
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-3.1">Tipos de entidades debiles</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li> Dependencia en existencia: entre entidades, si desaparece una instancia de entidad fuerte
+						desaparecerán las instancias de entidad débiles que dependan de la primera. La representación de
+						este tipo de dependencia incluirá una E en el interior de la relación débil.
+					</li>
+					<li>
+						Dependencia en identificación: debe darse una dependencia en existencia y además, una ocurrencia
+						de
+						la entidad débil no puede identificarse por sí misma, debiendo hacerse mediante la clave de la
+						entidad fuerte asociada. La representación de este tipo de dependencia incluirá una ID en el
+						interior de la relación débil.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-5">Atributos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Son características de las entidades.
+					Propiedades asociadas a un conjunto de entidades.
+				</p>
+				<p>
+					Mediante los atributos representamos las propiedades de los
+					objetos de nuestro interés.
+					<br><br>
+					Para cada atributo, existe un conjunto de valores permitidos
+					llamado dominio o conjunto de valores, el
+					dominio define los valores potenciales que un atributo podría tener.
+					Por ejemplo, el dominio del atributo nombre_cliente puede ser el conjunto de todas las cadenas de
+					textos
+					de una cierta longitud.
+				</p>
+				<br>
+				<p>
+					Los atributos de una entidad representan las propiedades definitorias o cualidades del tipo
+					de entidad. Para el tipo de entidad ESTUDIANTE, las propiedades definitorias pueden ser la ID,
+					nombre, especialidad y número de créditos acumulados del estudiante. Los atributos son la
+					representación en el modelo de dichas propiedades, a saber: stuId, stuApellido,
+					stuNombre,NivelDeEstudio
+					y creditos. Por lo general, una entidad tendrá un valor para cada uno de sus
+					atributos. Un atributo se representa en un diagrama E-R mediante un óvalo con el nombre
+					del atributo en el interior. Una línea conecta el óvalo del atributo con el rectángulo del conjunto
+					de entidades que describe.
+				</p>
+				<br>
+				<p>
+					Tal como con las entidades, diferentes diseñadores pueden no
+					estar de acuerdo acerca de los atributos para un conjunto de entidades. Por ejemplo, otro
+					diseñador puede elegir incluir stuDireccion, stuTelefono y stuEstado, pero no creditos. Además,
+					lo que parece ser un atributo para un diseñador puede ser una entidad para otro. Por ejemplo,
+					NivelDeEstudio
+					puede verse como una entidad en un diseño diferente. Al elegir si un objeto debe
+					ser una entidad o un atributo, el diseñador consideraría si el objeto describe a otro objeto y
+					si tiene valores para sus instancias. En dicho caso, es mejor representar el objeto como un
+					atributo. Si es difícil identificar los posibles valores, es más probable que el objeto sea una
+					entidad.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo para un Modelo Entidad Relacion (MER)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/atributo-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/atributo-2.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/atributo-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 5. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Los atributos para representarlos en un Modelo relacional (MR) van a ir seguido del nombre de la
+					entidad,
+					encerrados entre paréntesis y separados por comas (,).
+					<br><br>
+					Estos tipos de atributos también se les conoce como atributos simples o atributos atómicos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo para un Modelo Relacional (MR)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-4.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 6. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.1">Tipos de atributos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					¿Todos los atributos son iguales? Claro que no. Existen varias características que hacen que los
+					atributos asociados a una entidad o relación sean diferentes, los clasificaremos según varios
+					criterios.
+				</p>
+				<ul>
+					<li>
+						Valores nulos
+					</li>
+					<li>
+						Atributos multivaluados
+					</li>
+					<li>
+						Atributos monovaluados
+					</li>
+					<li>
+						Atributos compuestos
+					</li>
+					<li>
+						Atributos derivados
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.2">Atributos de valores nulos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En ocasiones el valor de dicho atributo se desconoce en el momento actual o no está definido para
+					una instancia particular. En una base de datos, a algunos atributos se les puede permitir tener
+					valores nulos para algunas instancias de entidades.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.3">Atributos de valores multivaluados</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					lgunos atributos pueden tener valores múltiples para una instancia de entidad. Por ejemplo, los
+					estudiantes pueden tener más de una dirección de correo electrónico. Si es posible
+					que alguna instancia de entidad tenga valores múltiples para un atributo particular, se usa
+					un óvalo doble alrededor del nombre del atributo. El óvalo doble no se debe interpretar
+					como que todas las instancias deban tener valores múltiples, sólo que algunas instancias
+					pueden tenerlos.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.4">Atributos de valores monovaluados</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					es aquél que tiene un único valor para cada ocurrencia de entidad.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo multivaluado o monovaluado para un Modelo Entidad Relacion (MER)
+				</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/atributo-multivaluado-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/atributo-multivaluado-2.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/atributo-multivaluado-3.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 7. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Alugnos autores agregan los valores de cardinalidad para este tipo de atributos.
+					<br><br>
+					Para representar este dipo atributos en un modelo relacional (MR) se pueden utilizar dos tipos
+					de notaciones, La eleccion final va ser del administrador de la base de datos ADBMS.
+				</p>
+				<ul>
+					<li>
+						1. Se crea un solo campo con ese valor en el modelo relacional y se especifica que en el
+						gestor de base de datos ese campo va tener que ser de tipo ENUM.
+					</li>
+					<li>
+						2. Se crea una nueva tabla que por lo general se va a llamar como la suma de la entidad actual y
+						el campo
+						multivaluado que va a contener como clave principal un valor artificial
+						auto-incrementable y como clave ajena o foranea el campo clave de la
+						entidad que tenga ese atributo multivaluado mas el el campo multivaluado.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo multivaluado o monovaluado para un Modelo Relacional (MR) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-5.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/mr-6.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 8. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<h2>¿Cómo identifico cual usar?</h2>
+				<br>
+				<p>1. Esto desición va a recaer sobre el administrador de la base de datos.</p>
+				<p>2. Ambas formas son aplicables a la mayoria de casos.</p><br>
+				<p>Pero tengamos en cuenta los siguientes aspectos:</p>
+				<ul>
+					<li>
+						1. ¿Se conoce previamente el valor que el usuario debe agregar y estos nunca van a cambiar?
+					</li>
+					<li>
+						2. ¿Si no se conoce el valor previo, el usuario puede guardar varios datos del mismo campo ?
+					</li>
+				</ul>
+				<br><br>
+				<h2>Caso 1</h2>
+				<p>
+					Supongamos que en nuestra entidad identificamos que un atributo es GÉNERO. este solo puede tomar
+					tres valores:
+					(MASCULINO, FEMENINO Y OTRO) o (M, F, O) este seria un campo monovaluado.
+				</p>
+				<ul>
+					<li>
+						¿Conocemos el valor previo? SI, ya que el usuario solo va a poder agregar (M, F, O)
+					</li>
+					<li>
+						ya que conocemos los valores previos ¿El usuario va poder agregar mas de un dato en ese campo?
+						NO, ya que una persona
+						solo puede agregar si es (M, F, O) no puede agregar varios tipos a ese campo
+					</li>
+				</ul>
+				<br>
+				<p>
+					Esto nos daría un indicio de que lo ideal es crear un solo campor donde en la base de datos se
+					especifique el ese campo
+					es ENUM y que solo va poder contener los valores (M, F, O).
+				</p>
+
+				<br><br>
+				<h2>Caso 2</h2>
+				<p>
+					Supongamos que en nuestra entidad identificamos que un atributo es TELÉFONO que tambien puede ser un
+					campo multivaluado.
+				</p>
+				<ul>
+					<li>
+						¿Conocemos el valor previo? NO, ya que cada usuario por lo general va a tener su propio numero
+						de telefono entre 7 y 12 digitos.
+					</li>
+					<li>
+						ya que NO conocemos los valores previos ¿El usuario va poder agregar mas de un dato en ese
+						campo?
+						SI o NO (dependera del ADBD), para este ejemplo supongamos que SI, ya que un usuario puede tener
+						varios numeros
+						de teléfono.
+					</li>
+				</ul>
+				<br>
+				<p>
+					Esto nos daría un indicio de que lo ideal es crear una nueva tabla donde exista el identificador del
+					usuario como campo
+					ajeno o foráneo y el atributo TELEFONO.
+				</p>
+
+				<br><br>
+				<h2>Caso 3</h2>
+				<p>
+					Supongamos que en nuestra entidad identificamos que un atributo es PAIS_DE_RESIDENCIA que tambien
+					puede ser un campo monovaluado.
+				</p>
+				<ul>
+					<li>
+						¿Conocemos el valor previo? SI, ya que cada usuario por lo general va a digitar un solo dato
+						(país) de los 195 paises reconocidos
+						actualmente.
+					</li>
+					<li>
+						ya que SI conocemos los valores previos y el usuario solo va a poder agregar un solo dato para
+						ese campo.
+						Tenemos dos opciones completamente validas. <br><br>
+						1. Crear el campo en la BD donde se especifique que es un campo ENUM y especificar los 195
+						paises que puede aceptar ese campo
+						(PUEDE SER UN TRABAJO ALGO TEDIOSO). <br><br>
+						2. Crear una nueva tabla donde esten registrados los 195 paises con un codigo de identificación
+						propio y hacer referencia a ese
+						campo en nuestra tabla de usuarios.
+						<br><br>
+						Ademas que podemos re utilizar la tabla de países para relacionarlas con otras tablas, osea que
+						hacemos
+						una base de datos mas escalable.
+					</li>
+				</ul>
+				<br>
+				<p>
+					Pueden existir mas casos variados y va a depender del juicio de cada uno cómo va ser el mejor camino
+					para
+					desarrollar el MER.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.5">Atributos compuestos</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					son atributos que pueden ser divididos en subpartes, éstas constituirán otros atributos con
+					significado propio.
+					Algunos atributos se pueden descomponer en elementos más pequeños. Por ejemplo, la
+					dirección se puede descomponer en calle, ciudad, estado y código postal, El numero de télefono que
+					se
+					puede dividir en el código del pais, Codigo del operador y el numero, etc.
+					<br><br>
+					Un atributo es un atributo compuesto si es posible descomponerlo todavía más. Se
+					indica que un atributo es compuesto al escribir su nombre en un óvalo en la forma usual y
+					luego dibujar óvalos para los componentes individuales, que se conectan mediante líneas al
+					óvalo del atributo compuesto.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo compuesto para un Modelo Entidad Relacion (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/atributo-compuesto-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/atributo-compuesto-2.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 9. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo compuesto para un Modelo Relacional (MR) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-7.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/mr-8.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 10. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Notese que en el modelo relacional no se debe especificar el atributo compuestro principal, solo se
+					deben
+					de especificar los sub atributos que conforman a este.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5.6">Atributos derivados o almacenados</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>Atributos derivados o almacenados: el valor de este tipo de atributos puede ser obtenido del valor o
+					valores de otros atributos relacionados. Un ejemplo clásico de atributo derivado es la edad. Si se
+					ha almacenado en algún atributo la fecha de nacimiento, la edad es un valor calculable a partir de
+					dicha fecha.</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo derivado para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/atributo-derivado-2.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/atributo-derivado-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/atributo-derivado-3.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 11. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo derivado para un Modelo Relacional (MR) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-9.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 12. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Notese que en el modelo relacional no se debe específicar el atributo derivado, si en algun momento
+					algun
+					usuario necesita saber el valor de este campo se debe de realizar una consulta SQL de tipo DATA
+					QUERY LANGUAJE
+					(DQL).
+				</p>
+				<ul>
+					<li>
+						SELECT DATEDIFF(NOW(), FECHA_NACIMIENTO) AS EDAD FROM NOMBRE_TABLA;
+					</li>
+					<li>
+						SELECT TIMESTAMPDIFF(YEAR, FECHA_NACIMIENTO, CURDATE()) AS EDAD;
+					</li>
+				</ul>
+				<p>
+					La funciones DATEFIFF() y TIMESTAMPDIFF() permite calcular la diferencia entre dos fechas y retorna
+					el resultado en días, meses o años.
+					El nombre y la existencia de la funcion dependera del gestor de base de datos utilizado. En este
+					caso
+					se utiliza MySQL por lo tanto la función sería TIMESTAMPDIFF().
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-6">Claves</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Intuitivamente, se piensa en una clave como en un ítem de datos que permite diferenciar
+					los registros. Es necesaria una definición más exacta del concepto de clave.
+					<br><br>
+					Está claro que es necesario identificar correctamente cada ocurrencia de entidad o relación, de este
+					modo el tratamiento de la información que se almacena podrá realizarse adecuadamente. Esta
+					distinción podría llevarse a cabo tomando todos los valores de todos los atributos de una entidad o
+					relación. Pero, en algunas ocasiones, sabemos que puede no ser necesario utilizar todos, bastando
+					con un subconjunto de ellos. Aunque puede ocurrir que ese subconjunto tenga idénticos valores para
+					varias entidades, por lo que cualquier subconjunto no será válido.
+					<br><br>
+					Por tanto, los valores de los atributos de una entidad deben ser tales que permitan identificar
+					unívocamente a la entidad. En otras palabras, no se permite que ningún par de entidades tengan
+					exactamente los mismos valores de sus atributos. Teniendo en cuenta esto, presta atención a los
+					siguientes conceptos:
+				</p>
+				<ul>
+					<li>
+						Super clave
+					</li>
+					<li>
+						Clave candidata
+					</li>
+					<li>
+						Claves alternativas
+					</li>
+					<li>
+						Clave primaria - Primary Key
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.1">Super clave</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una superclave es un atributo o un conjunto de atributos que identifican de manera única
+					una entidad. Eso significa que siempre permite diferenciar una instancia de entidad de otra.
+					Por ejemplo, para el conjunto de entidades ESTUDIANTE, {estudiante_id} es una superclave porque se
+					puede usar para identificar de manera única cada estudiante. Si tiene una lista de todos los
+					estudiantes, con sus ID, apellidos, nombres, especialidades y créditos, y se le dice el valor
+					estudiante_id, sólo hay un estudiante en la lista con dicho valor. Si se le dice el apellido del
+					estudiante, es posible que no esté seguro de cuál estudiante elegir, pues dos o más estudiantes
+					pueden tener el mismo apellido. Por tanto, {stuLastName} no es una superclave.
+					<br><br>
+					Para identificar una superclave requiere considerar el significado de los atributos, una noción
+					semántica,
+					antes de decidir si es única sobre todas las extensiones. Las superclaves representan una
+					restricción que evita que dos entidades tengan alguna vez el mismo valor para dichos atributos.
+					Representa una suposición hecha acerca del minimundo que se usa en el modelo.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.2">Claves candidatas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Dado que una superclave como {estudiante_id,creditos} puede contener atributos adicionales que no
+					son necesarios para la identificación única de instancias de entidad, el interés está en encontrar
+					superclaves que no contengan estos atributos adicionales. En este ejemplo, el atributo
+					adicional es claramente creditos. Una clave candidata es aquella que no contiene atributos
+					adicionales. Una clave candidata se define como una superclave tal que ningún subconjunto
+					propio de sus atributos sea por sí mismo una superclave. En el ejemplo, {estudiante_id,creditos} no
+					es
+					una clave candidata porque contiene un subconjunto, {estudiante_id}, que es una superclave. Sin
+					embargo, {estudiante_id} por sí mismo es una clave candidata, pues no tiene subconjunto propio
+					que identifique entidades. Puede haber muchas claves candidatas para un conjunto de entidades. Si
+					se almacenan números de seguridad social de estudiantes, entonces {numero_seguridad_social}
+					también sería una clave candidata, siempre que cada estudiante tenga un número de seguridad social.
+					Note que una clave candidata puede consistir en un solo atributo, como {estudiante_id} y
+					{numero_seguridad_social}, o puede ser una combinación de atributos. Por ejemplo, la combinación
+					{nombre,apellido,dirección}, si siempre es única, puede ser una clave candidata para
+					algún conjunto de entidades. Cuando una clave consiste en más de un atributo, se le llama
+					clave compuesta.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.3">Claves alternativas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Son el resto de claves candidatas que no han sido escogidas como clave primaria.</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6.4">Clave primaria</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Un conjunto de entidades puede tener varias claves candidatas. El diseñador de la base de
+					datos elige entre ellas e identifica una como la forma normal de identificar entidades y acceder a
+					los registros. Ésta se convierte en la clave primaria. En otras palabras, la clave primaria es la
+					clave candidata “triunfadora”, aquella que en realidad se elige. La clave primaria
+					puede ser una sola clave de atributo o una clave compuesta. Con frecuencia, las otras claves
+					candidatas se convierten en claves alternativas, cuyos valores únicos proporcionan otro
+					método de acceder a los registros. El término clave secundaria por lo general significa un
+					atributo o conjunto de atributos cuyos valores, no necesariamente únicos, se usan como un
+					medio de acceder a los registros. En el ejemplo, stuId puede ser la clave primaria para el
+					conjunto de entidades Student. Si socSecNo también se almacena, puede ser una clave alternativa. El
+					atributo lastName se puede usar como una clave secundaria. A pesar de que se
+					permitan apellidos duplicados, puede usar el apellido para auxiliarse a encontrar el registro
+					de un estudiante si no se conoce la ID del estudiante o su número de seguridad social. Por
+					lo general se crea un índice en un campo de clave secundaria, lo que permite rápida recuperación de
+					registros con un valor particular del atributo indexado. Entonces los registros se
+					pueden examinar individualmente para encontrar el deseado
+					<br><br>
+					Una característica importante de una clave primaria es que ninguno de sus atributos tendrá valores
+					nulos.
+					Si permitiera valores nulos en las claves, no
+					tendría posibilidad de diferenciar las entidades, pues dos entidades con valores nulos para
+					el mismo atributo de clave serían indistinguibles. Esto se sigue de la definición de clave
+					candidata, de modo que todos los atributos en una clave candidata son necesarios para una
+					identificación única de las instancias de entidad. Para garantizar la exactitud de los datos,
+					también se debe insistir en que ningún atributo de una clave candidata tiene permiso de
+					poseer valores nulos. Al crear una base de datos, por lo general se identifica la clave primaria de
+					modo que el sistema fortalecerá las propiedades no nula y única, y se reforzará el
+					estatus de clave de las claves candidatas al especificar que deben ser únicas. La clave primaria de
+					una entidad se subraya en el diagrama E-R.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo clave o principal para un Modelo Entidad Relación (MER)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/atributo-principal-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/atributo-principal-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 13. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Notese que en el modelo entidad relación sólo denotamos la clave primaria con la linea subrayada el
+					atributo
+					unico que va a identificar cada registro.
+					Para estos diagramas no es necesario indicar con lineas subrayadas las claves candidatas ni
+					alternativas.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo clave o principal para un Modelo Relacinal (MR)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-10.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/mr-11.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 14. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>Notese que tambien para el modelo relacional escribimos la clave primaria con una linea solida bajo
+					nombre del campo clave.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-7">Clave Foránea</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una clave foránea, también conocida como clave externa, es un concepto fundamental en las bases de
+					datos relacionales. Se utiliza para establecer y mantener relaciones entre dos tablas en una base de
+					datos. En términos más simples, una clave foránea es un campo o conjunto de campos en una tabla que
+					hace referencia a la clave primaria o a otra clave única en otra tabla.
+
+					Cuando se define una clave foránea en una tabla, se establece una relación entre esta tabla (la
+					tabla secundaria o hija) y otra tabla (la tabla principal o padre) en función de los valores de la
+					clave foránea y la clave primaria o única correspondiente en la tabla principal. Esta relación
+					permite mantener la integridad referencial en la base de datos, lo que significa que no se pueden
+					insertar, actualizar o eliminar registros en la tabla secundaria si esos cambios violan la relación
+					definida por la clave foránea.
+				</p>
+				<br>
+				<p>
+					En el modelo entidad relación no hay una forma oficial de representar una clave foránea pues ya solo
+					con
+					ver las cardinalidades ya uno sabe que ralacion hay entre las entidades.
+					<br><br>
+					Sin embargo algunos autores colocan el camplo clave como un atributo mas de la entidad a la que se
+					asocia Ademas
+					le agregan una linea punteada bajo su nombre. Aunque esta no es una forma oficial (NO RECOMENDADA).
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo foráneo para un Modelo Entidad Relacion (MER) <br> (NO
+					RECOMENDADA)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/clave-foranea-1.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 15. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de atributo foráneo para un Modelo Relacional (MR)</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-12.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 16. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Por otra parte en el modelo relacional si que se debe de especificar la clave foránea y de que
+					tabla viene.
+					Para esto algunos autores dibujan una linea desde el campo foraneo hasta el campo clave de la
+					entidad nativa.
+					y opcionalmente se puede colocar las siglas FK para denotar que es un campo foráneo, pero con la
+					linea punteada y la
+					flecha que apunta a la entidad principal es mas que suficiente.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-8">Claves compuestas</h2>
+			</section>
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Clave primaria compuesta</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una clave primaria compuesta, también conocida como clave primaria
+					compuesta multicolumna, es una clave primaria que consta de dos o más columnas en una tabla de base
+					de datos. En lugar de utilizar una sola columna para identificar de manera única cada fila en la
+					tabla, se utilizan múltiples columnas en combinación para formar la clave primaria.
+
+					Cuando se define una clave primaria compuesta, cada combinación única de valores en las columnas que
+					forman la clave primaria debe ser única en la tabla. Esto significa que no puede haber filas
+					duplicadas en la tabla que tengan los mismos valores para todas las columnas que componen la clave
+					primaria compuesta.
+
+					Las claves primarias compuestas se utilizan cuando una sola columna no es suficiente para
+					identificar de manera única las filas en una tabla. Por ejemplo, en una tabla de "Pedidos", donde
+					cada pedido está asociado a un cliente y a un producto, la combinación de las columnas "ID de
+					Cliente" y "ID de Producto" podría formar una clave primaria compuesta para identificar de manera
+					única cada pedido.</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Clave foránea compuesta</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una clave foránea compuesta, también conocida como clave foránea compuesta
+					multicolumna, es una clave foránea que consta de dos o más columnas en una tabla y que hace
+					referencia a una clave primaria o única compuesta en otra tabla.
+
+					Al igual que una clave foránea simple, una clave foránea compuesta establece una relación entre dos
+					tablas en una base de datos. Sin embargo, en lugar de hacer referencia a una sola columna en la
+					tabla principal (o padre), una clave foránea compuesta hace referencia a múltiples columnas que
+					forman una clave primaria compuesta o una clave única compuesta en la tabla principal.
+
+					La definición de una clave foránea compuesta implica que los valores en todas las columnas de la
+					clave foránea compuesta deben coincidir con los valores correspondientes en las columnas de la clave
+					primaria o única compuesta en la tabla principal. Esto garantiza que la integridad referencial se
+					mantenga entre las dos tablas.
+				</p>
+				<br>
+				<h3>
+					Mas adelante en la web se abordara un poco mas sobre este tema ya que antes para entender un poco
+					mejor este tema
+					debemos saber otros conceptos.
+				</h3>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-9">Relaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					¿Cómo interactúan entre sí las entidades? A través de las relaciones. La relación o interrelación es
+					un elemento del modelo Entidad/Relación que permite relacionar datos entre sí. En una relación se
+					asocia un elemento de una entidad con otro de otra entidad.
+					<br><br>
+					Relación: es una asociación entre diferentes entidades. En una relación no pueden aparecer dos veces
+					relacionadas las mismas ocurrencias de entidad.
+					<br><br>
+					La representación gráfica en el modelo Entidad/Relación corresponde a un rombo en cuyo interior se
+					encuentra inscrito el nombre de la relación. El rombo estará conectado con las entidades a las que
+					relaciona, mediante líneas rectas, que podrán o no acabar en punta de flecha según el tipo de
+					semantica que estemos usando.
+					<br><br>
+					En algunas ocasiones, es interesante que en las líneas que conectan las entidades con la relación,
+					se indique el papel o rol que desempeña cada entidad en la relación. Como se verá más adelante, los
+					papeles o roles son especialmente útiles en relaciones reflexivas.
+					<br><br>
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn para un Modelo Entidad Relacion (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-2.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/relacion-1.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 17. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Por otra parte en el modelo entidad relación la forma de representar las relaciones sera a través de
+					las
+					cardinalidades.
+					ya que dependiendo de estas vamos a saber si debemos propagar la clave primaria o crear una nueva
+					tabla. mas
+					adelante
+					se entendera mejor este tema con los ejercicios.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-9.1">Relación débil</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					En el contexto de un Modelo Entidad-Relación (MER), la debilidad de una relación se refiere a una
+					situación en
+					la que la existencia de una entidad depende completamente de la existencia de otra entidad a la que
+					está
+					relacionada. Esto significa que la entidad débil no puede existir por sí sola y necesita una
+					relación con otra
+					entidad para ser identificable.
+					<br><br>
+					Las relaciones débiles suelen acompañar a una entidad debil que esta relacionada con una entidad
+					fuerte. Esta
+					se
+					representa con un doble rombo y dentro se debe colocar el nombre del verbo que hay entre la relación
+					de las
+					dos entidades
+					y se debe de especificar con las siglas (ID o EX) si cada registro de la entidad débil,
+					es débil por existencia o por identificación.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn débil para un Modelo Entidad Relacion (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-debil-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/relacion-debil-2.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/relacion-debil-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 18. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Por otra parte en el modelo entidad relación la forma de representar las relaciones debiles sera a
+					través de
+					las
+					cardinalidades.
+					ya que dependiendo de estas vamos a saber si debemos propagar la clave primaria o crear una nueva
+					tabla. mas
+					adelante
+					se entendera mejor este tema con los ejercicios.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-10">Grados en una relación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					¿Pueden intervenir varias entidades en una misma relación? Claro que sí, en una relación puede
+					intervenir una
+					única entidad o varias.
+					<br><br>
+					Grado de una relación: número de entidades que participan en una relación.
+				</p>
+				<ul>
+					<li>
+						Relación Unaria o de grado 1: Es aquella relación en la que participa una única entidad. También
+						llamadas
+						reflexivas o recursivas.
+					</li>
+					<li>
+						Relación Binaria o de grado 2: Es aquella relación en la que participan dos entidades. En
+						general, tanto en
+						una primera aproximación, como en los sucesivos refinamientos, el esquema conceptual de la base
+						de datos
+						buscará tener sólo este tipo de relaciones.
+					</li>
+					<li>
+						Relación Ternaria o de grado 3: Es aquella relación en la que participan tres entidades al mismo
+						tiempo.
+					</li>
+					<li>
+						Relación N-aria o de grado n: Es aquella relación que involucra n entidades. Este tipo de
+						relaciones no son
+						usuales y deben ser simplificadas hacia relaciones de menor grado.
+					</li>
+				</ul>
+				<li>
+					Relación doble: ocurre cuando dos entidades están relacionadas a través de dos relaciones. Este tipo
+					de
+					relaciones son complejas de manejar.
+					En este gráfico puedes observar cada uno de los tipos de relaciones en función de su grado y su
+					representación
+					gráfica en el modelo Entidad/Relación
+				</li>
+			</section>
+
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.1">Relación de grado uno o Relación recursiva o Relación Reflexiva</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn reflexiva para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-reflexiva-1.png" alt="" width="50%">">
+					<img src="Imagenes/Imagenes_semantica/relacion-reflexiva-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 19. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Para el ejemplo anterior podemos decir que un empleado en una empresa tambien puede ser un jefe y
+					ese jefe va
+					a
+					tener como subordinado otros empleados que no son jefes.
+				</p>
+				<br>
+				<h3>EL MODELO RELACIÓNAL SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.2">Relación de grado dos o binária</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn binaria para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-binaria-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 20. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>EL MODELO RELACIÓNAL SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.3">Relación de grado tres o Ternaria</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn ternaria para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-ternaria-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 21. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>EL MODELO RELACIÓNAL SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.4">Relación de grado n (Superiores al grado 3)</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de n-aria ternaria para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-n-aria-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 22. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10.5">Relación doble</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn doble para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relacion-doble-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 23. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<h3>EL MODELO RELACIÓNAL SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-11">Cardinalidades</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Es importante identificar restricciones sobre las relaciones de modo que las posibles extensiones de
+					la
+					relación corresponden a conexiones o asociaciones del mundo real. Otros dos
+					tipos de restricciones sobre las relaciones son las restricciones en la participación y la
+					cardinalidad. La
+					cardinalidad de una relación es el número de entidades a las que otra entidad
+					puede mapear bajo dicha relación. Sean X y Y conjuntos de entidades y R una relación binaria de X a
+					Y. Si no
+					hubiera restricciones de cardinalidad sobre R, entonces cualquier número
+					de entidades en X podría relacionarse con cualquier número de entidades en Y.
+					<br>
+					Sin embago por lo general, existen restricciones sobre el número de entidades correspondientes. Se
+					distinguen cuatro tipos de relaciones binarias 1:1, 1:N, N:1, M:N.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-11.1">Cardinalidades en entidades también conocidas cómo interrelaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si existe cardinalidad en las relaciones, supondrás que también existe para las entidades. Estás en
+					lo cierto, la cardinalidad con la que una entidad participa en una relación especifica el número
+					mínimo y el número máximo de correspondencias en las que puede tomar parte cada ejemplar de dicha
+					entidad. Indica el número de relaciones en las que una entidad puede aparecer.
+					<br><br>
+					Sean las entidades A y B, la participación de la entidad A en una relación es obligatoria (total) si
+					la existencia de cada una de sus ocurrencias necesita como mínimo de una ocurrencia de la entidad B
+					(ver figura). En caso contrario, la participación es opcional (parcial).
+					<br><br>
+					La cardinalidad de una entidad se representa con el número mínimo y máximo de correspondencias en
+					las que puede tomar parte cada ejemplar de dicha entidad, entre paréntesis. Su representación
+					gráfica será, por tanto, una etiqueta del tipo (0,1), (1,1), (0,N) o (1,N). El significado del
+					primer y segundo elemento del paréntesis corresponde a (cadinalidad mínima, cardinalidad máxima):
+					<br><br>
+					Cardinalidad mínima. Indica el número mínimo de asociaciones en las que aparecerá cada ocurrencia de
+					la entidad (el valor que se anota es de cero o uno, aunque tenga una cardinalidad mínima de más de
+					uno, se indica sólo un uno). El valor 0 se pondrá cuando la participación de la entidad sea
+					opcional.
+					Cardinalidad máxima. Indica el número máximo de relaciones en las que puede aparecer cada ocurrencia
+					de la entidad. Puede ser uno, otro valor concreto mayor que uno (tres por ejemplo) o muchos (se
+					representa con n).
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (1:1) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 24. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (1:1) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 25. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (1:N) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 26. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (N:1) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-4.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 27. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (N:M) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-5.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 28. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (N:M) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-6.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 29. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de interrelación (N:M) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/interrelacion-7.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 30. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+
+				<p>
+					Debemos tener en cuenta que puede haber cualquier tipo de orden y relación entre las entidades, pero
+					cuidado:
+				</p>
+				<ul>
+					<li>
+						En las interrelaciones las cardinalidades mínimas por lo general deben ser cero (0) o uno (1),
+						rara vez se ve que sea muchos (N). Aunque esto puede cambiar dependiendo del universo del
+						discurso.
+					</li>
+					<li>
+						En las interrelaciones las cardinalidades máximas por lo general deben ser uno (1) o muchos (N),
+						rara vez o nunca va a ser cero (0).No tendria mucho sentido lógico a la hora de realizar una BD,
+						aunque esto puede cambiar dependiendo del universo del discurso.
+					</li>
+				</ul>
+
+				<h3>EL MODELO RELACIÓNAL DE CADA UNA DE ESTAS RELACIONES SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE
+					EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-11.2">Cardinalidades en relaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cardinalidad de una relación: Es el número máximo de ocurrencias de cada entidad que pueden
+					intervenir en una
+					ocurrencia de relación. La cardinalidad vendrá expresada siempre para relaciones entre dos
+					entidades.
+					Dependiendo del número de ocurrencias de cada una de las entidades pueden existir relaciones uno a
+					uno, uno a
+					muchos, muchos a uno y muchos a muchos.
+					<br><br>
+					Una posible representación de la cardinalidad de las relaciones es la que hemos visto en el ejemplo
+					anterior.
+					Podríamos representar el resto de cardinalidades mediante las etiquetas 1:1, 1:N, N:1, M:N que se
+					leerían
+					respectivamente: uno a uno, uno a muchos, muchos a uno y muchos a muchos.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Relación UNO A UNO (1:1)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Relación uno a uno. Una relación R de X a Y es uno a uno si cada entidad en X se asocia con
+					cuando mucho una entidad en Y e, inversamente, cada entidad en Y se asocia con cuando mucho una
+					entidad en X.
+					Un ejemplo de relación uno a uno es la relación de
+					(jefe) a Department. Cada jefe dirige al menos un departamento, y cada
+					departamento tiene cuando mucho un jefe. En la vida familiar, un ejemplo de relación uno a uno es la
+					relación
+					de matrimonio monógamo. En cualquier momento
+					dado, cada esposo está casado con sólo una esposa, y cada esposa con un esposo.
+				</p>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn (1:1) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relación-1u1-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/relación-1u1-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 31. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Relación UNO A MUCHOS o de MUCHOS A UNO (1:N) o (N:1)</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					uno a muchos. Una relación R de X a Y es uno a muchos si cada entidad en X se
+					puede asociar con muchas entidades en Y, pero cada entidad en Y se asocia con
+					cuando mucho una entidad en X. La palabra “muchos” se aplica al posible número
+					de entidades con las que se asocia otra. Para una instancia dada, pueden existir cero,
+					uno, dos o más entidades asociadas, pero si alguna vez es posible tener más de una,
+					se usa la palabra “muchas” para describir la asociación. La relación entre FACULTAD y
+					CLASES es uno a muchas, si supone que no hay docencia colectiva. Cada miembro del
+					personal docente puede impartir muchas clases, pero cada clase se imparte por sólo
+					un miembro del personal docente. En una familia, la tradicional relación madre a
+					hijo es uno a muchas. Una madre puede tener muchos hijos, pero cada hijo sólo tiene
+					una madre (de nacimiento).
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn (1:N) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relación-1uM-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/relación-1uM-2.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/relación-1uM-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 32. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Relación MUCHOS A MUCHOS (N:M)</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					muchos a muchos. Una relación R de X a Y es muchos a muchos si cada entidad en
+					X se puede asociar con muchas entidades en Y y cada entidad en Y se puede asociar
+					con muchas entidades en X. La relación entre Student y Class es muchos a muchos.
+					Cada estudiante puede inscribirse en muchas clases (es decir, más de una) y cada
+					clase puede tener muchos estudiantes inscritos. En una familia, la relación abuelo a
+					nieto ilustra una relación muchos a muchos. Un abuelo puede tener muchos nietos, y
+					un nieto puede tener muchos abuelos. La relación padre a hijo también es muchos a
+					muchos, pues cada hijo puede tener dos padres, y cada padre muchos hijos.
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de relaciòn (M:N) para un Modelo Entidad Relación (MER) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/relación-NuM-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/relación-NuM-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 33. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+
+				<p>
+					Debemos tener en cuenta que puede haber cualquier tipo de orden y relación entre las cardinalidades
+					de cada , pero cuidado:
+				</p>
+				<ul>
+					<li>
+						En las relaciones las cardinalidades máximas que se aplican a las relaciones por lo general
+						deben ser uno (1) o muchos (M),
+						esto va ligado al valor maximo de cada interrelación y casi nunca o nunca vamos a ver que los
+						valores máximos de una relación
+						sea cero (0)
+					</li>
+				</ul>
+
+				<h3>EL MODELO RELACIÓNAL DE CADA UNA DE ESTAS RELACIONES SE EXPLICARÁ EN EL PRÓXIMO MÓDULO DONDE SE
+					EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-12">Modelo Entidad Relaciòn Extendido (MERE)</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Hemos visto que a través del modelo Entidad/Relación se pueden modelar la gran mayoría de los
+					requisitos que una base de datos debe cumplir. Pero existen algunos que ofrecen especial dificultad
+					a la hora de representarlos a través de la simbología tradicional del modelo E/R. Para solucionar
+					este problema, en el modelo Entidad/Relación Extendido se han incorporado nuevas extensiones que
+					permiten mejorar la capacidad para representar circunstancias especiales. Estas extensiones intentan
+					eliminar elementos de difícil o incompleta representación a través de la simbología existente, como
+					por ejemplo relaciones con cardinalidad N:M, o la no identificación clara de entidades.
+					<br><br>
+					A continuación, se detallan estas nuevas características que convierten al modelo E/R tradicional en
+					el modelo Entidad/Relación Extendido, como son: tipos de restricciones sobre las relaciones,
+					especialización, generalización, conjuntos de entidades de nivel más alto y más bajo, herencia de
+					atributos y agregación.
+				</p>
+				<br>
+				<h3>EL MODELO RELACIÓNAL DE CADA UNA DE LAS SIMBOLOGIAS QUE SE VERAN EN EL MODELO ENTIDAD RELACIÓN
+					EXTENDIDO
+					(MERE) SE DETALLARÁN EN EL PRÓXIMO MÓDULO DONDE SE EMPLEARÁN CON ALGÚN EJEMPLO.</h3>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-13">Restricciones en las relaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					La primera extensión que el modelo Entidad/Relación Extendido incluye, se centra en la
+					representación de una serie de restricciones sobre las relaciones y sus ejemplares, vamos a
+					describirlas:
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-13.1">Restricción de exclusividad</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cuando existe una entidad que participa en dos o más relaciones y cada ocurrencia de dicha entidad
+					sólo puede pertenecer a una de las relaciones únicamente, decimos que existe una restricción de
+					exclusividad. Si la ocurrencia de entidad pertenece a una de las relaciones, no podrá formar parte
+					de la otra. O se produce una relación o se produce otra pero nunca ambas, ni a la vez ni por
+					separado.
+					<br><br>
+					Por ejemplo, los empleados, en función de sus capacidades, o son diseñadores de productos o son
+					operarios y los fabrican, no es posible que ningún empleado sea diseñador y fabricante, ni a la vez
+					ni por separado.
+					<br><br>
+					La representación gráfica en el modelo Entidad/Relación Extendido de una restricción de exclusividad
+					se realiza mediante un arco que engloba a todas aquellas relaciones que son exclusivas.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de restricciòn de exclusividad para un Modelo Entidad Relación (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/restriccion-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 34. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-13.2">Restricción de exclusión</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Este tipo de restricción se produce cuando las ocurrencias de las entidades sólo pueden asociarse
+					utilizando una única relación. O se produce una relación o se produce otra pero nunca ambas de forma
+					simultánea. La entidad si podrá actuar en todas las relaciones pero siempre por separado.
+					<br><br>
+					Pongamos un ejemplo, un profesor no puede recibir e impartir el mismo curso, aunque al contrario que
+					en la restricción anterior puede impartirlo o recibirlo.. Pero si un profesor imparte un determinado
+					curso, no podrá estar recibiéndolo simultáneamente y viceversa. Se establecerá, por tanto, una
+					restricción de exclusión que se representa mediante una línea discontinua entre las dos relaciones,
+					tal y como se muestra en el ejemplo.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de restricciòn de exclusión para un Modelo Entidad Relación (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/restriccion-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 35. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-13.3">Restricción de inclusividad</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Este tipo de restricciones se aplican cuando es necesario modelar situaciones en las que para que
+					dos ocurrencias de entidad se asocien a través de una relación, tengan que haberlo estado antes a
+					través de otra relación.
+					<br><br>
+					Por ejemplo, para que un empleado pueda trabajar como diseñador de productos deber haber asistido,
+					al menos, a dos cursos.
+					<br><br>
+					Se representará mediante un arco acabado en flecha, que partirá desde la relación que ha de
+					cumplirse primero hacia la otra relación. Se indicará junto al arco la cardinalidad mínima y máxima
+					de dicha restricción de inclusividad. En el ejemplo, (2,n) indica que un empleado ha de recibir 2
+					cursos como mínimo antes de poder diseñar productos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de restricciòn de inclusividad para un Modelo Entidad Relación (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/restriccion-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 36. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-13.4">Restricción de inclusión</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Se establece una restricción de inclusión cuando todo ejemplar de una entidad, para participar en la
+					asociación con otro elemento de otra entidad mediante una interrelación, es necesario que ambos
+					elementos estén asociados por una segunda interrelación por naturaleza.
+					<br><br>
+					Como se ve en el ejemplo, para que un hombre se divorcie de una mujer, previamente ha dehaber otra
+					interrelación, haberse casado con ella. Se representa mediante una flecha discontinua entre las dos
+					relaciones, tal y como se muestra en el ejemplo.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de restricciòn de inclusión para un Modelo Entidad Relación (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/restriccion-4.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 37. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-14">Jerarquias generalización y especialización</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					La segunda extensión incorporada en el modelo Entidad/Relación Extendido se centra en nuevos tipos de
+					relaciones que van a permitir modelar la realidad de una manera más fiel. Estos nuevos tipos de relación
+					reciben el nombre de jerarquías y se basan en los conceptos de generalización, especialización y herencia.
+					<br><br>
+					Cuando estamos diseñando una base de datos puede que nos encontremos con conjuntos de entidades que posean
+					características comunes, lo que permitiría crear un tipo de entidad de nivel más alto que englobase dichas
+					características. Y a su vez, puede que necesitemos dividir un conjunto de entidades en diferentes subgrupos de
+					entidades por tener éstas, características diferenciadoras. Este proceso de refinamiento
+					ascendente/descendente, permite expresar mediante la generalización la existencia de tipos de entidades de
+					nivel superior que engloban a conjuntos de entidades de nivel inferior. A los conjuntos de entidades de nivel
+					superior también se les denomina superclase o supertipo. A los conjuntos de entidades de nivel inferior se les
+					denomina subclase o subtipo.
+					<br><br>
+					Por tanto, existirá la posibilidad de realizar una especialización de una superclase en subclases, y
+					análogamente, establecer una generalización de las subclases en superclases. La generalización es la reunión
+					en una superclase o supertivo de entidad de una serie de subclases o subtipos de entidades, que poseen
+					características comunes. Las subclases tendrán otras características que las diferenciarán entre ellas.
+					<br><br>
+					¿Cómo detectamos una generalización? Podremos identificar una generalización cuando encontremos una serie de
+					atributos comunes a un conjunto de entidades, y otros atributos que sean específicos. Los atributos comunes
+					conforman la superclase o supertipo y los atributos específicos la subclase o subtipo.
+					<br><br>
+					Las jerarquías se caracterizan por un concepto que hemos de tener en cuenta, la herencia. A través de la
+					herencia los atributos de una superclase de entidad son heredados por las subclases. Si una superclase
+					interviene en una relación, las subclases también lo harán.
+					<br><br>
+					¿Cómo se representa una generalización o especialización? Existen varias notaciones, pero hemos de convenir
+					que la relación que se establece entre una superclase de entidad y todos sus subtipos se expresa a través de
+					las palabras ES UN, o en notación inglesa IS A, que correspondería con ES UN TIPO DE. Partiendo de este punto,
+					una jerarquía se representa mediante un triángulo invertido, sobre él quedará la entidad superclase y
+					conectadas a él a través de líneas rectas, las subclases.
+					<br><br>
+					En el ejemplo de la imagen, las subclases INVITADO, REGISTRADO y ADMINISTRADOR constituyen subclases de la
+					superclase USUARIO. Cada una de ellas aporta sus propias características y heredan las pertenecientes a su
+					superclase.
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Generalización para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/generalizacion.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 38. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Especialización para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/especializacion.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 39. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una generalización/especialización podrá tener las siguientes restricciones semánticas:
+				</p>
+				<ul>
+					<li>
+						Totalidad: una generalización/especialización será total si todo ejemplar de la superclase pertenece a
+						alguna
+						de las subclases.
+					</li>
+					<li>
+						Parcialidad: una generalización/especialización será parcial si no todos los ejemplares de la superclase
+						pertenecen a alguna de las subclases.
+					</li>
+					<hr>
+					<li>
+						Solapamiento: una generalización/especialización presentará solapamiento si un mismo ejemplar de la
+						superclase
+						puede pertenecer a más de una subclase.
+					</li>
+					<li>
+						Exclusividad: una generalización/especialización presentará exclusividad si un mismo ejemplar de la
+						superclase
+						pertenece sólo a una subclase.
+					</li>
+				</ul>
+
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia parcial para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-5.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 40. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia total para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-6.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 41. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia con solapamiento para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-7.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 42. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia exclusiva para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-8.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 43. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia parcial y solapada para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 44. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia total y solapada para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 45. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia parcial y exclusiva para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 46. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Jerarquia total y exclusiva para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/g-e-4.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 47. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-15">Agregación</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Abordamos ahora la tercera de las extensiones del modelo Entidad/Relación Extendido, la Agregación. En el
+					modelo Entidad/Relación no es posible representar relaciones entre relaciones. La agregación es una
+					abstracción a través de la cual las relaciones se tratan como entidades de nivel más alto, siendo utilizada
+					para expresar relaciones entre relaciones o entre entidades y relaciones.
+					Supongamos un ejemplo en el que hemos de modelar la siguiente situación: una empresa de selección de personal
+					realiza entrevistas a diferentes aspirantes. Puede ser que, de algunas de estas entrevistas a aspirantes, se
+					derive una oferta de empleo, o no.
+					<!-- En el siguiente gráfico se representan tres soluciones, las dos primeras
+					erróneas y una tercera correcta, utilizando una agregación. -->
+					<br><br>
+					Como has podido observar, la representación gráfica de una agregación se caracteriza por englobar con un
+					rectángulo las entidades y relación a abstraer. De este modo, se crea una nueva entidad agregada que puede
+					participar en otras relaciones con otras entidades. En este tipo de relación especial de agregación, la
+					cardinalidad máxima y mínima de la entidad agregada siempre será (1,1) no indicándose por ello en el esquema.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de agregación para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/agregacion.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 48. Imagen tomada de: [Elaboraciòn propia].</q></p>
+					<img src="Imagenes/Imagenes_semantica/agregacion-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 49. Imagen tomada de: [Nacho Cabanes].</q></p>
+					<img src="Imagenes/Imagenes_semantica/agregacion-3.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 47. Imagen tomada de: [SANTUCHO PABLO-TRABAJO].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-16">Entidades Asociativas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Consiste en “convertir” una interrelación (“rombo”) en una entidad, esa nueva entidad se llama asociativa.
+					Por lo general esas relaciones asociativas vienen dadas cuando hay una relación de dos entidades con
+					cardinalidades máximas de muchos (N:M) o Cuando tengamos una relación de uno y muchos (1:M) en una entidad
+					y la cardinalidad mínima de la entidad del lado contrario sea cero (0:1).
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de asociación para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/asociacion-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/asociacion-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 50."> Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					No se deben poner porque si (Entonces cualquier rombo seria potencialmente una entidad asociativa).
+					Su aparición está motivada por los siguientes objetivos.
+					<br><br>
+					1. Las interrelaciones n-arias (sobre todo las n >=4) son difíciles de manejar, se puede bajar el grado de
+					todas nuestras relaciones n-arias (n>=3) y dejarlas todas como binarias.
+					Las relaciones de grado tres son algo comunes ya que algunos autores consideran que este tipo de relaciones
+					aún son fáciles de manejar.
+					<br><br>
+					2. Impedir que el grado de una interrelación aumente. A medida que realizamos un modelo entidad relación
+					pueden aparecer nuevas “entidades” que se relacionan con las existentes y podrían aumentar el grado de
+					interrelación, haciéndola incomprensible. Mediante el uso de entidades asociativas, manejamos el grado a
+					“raya”.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Ejemplo de asociación para un Modelo Entidad Relación Extendido (MERE) </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/asociacion-3.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes_semantica/asociacion-4.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 51. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-17">Otro tipo de semánticas o Notaciones</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					La notación original de Peter Chen considera iconos o figuras para cada elemento del modelo, así, las
+					entidades se
+					representan con rectángulos, las relaciones con un rombo y los atributos con óvalos. Las líneas unen las
+					relaciones
+					(los rombos) con las entidades (rectángulos) y las entidades con los atributos (óvalos).
+					<br><br>
+					La obligatoriedad indica si esa relación se fuerza o no, es decir, si debe existir una instancia de la entidad
+					para exigir
+					la relación o si la relación es opcional, es decir, puede no existir una instancia de entidad.
+					Algunos autores tratan la cardinalidad y la opcionalidad bajo un mismo concepto, en cuyo caso agregan a la
+					cardinalidad un valor mínimo de cero (0). Otros autores, como Richard Barker, las tratan como conceptos
+					distintos,
+					que se muestran esquemáticamente diferenciados.
+					Los atributos se representan textualmente con un nombre en singular y en minúsculas para diferenciarlos de las
+					entidades.
+					<br><br>
+					Si bien la notación de Chen sigue siendo muy utilizada, otras notaciones posteriores han logrado aceptación y
+					popularidad, particularmente cuatro se consideran válidas en el DNP para dibujar el modelo:
+				</p>
+				<ul>
+					<li>
+						Notación Barker
+					</li>
+					<li>
+						Pata de gallo o Crow´s foot
+					</li>
+					<li>
+						Notación IDEF1X / (Notación Bachman)
+					</li>
+					<li>
+						Notación IE (Information Engineering)
+					</li>
+					<li>UML</li>
+				</ul>
+				<p>
+					Estas tres notaciones obvian el elemento gráfico para los atributos y los relegan a simple descripción textual
+					dentro de
+					las entidades, las entidades mantienen la forma de rectángulo, pero en la notación de Barker los bordes son
+					redondeados. Las relaciones se representan igualmente con líneas que conectan las entidades, pero ciertas
+					variaciones en el dibujo de las líneas aportan semántica para la cardinalidad y la opcionalidad
+
+				</p>
+				<br><br>
+				<p>Tambien encontramos otro tipo de semánticas definias por:</p>
+				<ul>
+					<li>
+						Rein85
+					</li>
+					<li>
+						[EN 2002]	
+					</li>
+					<li>
+						[MPM 1999]
+					</li>
+					<li>
+						[SKS 1998]
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Otras notaciones para un MERE y MR</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 52. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Otras notaciones para un MERE y MR</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 53. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 54. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+			
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-3.png" alt="ss" width="50%">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-4.png" alt="ss" width="50%">
+					<p id="cita-imagen"><q>Imagen 55. Imagen tomada de: [Video].</q></p>
+					<p></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-5.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 56. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-1-6.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 56. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 57. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-3.png" alt="" width="50%">
+					<img src="Imagenes/otras_semanticas/otra-semantica-4.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 58. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-5.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 59. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-6.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 60. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-7.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 61. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<div id="contenido-imagenes">
+					<img src="Imagenes/otras_semanticas/otra-semantica-8.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 62. Imagen tomada de: [Video].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-18">Redundancia</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una de las principales razones por las que las bases de datos aparecieron fue la eliminación de la redundancia
+					en los datos ¿Y qué es la redundancia?
+				</p>
+				<br><br>
+				<p>
+					Redundancia: reproducción, reiteración, insistencia, reincidencia, reanudación. En bases de datos hace
+					referencia al almacenamiento de los mismos datos varias veces en diferentes lugares.
+				</p>
+				<br><br>
+				<p>
+					La redundancia de datos puede provocar problemas como:
+					<br><br>
+					Aumento de la carga de trabajo: al estar almacenado un dato en varios lugares, las operaciones de grabación o
+					actualización de datos necesitan realizarse en varias ocasiones.
+					Gasto extra de espacio de almacenamiento: al estar repetidos, los datos ocupan mayor cantidad de espacio en el
+					medio de almacenamiento. Cuanto mayor sea la base de datos, más patente se hará esta problema.
+					Inconsistencia: se produce cuando los datos que están repetidos, no contienen los mismos valores. Es decir, se
+					ha actualizado su valor en un lugar y en otro no, por lo que no se sabría qué dato es válido y cual erróneo.
+					Para que una base de datos funcione óptimamente, hay que empezar realizando un buen diseño de ella. Es
+					imprescindible que nuestros diagramas E/R controlen la redundancia y, para ello, debemos analizar el esquema y
+					valorar qué elementos pueden estar incorporando redundancia a nuestra solución.
+					<br><br>
+					¿Dónde buscamos indicios de redundancia en nuestros esquemas? Existen lugares y elementos que podrían
+					presentar redundancia, por ejemplo:
+				</p>
+				<br>
+				<p>
+					Atributos redundantes cuyo contenido se calcula en función de otros. Un atributo derivado puede ser origen de
+					redundancia.
+					Varias entidades unidas circularmente o cíclica a través de varias relaciones, es lo que se conoce como un
+					ciclo. En caso de existir un ciclo, deberemos tener en cuenta las siguientes condiciones, antes de poder
+					eliminar dicha relación redundante:
+					Que el significado de las relaciones que componen el ciclo sea el mismo.
+					Que si eliminamos la relación redundante, el significado del resto de relaciones es el mismo.
+					Que si la relación eliminada tenía atributos asociados, éstos puedan ser asignados a alguna entidad
+					participante en el esquema, sin que se pierda su significado.
+					La siguiente figura representa un ciclo entre las entidades AUTOR, LIBRO y EDITORIAL.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Redundancia de información</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/redundancia-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Si lo analizamos vemos que si se conocen los libros de un autor y las editoriales que los han editado, se
+					puede deducir qué editoriales ha contratado dicho autor; de forma similar, si sabemos qué libros ha editado
+					una editorial concreta, podemos deducir qué autores han escrito para ella (la han contratado), por lo que la
+					interrelación contrata entre las entidades AUTOR y EDITORIAL es redundante. Ahora bien, si la relación
+					considerada como redundante presentara cardinalidad M:N y tuviese atributos propios (por ejemplo fecha de
+					contratación, en nuestro caso) no podría ser eliminada.
+					<br><br>
+					Como norma general, puede decirse que un ciclo no siempre implica la existencia de relaciones redundantes. En
+					este caso deberán estudiarse con detenimiento y analizar si al prescindir de una interrelación es siempre
+					posible relacionar de forma indirecta las dos entidades unidas por la interrelación considerada redundante,
+					comprobando igualmente que no se pierden atributos. Pero hay que tener en cuenta que no siempre que exista un
+					ciclo estaremos ante una redundancia.
+					<br><br>
+					Para finalizar, una apreciación. No toda redundancia es perjudicial. Existen ciertas circunstancias y
+					condiciones en las que es conveniente (sobre todo a efectos de rendimiento) introducir cierta redundancia
+					controlada en una base de datos. Por ejemplo, si el método de cálculo del valor de un determinado atributo
+					derivado es complejo (varias operaciones matemáticas o de cadenas de caracteres, varios atributos implicados,
+					etc.) y ralentiza el funcionamiento de la base de datos, quizá sea conveniente definir dicho atributo desde el
+					principio y no considerarlo como un atributo redundante. La incorporación o no de redundancia controlada
+					dependerá de la elección que haga el diseñador.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-18">Propiedades deseables de un diagrama ER</h2>
+			</section>
+
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Cuando construimos un diagrama Entidad/Relación existen una serie de propiedades o características que éste
+					debería cumplir. Quizá no se materialicen todas, pero hemos de intentar cubrir la gran mayoría de ellas. De
+					este modo, conseguiremos que nuestros diagramas o esquemas conceptuales tengan mayor calidad.
+					<br><br>
+					Estas características o propiedades deseables se desglosan a continuación:
+					<br><br>
+					♥ Completitud: Un diagrama E/R será completo si es posible verificar que cada uno de los requerimientos está
+					representado en dicho diagrama y viceversa, cada representación del diagrama tiene su equivalente en los
+					requerimientos.
+					<br><br>
+					♥ Corrección: Un diagrama E/R será correcto si emplea de manera adecuada todos los elementos del modelo
+					Entidad/Relación. La corrección de un diagrama puede analizarse desde dos vertientes:
+					Corrección sintáctica: Se producirá cuando no se produzcan representaciones erróneas en el diagrama.
+					<br><br>
+					♥ Corrección semántica:
+					Se producirá cuando las representaciones signifiquen exactamente lo que está estipulado
+					en los requerimientos. Posibles errores semánticos serían: la utilización de un atributo en lugar de una
+					entidad, el uso de una entidad en lugar de una relación, utilizar el mismo identificador para dos entidades o
+					dos relaciones, indicar erróneamente alguna cardinalidad u omitirla, etc.
+					<br><br>
+					♥ Minimalidad: Un diagrama E/R será mínimo si se puede verificar que al eliminar algún concepto presente en el
+					diagrama, se pierde información. Si un diagrama es redundante, no será mínimo.
+					Sencillez: Un diagrama E/R será sencillo si representa los requerimientos de manera fácil de comprender, sin
+					artificios complejos.
+					<br><br>
+					♥ Legibilidad: Un diagrama E/R será legible si puede interpretarse fácilmente. La legibilidad de un diagrama
+					dependerá en gran medida del modo en que se disponen los diferentes elementos e interconexiones. Esta
+					propiedad tiene mucho que ver con aspectos estéticos del diagrama.
+					<br><br>
+					♥ Escalabilidad: Un diagrama E/R será escalable si es capaz de incorporar posibles cambios derivados de nuevos
+					requerimientos.
+				</p>
+			</section>
+			<!-- //////////////////////////////////////////////////// -->
+
+			<!-- 
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n"></h2>
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<p></p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes_semantica/mr-2.png" alt="" width="50%">">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [Elaboraciòn propia].</q></p>
+				</div>
+			</section>
+		 -->
+
+
+		</div>
+
+	</div>
+	<section>
+		<!-- Pie de pagina -->
+		<footer id="pie-pagina">
+			<p>&copy; 2024 Rodrigo Cantor Vasquez. Todos los derechos reservados.</p>
+		</footer>
+	</section>
+	<script src="javascript/index.js"></script>
+</body>
+</html>

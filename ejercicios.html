@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MODELADO UML</title>
+	<link rel="stylesheet" href="estilos/estilo.css">
+</head>
+
+<body>
+	<!-- Definimos el encabezado de la pagina web para mostrar al usuario de que va a tratar la web -->
+	<header>
+		<h2 class="autor">RODRIGO CANTOR VASQUEZ</h2>
+		<h2 class="tema">MODELADO DE BASES DE DATOS <img src="Iconos/icono_titulo_3.png" width="40px" alt=""></h2>
+		<h2></h2>
+	</header>
+
+	<!-- Definimos un menu de navegacion para que el usuario vea los diferentes temas que se van a tratar en la pagina  -->
+	<nav>
+		<input type="checkbox" id="boton-menu">
+		<label id="label-menu" for="boton-menu"><img src="imagenes/menu.png"></label>
+		<a href="index.html">INICIO</a>
+		<a href="introduccion.html">INTRODUCCIÓN</a>
+		<a href="semantica.html">SEMÁNTICA</a>
+		<a href="ejemplos.html">EJEMPLOS</a>
+		<a href="ejercicios.html">EJERCICIOS</a>
+		<a href="bibliografia.html">BIBLIOGRAFÍA</a>
+	</nav>
+
+	<!-- Menu lateral izquierdo -->
+	<aside id="contenido-temario">
+		<ol>
+			<li><a target="_top" href="#sub-titulo-1" class="sub-contenido">Ejercicio 1</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-2" class="sub-contenido">Ejercicio 2</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-3" class="sub-contenido">Ejercicio 3</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-4" class="sub-contenido">Ejercicio 4</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-5" class="sub-contenido">Ejercicio 5</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-6" class="sub-contenido">Ejercicio 6</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-7" class="sub-contenido">Ejercicio 7</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-8" class="sub-contenido">Ejercicio 8</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-9" class="sub-contenido">Ejercicio 9</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-10" class="sub-contenido">Ejercicio 10</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-11" class="sub-contenido">Ejercicio 11</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-12" class="sub-contenido">Ejercicio 12</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-13" class="sub-contenido">Ejercicio 13</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-14" class="sub-contenido">Ejercicio 14</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-15" class="sub-contenido">Ejercicio 15</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-16" class="sub-contenido">Ejercicio 16</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-17" class="sub-contenido">Ejercicio 17</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-18" class="sub-contenido">Ejercicio 18</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-19" class="sub-contenido">Ejercicio 19</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-20" class="sub-contenido">Ejercicio 20</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-21" class="sub-contenido">Ejercicio 21</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-22" class="sub-contenido">Ejercicio 22</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-23" class="sub-contenido">Ejercicio 23</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-24" class="sub-contenido">Ejercicio 24</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-25" class="sub-contenido">Ejercicio 25</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-26" class="sub-contenido">Ejercicio 26</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-27" class="sub-contenido">Ejercicio 27</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-28" class="sub-contenido">Mad ejercicios</a target="_top"></li>
+			<li><a target="_top" href="#sub-titulo-n" class="sub-contenido">____________</a target="_top"></li>
+		</ol>
+	</aside>
+
+	<!-- Contenido de la web -->
+	<div id="exposicion-contenido">
+		<div id="contenedor-contenido">
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-1">Ejercicio 1</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-1-1.png" alt="" width="50%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-1-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-2">Ejercicio 2</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-2-1.png" alt="" width="80%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-2-2.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 2. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Nota súper importante <br><br>
+					Para este ejercicio nos mencionan que debemos tener almacenado un historio de los productos que nos
+					suministra cada proveedor donde debemos almacenar su fecha y cantidad de productos suministrados,
+					Pero como vemos en la siguiente imagen la clave principal de nuestra tabla pivote que está creada
+					por las claves principales de la tabla proveedor y pieza en algún momento se puede repetir y esto
+					puede hacer que falle nuestro BD. Para dar solución a target="_top" este problema podríamos hacer
+					que el campo
+					fecha se comporte como otra clave principal y de esta forma la integridad de los datos se
+					mantendría.
+					Otra solución que a target="_top" nivel personal yo propondría es crear una llave primaria
+					artificial que nos
+					ayude a target="_top" identificar cada registro de forma única y de este modo también mantendríamos
+					la integridad
+					de los datos.
+
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Consideración a target="_top" tener en cuenta</h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-2-3.png" alt="" width="40%">
+					<p id="cita-imagen"><q>Imagen 3. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-3">Ejercicio 3</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-3-1.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-3-2.png" alt="" width="70%">
+					<p id="cita-imagen"><q>Imagen 4. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-4">Ejercicio 4</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-5-1.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-5-2.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-5-3.png" alt="" width="70%">
+					<p id="cita-imagen"><q>Imagen 5. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-5">Ejercicio 5</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-6-1.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-6-2.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-6-3.png" alt="" width="70%">
+					<p id="cita-imagen"><q>Imagen 6. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-6">Ejercicio 6</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-7-1.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-7-2.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-7-3.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-7-4.png" alt="" width="70%">
+					<p id="cita-imagen"><q>Imagen 7. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-7">Ejercicio 7</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-8-1.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-8-2.png" alt="" width="70%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-8-3.png" alt="" width="70%">
+					<p id="cita-imagen"><q>Imagen 8. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Ambas soluciones son completamente validas solo hay que tener en cuenta que en mi modelo como la
+					entidad UNIDADES y la entidad VIDEO_CONFERENCIA son débiles, y además la entidad VIDEO_CONFERENCIA
+					tiene su propia llave primaria puedo hacer dos cosas: <br><br>
+					1. Pasar la llave de unidades como llave primaria y foránea a target="_top" la entidad
+					VIDEO_CONFERENCIA <br><br>
+					2. Pero como el universo del discurso mencionan que la fecha de una VIDEO_CONFERENCIA no puede
+					coincidir con otra fecha de otra VIDEO_CONFERENCIA entonces el atributo fecha al ser la llave
+					primaria y la llave primaria de la entidad unidades solo va a target="_top" ser foránea en la
+					entidad
+					VIDEO_CONFERENCIA.
+				</p>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-8">Ejercicio 8</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-9-1.png" alt="" width="100%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-9-2.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 9. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					supongamos que en el universo del discurso nos dicen que existen álbumes que están conformados por
+					distintos grupos. Por ejemplo, nos piden almacenar un álbum recopilatorio de música de los 80s. este
+					álbum estaría compuesto por distintas canciones de distintos grupos.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-9-3.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 10. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-9">Ejercicio 9</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-10-1.png" alt="" width="100%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-10-2.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 11. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<p>
+					Una pequeña modificación que hice es quitar la clave primaria del atributo fecha en la relación
+					representa ya que dependiendo del universo del discurso puede que queramos guardar todos los actores
+					que representan a target="_top" un personaje a target="_top" lo largo del tiempo o no, simplemente
+					guardar el ultimo actor que
+					represento a target="_top" ese personaje.
+				</p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-10-3.png" alt="" width="100%">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-10-4.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 12. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<div>
+					<pre style="width: 90%; white-space:pre-line; margin: auto;">
+						DROP DATABASE IF EXISTS OBRAS_TEATRALES;
+						CREATE DATABASE IF NOT EXISTS OBRAS_TEATRALES;
+						USE OBRAS_TEATRALES;
+						
+						CREATE TABLE AUTOR(
+						id INT AUTO_INCREMENT PRIMARY KEY,
+						nombres VARCHAR(40) NOT NULL,
+						apellidos VARCHAR(50) NOT NULL,
+						fecha_nacimiento DATE NULL,
+						pais VARCHAR(20)
+						);
+	
+						CREATE TABLE IF NOT EXISTS OBRA(
+						id INT AUTO_INCREMENT NOT NULL,
+						nombre VARCHAR(40) NOT NULL,
+						genero ENUM('COMEDIA', 'DRAMA', 'MUSICAL') NOT NULL,
+						sinopsis TEXT,
+						duracion TIME DEFAULT '01:00:00',
+						id_autor INT NOT NULL,
+						PRIMARY KEY (id),
+						FOREIGN KEY (id_autor) REFERENCES AUTOR (id) ON UPDATE CASCADE
+						);
+				
+						CREATE TABLE IF NOT EXISTS FUNCION(
+						id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+						fecha DATE NOT NULL,
+						hora TIME NOT NULL,
+						lugar VARCHAR(50) NOT NULL,
+						precio FLOAT NOT NULL,
+						id_obra INT NOT NULL,
+						FOREIGN KEY (id_obra) REFERENCES OBRA (id)
+						);
+				
+						CREATE TABLE IF NOT EXISTS PERSONAJE(
+						id_obra INT NOT NULL,
+						nombre_personaje VARCHAR(20) NOT NULL,
+						genero ENUM('M', 'F', 'O') NOT NULL,
+						PRIMARY KEY (id_obra, nombre_personaje),
+						CONSTRAINT FK_ID_OBRA_PERS FOREIGN KEY (id_obra) REFERENCES OBRA (id)
+						);
+				
+						CREATE TABLE IF NOT EXISTS ACTOR(
+						id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+						nombre VARCHAR(40) NOT NULL,
+						apellidos VARCHAR(50) NOT NULL,
+						fecha_nacimiento DATE NULL,
+						genero ENUM('M', 'F') DEFAULT 'F'
+						);
+				
+						CREATE TABLE IF NOT EXISTS REPRESENTACION(
+						id_actor INT NOT NULL,
+						id_obra INT NOT NULL,
+						nombre_personaje VARCHAR(20) NOT NULL,
+						fecha_actualizacion TIMESTAMP DEFAULT NOW(),
+						PRIMARY KEY(id_actor, id_obra, nombre_personaje),
+						FOREIGN KEY (id_actor) REFERENCES ACTOR (id) ON UPDATE CASCADE,
+						FOREIGN KEY (id_obra, nombre_personaje) REFERENCES PERSONAJE (id_obra, nombre_personaje)
+						);
+	
+					</pre>
+				</div>
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<h3>Notas super importantes:</h3>
+				<ul>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear una llave primaria
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear una llave foránea
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear una llave primaria compuesta
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear una llave foránea compuesta
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos algunas formas de crear restricciones de campos con el
+						atributo ENUM
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear campos por defecto con la
+						palabra
+						reservada DEFAULT.
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos campos AUTO_INCREMENTALES
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos las distintas formas de crear campos nulos y no nulos
+					</li>
+					<li>
+						En el ejemplo de MySQL anterior vemos algunos tipos de datos más comunes como: VARCHARM INT,
+						FLOAT, DATE,
+						TIME.
+					</li>
+					<li>
+						Recordemos que podemos usar La palabra reservada CONSTRAINT o evitarla a target="_top" la hora
+						de crear referencias
+						primarias o foráneas, esto solo hará que el motor asigne o no un nombre por defecto a
+						target="_top" la CONSTRAINT.
+					</li>
+					<li>
+						También podemos encontrar como aplicar la actualización de información en cascada.
+					</li>
+				</ul>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-10">Ejercicio 10</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-11-1.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 13. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-11">Ejercicio 11</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-12-1.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 14. Imagen tomada de: [Pepe Lluyot].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-12">Ejercicio 12</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-13-1.png" alt="" width="100%">
+					<p id="cita-imagen"><q>Imagen 15. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-13">Ejercicio 13</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-14-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 16. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-14">Ejercicio 14</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-15-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 17. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-15">Ejercicio 15</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-16-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 18. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-16">Ejercicio 16</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-17-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 19. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-17">Ejercicio 17</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-18-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 20. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-18">Ejercicio 18</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-19-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 20. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-19">Ejercicio 19</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-20-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 21. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-20">Ejercicio 20</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-21-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 21. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-21">Ejercicio 21</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-22-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 23. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-22">Ejercicio 22</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-23-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 24. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-23">Ejercicio 23</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-24-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 25. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-24">Ejercicio 24</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-25-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 26. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-25">Ejercicio 25</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-26-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 27. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-26">Ejercicio 26</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-27-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 28. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-27">Ejercicio 27</h2>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de ejercicio </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Imagenes-ejercicios/ejercicio-28-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 29. Imagen tomada de: [Web].</q></p>
+				</div>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-28">Mas ejercicios aquí</h2>
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<ul>
+					<li>
+						<a target="_blank"
+							href="https://www3.uji.es/~mmarques/f47/teoria/dis02.pdf">https://www3.uji.es/~mmarques/f47/teoria/dis02.pdf</a
+							target="_top">
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/recetario/enunciado_BD_recetario.pdf">https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/recetario/enunciado_BD_recetario.pdf</a
+							target="_top">
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/recetario/soluc_BD_Recetario.pdf">https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/recetario/soluc_BD_Recetario.pdf</a
+							target="_top">
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/">https://webdiis.unizar.es/asignaturas/BD/ej_modelado_BD/</a>
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://ocw.uc3m.es/mod/page/view.php?id=228">https://ocw.uc3m.es/mod/page/view.php?id=228</a>
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://ocw.uc3m.es/mod/page/view.php?id=229">https://ocw.uc3m.es/mod/page/view.php?id=229</a>
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://ocw.uc3m.es/pluginfile.php/358/mod_page/content/12/Tema2_Casos_Practicos_resueltos.pdf">https://ocw.uc3m.es/pluginfile.php/358/mod_page/content/12/Tema2_Casos_Practicos_resueltos.pdf</a>
+					</li>
+					<li>
+						<a target="_blank"
+							href="https://www.apuntesinformaticafp.com/actividades/ejercicios_modelo_datos.html">https://www.apuntesinformaticafp.com/actividades/ejercicios_modelo_datos.html</a>
+					</li>
+					<li>
+						<a target="_blank" href="http://alimentos.web.unq.edu.ar/wp-content/uploads/sites/87/2018/03/Practica-2-MR.pdf">http://alimentos.web.unq.edu.ar/wp-content/uploads/sites/87/2018/03/Practica-2-MR.pdf</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://users.dcc.uchile.cl/~mnmonsal/BD/guias/g-modeloER.pdf">https://users.dcc.uchile.cl/~mnmonsal/BD/guias/g-modeloER.pdf</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www3.uji.es/~mmarques/f47/teoria/dis02sol.pdf">https://www3.uji.es/~mmarques/f47/teoria/dis02sol.pdf</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://www3.uji.es/~mmarques/f47/teoria/dis02sol.pdf">https://www3.uji.es/~mmarques/f47/teoria/dis02sol.pdf</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://academiairigoyen.com/wp-content/uploads/2023/06/EJERCICIOS_DE_MODELAMIENTO_E_R.-Oposiciones-TAI.pdf">https://academiairigoyen.com/wp-content/uploads/2023/06/EJERCICIOS_DE_MODELAMIENTO_E_R.-Oposiciones-TAI.pdf</a>
+					</li>
+					<li>
+						<a target="_blank" href="https://elvex.ugr.es/idbis/db/#model">https://elvex.ugr.es/idbis/db/#model</a>
+					</li>
+				</ul>
+			</section>
+
+			<!-- 
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n"></h2>
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<p></p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/transformacion-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [DOC].</q></p>
+				</div>
+			</section>
+		 -->
+
+		</div>
+	</div>
+	<section>
+		<!-- Pie de pagina -->
+		<footer id="pie-pagina">
+			<p>&copy; 2024 Rodrigo Cantor Vasquez. Todos los derechos reservados.</p>
+		</footer>
+	</section>
+	<script src="javascript/index.js"></script>
+</body>
+
+</html>

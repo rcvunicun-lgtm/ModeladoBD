@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MODELADO UML</title>
+	<link rel="stylesheet" href="estilos/estilo.css">
+</head>
+
+<body>
+	<!-- Definimos el encabezado de la pagina web para mostrar al usuario de que va a tratar la web -->
+	<header>
+		<h2 class="autor">RODRIGO CANTOR VASQUEZ</h2>
+		<h2 class="tema">MODELADO DE BASES DE DATOS <img src="Iconos/icono_titulo_3.png" width="40px" alt=""></h2>
+		<h2></h2>
+	</header>
+
+	<!-- Definimos un menu de navegacion para que el usuario vea los diferentes temas que se van a tratar en la pagina  -->
+	<nav>
+		<input type="checkbox" id="boton-menu">
+		<label id="label-menu" for="boton-menu"><img src="imagenes/menu.png"></label>
+		<a href="index.html">INICIO</a>
+		<a href="introduccion.html">INTRODUCCIÓN</a>
+		<a href="semantica.html">SEMÁNTICA</a>
+		<a href="ejemplos.html">EJEMPLOS</a>
+		<a href="ejercicios.html">EJERCICIOS</a>
+		<a href="bibliografia.html">BIBLIOGRAFÍA</a>
+	</nav>
+
+	<!-- Menu lateral izquierdo -->
+	<aside id="contenido-temario" style="width: 0;">
+		<ol>
+		
+
+
+		</ol>
+	</aside>
+
+
+
+	<!-- Contenido de la web -->
+	<div id="exposicion-contenido" style="width: 100%; margin: 0;">
+
+		<div id="contenedor-contenido">
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Información recuperada de:</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<table class="tabla-contenido">
+					<tr>
+						<th>
+							Autor
+						</th>
+						<th>
+							URL
+						</th>
+						<th>
+							Calificación
+						</th>
+					</tr>
+
+					<tr>
+						<td>
+							Silvia Sokolovsky
+						</td>
+						<td>
+							<a href="https://www.youtube.com/watch?v=dvEaYtAja5g" target="_blank">https://www.youtube.com/watch?v=dvEaYtAja5g</a>
+						</td>
+						<td>
+							🌟🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							UNIVERSIDAD MADRID
+						</td>
+						<td>
+						<a href="https://ocw.uc3m.es/mod/page/view.php?id=228" target="_blank">https://ocw.uc3m.es/mod/page/view.php?id=228</a>
+						</td>
+						<td>
+							🌟🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							UNIVERSIDAD MADRID
+						</td>
+						<td>
+						<a href="https://ocw.uc3m.es/pluginfile.php/355/mod_page/content/20/modelo_relacional_tema3.pdf" target="_blank">https://ocw.uc3m.es/pluginfile.php/355/mod_page/content/20/modelo_relacional_tema3.pdf</a>
+						</td>
+						<td>
+							🌟🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							UNIVERSIDAD MADRID
+						</td>
+						<td>
+						<a href="https://media.uc3m.es/video/5b3012868f420863d08b5c23" target="_blank">https://media.uc3m.es/video/5b3012868f420863d08b5c23</a>
+						</td>
+						<td>
+							🌟🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							UNIVERSIDAD MADRID
+						</td>
+						<td>
+						<a href="https://media.uc3m.es/video/5b30128e8f420863d08b626b" target="_blank">https://media.uc3m.es/video/5b30128e8f420863d08b626b</a>
+						</td>
+						<td>
+							🌟🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=joYCYDK_Ndg&list=PLfKXnJPGTzkw2ax5KarYmhUYSWXh4TF8O
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=ZGuvCtXkw_c
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=Kv9hloT5zYE&list=PLfKXnJPGTzkycxjCDugAIN0POQ7L7U3oc&index=1
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=HNQU1MjcFAA
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=BHP-ncJq8pU
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=sBEbJ-pfY1o
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nacho Cabanes
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=wD5J-urSU7M&list=PL0bfr51v6JJE0UEM_NnAJPhsMRY-WQzG9&index=2
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nacho Cabanes
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=dXJ9wslMGZM&list=PL0bfr51v6JJE0UEM_NnAJPhsMRY-WQzG9&index=22
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Manuel González
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=KXznF3Re0QI&list=PLM8XywipQpGCyWl1UlQ1y4igA07VNqdLa&index=2
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							Pepe Lluyot
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=vg7ibuB8wFw
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							Pepe Lluyot
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=pMfSxY4XDSU&list=PLM8XywipQpGCbzO3LEdhAlNIhjHJ6fDQS&index=46
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Manuel Cosano
+						</td>
+						<td>
+
+							https://www.youtube.com/watch?v=_9C43lCYQBE
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Manuel Cosano
+						</td>
+						<td>
+
+							https://www.youtube.com/watch?v=8Tt3B7-3jiY
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Javier Gutiérrez
+						</td>
+						<td>
+							https://apuntes-daw.javiergutierrez.trade/bases-de-datos/ut2/recopila.html
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Manuél González
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=HfQwt3SFSeQ
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Jesus Dominguez
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=QUWrKd9vK28Q
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							UCAM
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=xrVNqvm7rAM
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							yacklyon
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=JKMEDTfUZ58&list=PLg9145ptuAig5eqBYvOuMdpTP2ORUNXbf&index=1
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							Juan David
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=ZlCtrd1Sx3s
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Manuel González
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=8qfLqWEVEy8
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Pepe Lluyot
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=utX2fhgnFcE&list=PLM8XywipQpGCbzO3LEdhAlNIhjHJ6fDQS&index=1
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Nettorius
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=9LrRDZ23DEQ&list=PLfKXnJPGTzkw2ax5KarYmhUYSWXh4TF8O&index=9
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							YENZU
+						</td>
+						<td>
+							https://es.slideshare.net/YENZU/el-modelo-de-entidad-relacin-e-r
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Regina P.
+						</td>
+						<td>
+							https://es.scribd.com/document/464271315/BD-barker
+						</td>
+						<td>
+							🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							José Juan.
+						</td>
+						<td>
+							https://josejuansanchez.org/bd/unidad-03-teoria/index.html#participaci%C3%B3n-01..01
+						</td>
+						<td>
+							🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://es.slideshare.net/nayis2010/modelo-entidad-relacin-extendido-18067292
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Universidad DON BOSCO
+						</td>
+						<td>
+							https://www.udb.edu.sv/udb_files/recursos_guias/informatica-moviles/base-de-datos-(moviles)/2019/i/guia-1.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							DB20
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=AOh59KtqrtM
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Isabel Cruz
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=BlN95AO1u-c
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							José César
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=uMMsT9i0wRM
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							José César
+						</td>
+						<td>
+							https://www.youtube.com/watch?v=NJp-uJGwg6k
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://cursos.aiu.edu/Base%20de%20Datos/pdf/Tema%203.pdf
+						</td>
+						<td>
+							🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://users.exa.unicen.edu.ar/catedras/dbases1/apuntes/1_MERE-derivacion-DDL.pdf
+						</td>
+						<td>
+							🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Juan B. Diana M. Andrea Y.
+						</td>
+						<td>
+							https://revistas.eia.edu.co/index.php/reveia/article/view/200/196
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Catherine M.
+						</td>
+						<td>
+							BASES DE DATOS (DESCARGADO)
+						</td>
+						<td>
+							🌟🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://adimen.si.ehu.es/~rigau/teaching/EHU/ABD/Altres%20cursos/mjortin/bd_t03_mere.pdf
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://www.fing.edu.uy/tecnoinf/paysandu/cursos/2do/bd1/material/bd1-8.pdf
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://cs.uns.edu.ar/~wmg/ebd15/downloads/Teoria/EBD_04_2015_MER_a_Relacional.pdf
+						</td>
+						<td>
+							🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							James Rumbaugh, Ivan Jacobson, Grady Booch
+						</td>
+						<td>
+							EL LENGUAJE UNIFICADO DE MODELADO MANUAL DE REFERENCIA 2A EDICIÓN (DESCARGADO)
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							Andy Oppel, Robert Sheldon
+						</td>
+						<td>
+							FUNDAMENTOS DE SQL TERCERA EDICIÓN (DESCARGADO)
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://www.dane.gov.co/files/sen/lineamientos/Recomendaciones-para-elaborar-modelos-entidad-relacion.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+
+					<tr>
+						<td>
+							DNP
+						</td>
+						<td>
+							https://colaboracion.dnp.gov.co/CDTI/Oficina%20Informatica/Sistemas%20de%20informaci%C3%B3n/Gu%C3%ADas%20Formatos%20Plantillas/Lineamientos%20Modelos%20Entidad%20Relaci%C3%B3n.pdf?
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://www3.gobiernodecanarias.org/medusa/proyecto/35010282-0006/wp-content/uploads/sites/339/2019/09/tema-8-bd-entidad-relacion.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://www3.uji.es/~mmarques/f47/teoria/tema7.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://bookdown.org/paranedagarcia/database/modelamiento-de-datos.html#claves-primarias
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://cursos.aiu.edu/Base%20de%20Datos/pdf/Tema%203.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://es.slideshare.net/MariaGarcia38/modelo-erpdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							file:///D:/Proyectos%20personales/Programacion/ModeladoBD/Documentos/Modelo%20E-R.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://es.slideshare.net/josecuartas/transformar-modelo-entidad-relacion-a-modelo-logico
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://www.uazuay.edu.ec/sites/default/files/public/analisis/Modelo%20E-R.pdf
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://issuu.com/zolisnaida/docs/02.modelo_e_r
+						</td>
+						<td>
+							🌟🌟🌟
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+
+						</td>
+						<td>
+							https://2019basededatos.blogspot.com/p/unidad-2.html
+						</td>
+						<td>
+							🌟
+						</td>
+					</tr>
+				</table>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n">Herramientas utilizadas</h2>
+			</section>
+
+			<section id="contenedor-contenido-definicion">
+				<table class="tabla-contenido">
+					<tr>
+						<th>Nombre</th>
+						<th>URL</th>
+					</tr>
+					<tr>
+						<td>
+							Lucidchart
+						</td>
+						<td>
+							<a
+								href="https://www.lucidchart.com/pages/es/que-es-un-diagrama-entidad-relacion">https://www.lucidchart.com/pages/es/que-es-un-diagrama-entidad-relacion</a>
+						</td>
+					</tr>
+					<tr>
+						<td>yed graph editor</td>
+						<td>
+							<a href="https://www.yworks.com/yed-live/">https://www.yworks.com/yed-live/</a>
+						</td>
+					</tr>
+					<tr>
+						<td>UMLetino</td>
+						<td><a href="https://www.umletino.com/">https://www.umletino.com/</a></td>
+					</tr>
+				</table>
+			</section>
+
+			<!-- 
+			<section id="contenedor-contenido-titulo">
+				<h2 id="titulo-n"></h2>
+			</section>
+
+			<section id="contenedor-contenido-subtitulo">
+				<h2 id="sub-titulo-n"></h2>
+			</section>
+
+			
+			<section id="contenedor-contenido-definicion">
+				<p></p>
+			</section>
+
+			<section id="contenedor-imagenes">
+				<h2 class="titulo">Imagen de </h2>
+				<div id="contenido-imagenes">
+					<img src="Imagenes/Transformacion/transformacion-1.png" alt="" width="50%">
+					<p id="cita-imagen"><q>Imagen 1. Imagen tomada de: [DOC].</q></p>
+				</div>
+			</section>
+		 -->
+
+		</div>
+
+	</div>
+	<section>
+		<!-- Pie de pagina -->
+		<footer id="pie-pagina">
+			<p>&copy; 2024 Rodrigo Cantor Vasquez. Todos los derechos reservados.</p>
+		</footer>
+	</section>
+	<script src="javascript/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+SELECT ProductID, ProductName, Price
+FROM Products
+WHERE Price = (SELECT MAX(Price) FROM Products);
+
+
+SELECT TOP 1
+    (SELECT SUM(Price) FROM (SELECT TOP 3 Price FROM Products ORDER BY ProductID) AS Subquery) AS TotalPrice
+FROM Products;
+
+
+SELECT * FROM Products
+WHERE price > (SELECT AVG(price) FROM Products);
+
+SELECT * FROM Customers
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+
+
+---------
+
+
+SELECT Orders.OrderID, Customers.CustomerName, Orders.OrderDate
+FROM Orders
+INNER JOIN Customers
+ON Orders.CustomerID=Customers.CustomerID;
+
+
+
+SELECT Customers.CustomerName, MAX(Orders.OrderID) AS MaxOrderID, MAX(Orders.OrderDate) AS MaxOrderDate
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID
+GROUP BY Customers.CustomerName
+ORDER BY Customers.CustomerName;
+ 
+-------------------
+
+NOTA SUPER IMPORTANTE
+	DEPENDIENDO DEL TIPO DE GESTOR DE BD LA CONSULTA PUEDE CAMBIAR 
+	DRASTICAMENTE PARA OBTENER EL MISMO RESULTADO.
+
+Your Database = Acces SQL
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_groupby_orderby
+
+	SELECT COUNT(*) 
+	FROM (SELECT DISTINCT Country FROM Customers) AS UniqueCountries;
+
+
+MySQL Database = MySQL
+https://www.w3schools.com/sql/trymysql.asp?filename=trysql_select_count_distinct
+
+	SELECT COUNT(DISTINCT Country)
+	FROM Customers;
+
+------
+
+Forma 1 de hacer un JOIN
+
+SELECT OrderID, CustomerName, ShipperName   FROM (
+SELECT Orders.OrderID, Customers.CustomerName, ShipperID 
+FROM Orders
+INNER JOIN Customers
+	ON Orders.CustomerID = Customers.CustomerID
+) AS tabla
+INNER JOIN Shippers ON tabla.ShipperID = Shippers.ShipperID
+
+
+Forma 2 de hacer EL MISMO JOIN
+
+SELECT Orders.OrderID, Customers.CustomerName, Shippers.ShipperName
+FROM ((Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
+INNER JOIN Shippers ON Orders.ShipperID = Shippers.ShipperID);
+
+-----------------------
+
+Dependiendo del gestor de la base de datos puede variar un poco la sentencia SQL para que me retorne el mismo resultado
+
+acces y sql
+https://www.w3schools.com/sql/trysql.asp?filename=trysql_select_join
+
+SELECT MAX(EMPLEADO) AS [ID EMPLEADO], SUM([CANT VECES ATENDIDO]) AS [TOTAL DE VENTAS] FROM 
+(
+SELECT MAX(EmployeeID) AS [EMPLEADO], MAX(CustomerID) AS [CLIENTE], COUNT(CustomerID) AS [CANT VECES ATENDIDO] FROM Orders
+GROUP BY EmployeeID, CustomerID
+ORDER BY EmployeeID, CustomerID
+)
+GROUP BY EMPLEADO
+
+
+MySQL
+https://www.w3schools.com/sql/trymysql.asp?filename=trysql_select_count_distinct
+SELECT MAX(EMPLEADO) AS "ID EMPLEADO", SUM(CANT) AS "TOTAL DE VENTAS" FROM 
+(
+SELECT MAX(EmployeeID) AS EMPLEADO, MAX(CustomerID) AS CLIENTE, COUNT(CustomerID) AS CANT FROM Orders
+GROUP BY EmployeeID, CustomerID
+ORDER BY EmployeeID, CustomerID
+) AS NuevaTabla
+GROUP BY EMPLEADO
+
+
+
+--------------------------
+
+Cuatro formas distintas de obtener el mismo resultado en acces sql
+
+SELECT Suppliers.SupplierID, Suppliers.SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT Products.SupplierID FROM Products WHERE Suppliers.SupplierID = Products.SupplierID AND Price < 20)
+
+
+SELECT DISTINCT Products.SupplierID, Suppliers.SupplierName
+FROM Products
+INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+where Price < 20
+
+
+SELECT Products.SupplierID, MAX(SupplierName), MIN(Price)
+FROM Products
+INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+GROUP BY Products.SupplierID
+HAVING MIN(Price) < 20
+
+
+SELECT Products.SupplierID, MAX(SupplierName)
+FROM Products
+INNER JOIN Suppliers ON Products.SupplierID = Suppliers.SupplierID
+WHERE Price < 20
+GROUP BY Products.SupplierID
+
+
+
+--------------------------------------------------
+
+
+https://www.youtube.com/watch?v=AOh59KtqrtM
+https://www.youtube.com/watch?v=unEfxDluVb0
+https://www.youtube.com/watch?v=JCqxbfohcFs&list=PLM8XywipQpGCyWl1UlQ1y4igA07VNqdLa&index=7
+
+
+
+
+
+
+
+
+
+

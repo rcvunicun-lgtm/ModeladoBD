@@ -1,0 +1,949 @@
+/* Definimos las variables globales que vamos a reutilizar a lo largo de las etiquetas */
+
+:root {
+  --colorencabezado-1: #2a2a40;
+  --colorletra: white;
+  --tamanio-titulos: 1.6vw;
+  --tamanio-texto: 1em;
+  --color-fondo: rgb(227, 222, 222);
+  --color-menu-nav: rgb(51, 49, 49);
+  --ancho-menu-izquierdo: 20vw;
+}
+
+svg {
+  float: left;
+  width: 100%;
+}
+svg::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.no-seleccionable {
+  user-select: none; /* Evita que el contenido dentro del elemento sea seleccionable */
+}
+
+/* Formateamos los margenes internos y externos de nuestra pagina */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-fondo);
+}
+
+/* ----------------Definimos todo el encabezado de nuestra web para que el usuario vea de quien en la pagina y de que trata su contenido */
+header {
+  position: sticky;
+  background: var(--colorencabezado-1);
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* position: fixed; */
+  top: 0;
+  z-index: 3;
+  padding: 15px 30px 15px 30px;
+  width: 100%;
+  gap: 30px;
+}
+
+header h2 {
+  color: var(--colorletra);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--tamanio-titulos);
+  width: calc(100% / 3);
+  min-width: 400px;
+}
+header h2 img {
+  margin-left: 20px;
+  width: var(--tamanio-titulos);
+}
+
+/* -------------Estilos para el menu de navegacion----------- */
+nav {
+  overflow: auto; /*Crea un slider invisible*/
+  display: flex;
+  text-align: center;
+  cursor: pointer;
+  /* position: fixed; */
+  position: sticky;
+  z-index: 3;
+  /* top: 55px; */
+  background-color: var(--color-menu-nav);
+  width: 100%;
+  /* top: calc(32px + var(--tamanio-titulos)); */
+}
+
+nav #btn-menu {
+  display: none;
+}
+
+nav a {
+  color: var(--colorletra);
+  font-size: 1.2vw;
+  display: inline-block;
+  padding: 0.8vw 0.8vw 0.8vw 0.8vw;
+  white-space: nowrap;
+}
+
+nav a:hover {
+  background-color: #07070a;
+}
+
+/*-- Estilos para el boton del menu lateral----*/
+
+#boton-menu {
+  display: none; /* Oculta el checkbox */
+}
+
+#label-menu {
+  cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+  display: none;
+}
+
+#label-menu img {
+  width: 40px !important; /* Ancho deseado */
+  height: 100% !important; /* Alto deseado */
+  margin: auto;
+  padding: 10px 2px 0 5px;
+}
+
+/*-------------Estilos para la seccion de presentacion----------*/
+
+div#presentacion {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 43vw;
+  background-color: rgba(0, 0, 0, 0.904);
+  /* top:118px;   */
+  z-index: -1;
+}
+
+div#presentacion div#objetivo-curso {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  gap: 3vw;
+  padding: 3vw 0 0 0;
+}
+
+div#presentacion div#objetivo-curso h3 {
+  text-align: center;
+  font-size: 3vw;
+  width: 50vw;
+  color: rgb(251, 195, 131);
+  background-color: rgba(102, 132, 102, 0.652);
+  padding: 0.2vw;
+  border-radius: 60px;
+}
+
+div#presentacion div#objetivo-curso div {
+  width: 35%;
+}
+
+div#presentacion div#objetivo-curso div img {
+  filter: blur(1px) contrast(10%);
+  width: 100%;
+}
+
+div#presentacion div#objetivo-curso p {
+  width: 80%;
+  color: white;
+  font-size: 1.7vw;
+  text-align: center;
+}
+
+div#presentacion img {
+  width: 100%;
+  object-position: 0% 40%;
+  opacity: 0.2;
+  filter: contrast(150%);
+}
+
+/*-------------Estilos para la seccion de contenido-------------*/
+
+div#contenido {
+  background-color: #d9eee1;
+  width: 100%;
+  overflow: auto;
+}
+
+div#contenido::before {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+div#contenido h1 {
+  text-align: center;
+  font-size: calc(var(--tamanio-titulos) + 3em / 1.6);
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.contenido-tematica {
+  /* background-color: red; */
+  margin-top: 20px;
+  width: 60%;
+  height: 400px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.contenido-tematica-izquierda {
+  /* background-color: blue; */
+  width: 50%;
+  height: 100%;
+  float: left;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.titulo {
+  /* margin: 40px; */
+  color: white;
+  background-color: rgb(53, 53, 53);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: calc(var(--tamanio-texto) * 1.2);
+}
+
+.contenido-tematica-derecha {
+  background-color: rgb(53, 53, 49);
+  width: 50%;
+  float: left;
+  height: 100%;
+  padding: 10px;
+
+  overflow: hidden;
+}
+
+.contenido-tematica-derecha img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.tematica {
+  font-size: var(--tamanio-texto);
+  text-align: center;
+  color: white;
+  padding: 10px;
+  border-radius: 60px;
+  min-width: 60%;
+}
+
+/*----------------Estilos para la seccion de espacios----------------*/
+
+div.espacios {
+  background-color: #fd8989;
+  width: 100%;
+  /* float: left; */
+}
+/* 
+div.espacios::after {
+  content: "";
+  clear: both;
+  display: table;
+} */
+
+div.espacios h1 {
+  /* background-color: red; */
+  text-align: center;
+  margin-top: 30px;
+  font-size: 5vw;
+}
+
+div.espacios section {
+  /* background-color: red; */
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-top: 20px;
+  padding: 20px;
+  max-width: 100%;
+}
+
+div.espacios section p {
+  font-size: 3vw;
+  width: 70%;
+  text-align: center;
+  font-size: 22px;
+  color: black;
+  padding: 10px;
+  line-height: 1.5; /* Altura de línea base */
+}
+
+div.espacios section div {
+  background-color: rgb(94, 82, 82);
+  padding: 10px;
+  max-width: 50%;
+}
+
+div.espacios section div img {
+  width: 100%;
+}
+
+/*------------- Estilos para la seccion final --------------- */
+
+div.final {
+  width: 100%;
+  background-color: #303733;
+  padding: 200px 0px 150px 0px;
+  /* float: left; ???? */
+}
+
+div.final h1 {
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: calc(var(--tamanio-titulos) + 6vw);
+}
+
+/*---------Estilos para el menu lateral izquierdo-----------*/
+
+aside#contenido-temario {
+  background-color: rgb(24, 23, 23);
+  width: var(--ancho-menu-izquierdo);
+  height: 88vh;
+  position: fixed;
+  border-right: 2px solid rgb(116, 115, 115);
+  z-index: 0;
+  overflow: auto;
+}
+
+#contenido-temario li {
+  border-bottom: 1px solid rgb(168, 167, 167);
+}
+
+.sub-contenido {
+  display: block;
+  width: 100%;
+  padding: 8px;
+  font-size: 18px;
+  text-align: left;
+  color: rgb(194, 177, 177);
+}
+
+.sub-contenido:hover {
+  background-color: rgb(211, 207, 207);
+  color: black;
+}
+
+/*
+  ---------Estilos para el contenido de la pagina------------
+*/
+
+div#exposicion-contenido {
+  background-color: #1d2a35;
+  width: calc(100% - var(--ancho-menu-izquierdo));
+  height: 95.5vh;
+  padding: 10px 20px 20px 20px;
+  margin: 0 0 0 var(--ancho-menu-izquierdo);
+  height: auto;
+  position: relative;
+}
+
+#contenedor-contenido-titulo {
+  box-sizing: border-box;
+  text-align: center;
+  color: white;
+  background-color: rgb(53, 53, 53);
+  padding: 20px;
+  margin: 20px 0 20px 0;
+  font-size: 25px;
+  border-radius: 10px;
+}
+
+#contenedor-contenido-subtitulo {
+  background-color: rgb(23, 134, 56);
+  padding: 15px;
+  color: white;
+  font-size: 18px;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+}
+
+#contenedor-contenido-definicion {
+  box-sizing: border-box;
+  color: white;
+  font-size: 25px;
+  padding: 0 20px 0 20px;
+  margin-bottom: 20px;
+}
+
+#contenedor-contenido-definicion p {
+  overflow: auto;
+}
+
+#contenedor-contenido-definicion p b {
+  font-size: 3.5vw;
+}
+
+#contenedor-contenido-definicion ul li a {
+  color: rgb(14, 130, 255);
+}
+
+#cita-imagen {
+  /* background-color: red; */
+  color: white;
+}
+
+#contenedor-contenido-definicion ul {
+  box-sizing: border-box;
+  color: white;
+  /* background-color: red; */
+  font-size: 25px;
+  /* margin-bottom: 25px; */
+  padding: 0 25px 0px 25px;
+}
+
+#contenedor-contenido-definicion ul li {
+  margin: 20px 0 10px 0;
+  /* background-color: red; */
+}
+
+#contenedor-imagenes {
+  overflow: auto;
+  padding: 40px;
+  background-color: #38444d;
+  /* background-color: #73aedc; */
+  margin-bottom: 20px;
+}
+
+#contenido-imagenes {
+  box-sizing: border-box;
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+}
+
+#contenido-imagenes img {
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.titulo {
+  box-sizing: border-box;
+  /* margin: 40px; */
+  color: white;
+  background-color: rgb(53, 53, 53);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: calc(var(--tamanio-texto) * 1.2);
+}
+
+/* --------Estilos tabla apartado bibliografia -------*/
+
+.tabla-contenido {
+  border: 1px solid;
+  width: 100%;
+  overflow: auto;
+}
+
+.tabla-contenido tr td {
+  border: 1px solid;
+  width: 10%;
+}
+
+.tabla-contenido tr td:nth-child(1),
+td:nth-child(3) {
+  font-size: 0.85vw;
+}
+.tabla-contenido tr td:nth-child(2) {
+  font-size: 0.5vw;
+}
+
+table tr:hover {
+  background-color: rgb(169, 152, 152);
+  color: black;
+}
+
+/*------Estilos para el pie de página-------*/
+
+footer#pie-pagina {
+  clear: both;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+
+:target:before {
+  content: "";
+  display: block;
+  height: 130px; /* Ajusta este valor según la altura de tu encabezado fijo */
+  margin: -130px 0 0; /* Ajusta este valor para compensar la altura de tu encabezado fijo */
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1440px)  {
+  :root {
+    --tamanio-titulos: 1.5vw;
+  }
+
+  /* --------------Estilos de encabezado------------- */
+  header h2 {
+    min-width: 300px;
+  }
+  /* -------------Estilos para el menu de navegacion----------- */
+  nav a {
+    font-size: 2vw;
+    padding: 8px 8px 8px 12px;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1024px) {
+  :root {
+    --tamanio-titulos: 1.4vw;
+  }
+
+  /* --------------Estilos de encabezado------------- */
+  header h2 {
+    min-width: 200px;
+  }
+
+  /* -------------Estilos para el menu de navegacion----------- */
+  nav a {
+    font-size: 2vw;
+    padding: 8px 8px 8px 12px;
+  }
+
+  /*-------------Estilos para la seccion de presentacion----------*/
+  div#presentacion {
+    height: 70vw;
+  }
+
+  div#presentacion div#objetivo-curso {
+    width: 80%;
+    gap: 3vw;
+    padding: 8vw 0 8vw 0;
+    /* background-color: red; */
+  }
+
+  div#presentacion div#objetivo-curso h3 {
+    font-size: 4.8vw;
+    width: 70vw;
+    padding: 0.2vw;
+  }
+
+  div#presentacion div#objetivo-curso div {
+    width: 45%;
+  }
+
+  div#presentacion div#objetivo-curso p {
+    width: 80%;
+    font-size: 3vw;
+  }
+
+  /* --------------------------------------------- */
+  /*Estilos para la seccion de contenido*/
+
+  div#contenido h1 {
+    font-size: 4.5vw;
+    margin-top: 10px;
+    margin-bottom: 40px;
+  }
+
+  .contenido-tematica {
+    width: 80%;
+    height: 400px;
+    background-color: rgba(86, 82, 82, 0.226);
+  }
+
+  .tematica {
+    font-size: 1.8vw;
+    text-align: center;
+    color: white;
+    padding: 10px;
+    border-radius: 60px;
+    width: 80%;
+  }
+
+  .titulo {
+    font-size: 1.8vw;
+  }
+
+  /*----------------Estilos para la seccion de espacios----------------*/
+
+  div.espacios section div {
+    max-width: 80%;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+  :root {
+    --tamanio-titulos: 2.5vw;
+    --ancho-menu-izquierdo: 100%;
+  }
+
+  /* --------------Estilos de encabezado------------- */
+
+  header {
+    background: var(--colorencabezado-1);
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    gap: 10px;
+  }
+
+  header h2 {
+    display: flex;
+    font-size: calc(var(--tamanio-titulos) + 5px);
+    width: calc(90%);
+    min-width: 350px;
+  }
+
+  header h2 img {
+    width: 16px;
+  }
+
+  /* -------------Estilos para el menu de navegacion----------- */
+  nav a {
+    font-size: 3vw;
+    padding: 8px 8px 8px 12px;
+  }
+
+  /*-- Estilos para el boton del menu lateral----*/
+
+  #label-menu {
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+    display: block;
+  }
+
+  #label-menu img {
+    width: 7vw !important; /* Ancho deseado */
+    height: 90% !important; /* Alto deseado */
+    padding: 10px 2px 0 5px;
+  }
+
+  /* --------------------------------------------- */
+  /*Estilos para la seccion de contenido*/
+
+  .contenido-tematica {
+    /* background-color: red; */
+    margin-top: 20px;
+    width: 80%;
+    height: auto;
+    margin: auto;
+  }
+
+  div#contenido h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+  }
+
+  .contenido-tematica-izquierda {
+    /* background-color: blue; */
+    width: 100%;
+    height: auto;
+    float: none;
+    /* background-color: red; */
+    padding: 20px;
+  }
+
+  .contenido-tematica-derecha {
+    background-color: rgb(53, 53, 49);
+    width: 100%;
+    height: auto;
+    float: none;
+    height: 50%;
+    padding: 20px;
+
+    overflow: hidden;
+  }
+
+  .contenido-tematica-derecha img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  .tematica {
+    font-size: 3vw;
+    width: 70%;
+  }
+
+  .titulo {
+    font-size: 3vw;
+    width: 90%;
+  }
+  /*----------------Estilos para la seccion de espacios----------------*/
+
+  div.espacios h1 {
+    font-size: 8vw;
+  }
+
+  div.espacios section {
+    width: 80%;
+    gap: 3vw;
+    padding: 3vw;
+  }
+
+  div.espacios section p {
+    font-size: 4vw;
+    width: 90%;
+    padding: 1px;
+  }
+
+  div.espacios section div {
+    padding: 5px;
+    max-width: 100%;
+  }
+  /*------------- Estilos para la seccion final --------------- */
+
+  div.final {
+    width: 100%;
+    background-color: #303733;
+    padding: 35vw 0px 25vw 0px;
+    /* float: left; ???? */
+  }
+
+  /*---------Estilos para el menu lateral izquierdo-----------*/
+
+  aside#contenido-temario {
+    z-index: 0;
+  }
+
+  /*
+  ---------Estilos para el contenido de la pagina------------
+*/
+
+  div#exposicion-contenido {
+    background-color: #1d2a35;
+    width: 100%;
+    height: 95.5vh;
+    padding: 10px 20px 20px 20px;
+    margin: 0 0 0 0;
+    height: auto;
+  }
+
+  /*------------- Estilos para el pie de pagina --------------- */
+  footer#pie-pagina {
+    font-size: 2.4vw;
+  }
+}
+
+/* Desde aqui empieza mi celular Samsung A4 */
+/* --------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 426px) {
+  :root {
+    --tamanio-titulos: 2.5vw;
+    --ancho-menu-izquierdo: 100%;
+  }
+  /*-------------Estilos para la seccion de presentacion----------*/
+
+  div#presentacion {
+    width: 100%;
+    height: 80vw;
+  }
+
+  div#presentacion div#objetivo-curso {
+    width: 80%;
+    gap: 3vw;
+    padding: 8vw 0 8vw 0;
+    /* background-color: red; */
+  }
+
+  div#presentacion div#objetivo-curso h3 {
+    font-size: 4.8vw;
+    width: 70vw;
+    padding: 0.2vw;
+  }
+
+  div#presentacion div#objetivo-curso div {
+    width: 45%;
+  }
+
+  div#presentacion div#objetivo-curso p {
+    width: 80%;
+    font-size: 3.5vw;
+  }
+
+  /*---------Estilos para la seccion de contenido---------*/
+
+  .contenido-tematica {
+    width: 80%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+  }
+
+  div#contenido h1 {
+    width: 80%;
+    margin: auto;
+    font-size: 7vw;
+  }
+
+  .contenido-tematica-izquierda {
+    float: none;
+    padding: 20px;
+    overflow: hidden;
+    margin-top: 0px;
+  }
+
+  .contenido-tematica-derecha {
+    background-color: rgb(53, 53, 49);
+    width: 100%;
+    height: auto;
+    float: none;
+    height: 50%;
+    padding: 0px;
+    overflow: hidden;
+  }
+
+  .contenido-tematica-derecha img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  .tematica {
+    font-size: 4vw;
+    width: 80%;
+    overflow: hidden;
+  }
+
+  .titulo {
+    font-size: 3vw;
+    width: 100%;
+  }
+
+  /*---------Estilos para el menu lateral izquierdo-----------*/
+
+  aside#contenido-temario {
+    background-color: rgb(24, 23, 23);
+    width: var(--ancho-menu-izquierdo);
+    height: 88%;
+    position: fixed;
+    /* top: 100px; */
+    border-right: 2px solid rgb(116, 115, 115);
+    z-index: 0;
+    overflow: auto;
+  }
+
+  .sub-contenido {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    font-size: 5vw;
+    text-align: left;
+    color: rgb(194, 177, 177);
+  }
+
+  /*
+  ---------Estilos para el contenido de la pagina------------
+*/
+
+  #contenedor-contenido-titulo {
+    padding: 1vw;
+    margin: 20px 0 20px 0;
+    font-size: 5vw;
+  }
+
+  #contenedor-contenido-subtitulo {
+    padding: 4vw;
+    font-size: 4vw;
+    margin: 20px 0 20px 0;
+  }
+
+  #contenedor-contenido-definicion {
+    font-size: 3.5vw;
+    padding: 0 2vw 0 2vw;
+    margin-bottom: 20px;
+    line-height: 2;
+  }
+
+  #cita-imagen {
+    font-size: 2vw;
+  }
+
+  #contenedor-contenido-definicion ul {
+    font-size: 3.5vw;
+    padding: 0 2vw 0px 2vw;
+  }
+
+  #contenedor-contenido-definicion ul li {
+    margin: 2vw 2vw 0;
+    overflow: scroll;
+  }
+
+  #contenedor-contenido-definicion ul li a {
+    font-size: 3vw;
+  }
+
+  #contenedor-imagenes {
+    padding: 3vw;
+    margin-bottom: 20px;
+  }
+
+  #contenido-imagenes {
+    padding: 2vw;
+  }
+
+  #contenido-imagenes img {
+    width: 100%;
+  }
+
+  .titulo {
+    padding: 2vw;
+    margin-bottom: 20px;
+    font-size: 3vw;
+  }
+}
+
+/* --------------------------------------------------------------------------------------------------------- */
+
+@media screen and (max-width: 375px) {
+  :root {
+    --tamanio-titulos: 4vw;
+  }
+
+  /* --------------Estilos de encabezado------------- */
+
+  header h2 {
+    font-size: var(--tamanio-titulos);
+    min-width: 90%;
+  }
+
+  header h2 img {
+    width: var(--tamanio-titulos);
+    margin-left: 10px;
+  }
+
+  /* -------------Estilos para el menu de navegacion----------- */
+  nav a {
+    font-size: 3vw;
+    padding: 8px 8px 8px 12px;
+  }
+}
